@@ -1,6 +1,7 @@
 ### Purpose
-We are going to talk about the user input and GrapQL parse in this markdown file. We will consider many examples that aim to help the user understanding the GraphQL semantic builder.
-
+We are going to talk about the user input and GrapQL parse in this markdown file. We will consider many examples that
+ aim to help the user understanding the GraphQL semantic builder. GraphQL engine will serve in the `/graphl` endpoint. 
+ 
 ### Mapping
 #### Text Component
 The user can define the components as the following.
@@ -8,7 +9,7 @@ The user can define the components as the following.
 Text("Hello World! 👋")
     .httpMethod(.POST)
 ```         
-The code will generate a GraphQL engine that runs in the `/graphl` endpoint. The engine can answer the following query.
+The engine can answer the following query.
 ```json   
 query {
  text
@@ -28,11 +29,11 @@ Group("book") {
     Text("Around the World in Eighty Days is an adventure novel that ...")
 }
 ```         
-The code will generate a GraphQL engine that runs in the `/graphl` endpoint. The engine can answer the following query.
+The engine can answer the following query.
 ```json   
 query {
     book {
-        name{
+        name {
             text
         }
     text
@@ -40,6 +41,46 @@ query {
 }
 ```
 When someone sends this query, the `text` will return the string results.
+
+-------------------------------------------
+The user can define the components as the following.
+```swift
+Group("book") {
+    Group("name") {
+        Text("Around the World in Eighty Days")
+    }
+    Text("Around the World in Eighty Days is an adventure novel that ...")
+    Group("author") {
+        Group("name") {
+            Text("Jules Verne")
+        }
+        Group("country") {
+            Text("French")
+        }
+    }
+}
+```         
+The code will generate a GraphQL engine that runs in the `/graphl` endpoint. The engine can answer the following query.
+```json   
+query {
+    book {
+        name {
+            text
+        }
+        author {
+            name {
+                text
+            }
+            country {
+                text
+            }
+        }
+    text
+    }
+}
+```
+When someone sends this query, the `text` will return the string results.
+
 
 #### Creating Own Component
 The user can define the components as the following.
