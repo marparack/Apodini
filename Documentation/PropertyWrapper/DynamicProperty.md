@@ -33,9 +33,9 @@ struct Authenticated<User: Authenticable>: DynamicProperty {
     @State
     private var user: User?
     
-    var wrappedValue: User 
+    var wrappedValue: User?
         get {
-            return self.user!
+            return self.user
         }
         set {
             self.user = newValue
@@ -51,7 +51,7 @@ struct Authenticated<User: Authenticable>: DynamicProperty {
             .always { result in 
                 guard case .success(let user) = result else { return }
                 self.user = user
-                }
+            }
             .map { _ in () }
     }
 }
