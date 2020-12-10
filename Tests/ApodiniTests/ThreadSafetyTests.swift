@@ -11,7 +11,13 @@ import NIO
 import Vapor
 import Fluent
 @testable import Apodini
+import Runtime
 
+protocol ForeignKeyProtocol {
+    var name: String? { get }
+    var type: Any.Type { get }
+    var keyType: Any.Type { get }
+}
 
 final class ThreadSafetyTests: ApodiniTests {
     struct Greeter: Component {
@@ -20,6 +26,48 @@ final class ThreadSafetyTests: ApodiniTests {
         
         func handle() -> String {
             req.body.string ?? "World"
+        }
+    }
+
+    @propertyWrapper
+    struct ForeignKey<ID : Hashable>: ForeignKeyProtocol {
+        let name: String?
+        let type: Any.Type
+        var wrappedValue: ID
+
+        var keyType: Any.Type {
+            return ID.self
+        }
+
+        public init<T : Identifiable>(wrappedValue: ID, _ name: String? = nil, for type: T.Type) where T.ID == ID {
+            self.name = name
+            self.type = type
+            self.wrappedValue = wrappedValue
+        }
+    }
+
+    struct SomeIdentifiable: Identifiable {
+        var id: String
+    }
+
+    struct TestStructWithForeignKey {
+        @ForeignKey("some", for: SomeIdentifiable.self)
+        var key: String = ""
+    }
+
+    struct TestClassWithForeignKey {
+        @ForeignKey("some", for: SomeIdentifiable.self)
+        var key: String = ""
+    }
+
+    func testForeignKey() {
+        let instance = try! createInstance(of: TestClassWithForeignKey.self) as Any
+        let info = try! typeInfo(of: TestClassWithForeignKey.self)
+        for property in info.properties {
+            if property.type is ForeignKeyProtocol.Type {
+                let value = try! property.get(from: instance) as! ForeignKeyProtocol
+                print(value.name)
+            }
         }
     }
     
