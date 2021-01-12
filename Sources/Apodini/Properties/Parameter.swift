@@ -24,7 +24,7 @@ public struct Parameter<Element: Codable>: Property {
     var name: String?
     private var element: Element?
     internal var options: PropertyOptionSet<ParameterOptionNameSpace>
-    internal var defaultValue: Element?
+    internal var defaultValue: (() -> Element)?
     
     
     /// The value for the `@Parameter` as defined by the incoming request
@@ -68,7 +68,7 @@ public struct Parameter<Element: Codable>: Property {
     ///   - defaultValue: The default value that should be used in case the interface exporter can not decode the value from the input of the `Component`
     ///   - name: The name that identifies this property when decoding the property from the input of a `Component`
     ///   - options: Options passed on to different interface exporters to clarify the functionality of this `@Parameter` for different API types
-    public init(wrappedValue defaultValue: Element, _ name: String? = nil, _ options: Option...) {
+    public init(wrappedValue defaultValue: @escaping @autoclosure () -> Element, _ name: String? = nil, _ options: Option...) {
         self.defaultValue = defaultValue
         self.name = name
         self.options = PropertyOptionSet(options)
@@ -78,7 +78,7 @@ public struct Parameter<Element: Codable>: Property {
     /// - Parameters:
     ///   - defaultValue: The default value that should be used in case the interface exporter can not decode the value from the input of the `Component`
     ///   - options: Options passed on to different interface exporters to clarify the functionality of this `@Parameter` for different API types
-    public init(wrappedValue defaultValue: Element, _ options: Option...) {
+    public init(wrappedValue defaultValue: @escaping @autoclosure () -> Element, _ options: Option...) {
         self.defaultValue = defaultValue
         self.name = nil
         self.options = PropertyOptionSet(options)

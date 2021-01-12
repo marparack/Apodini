@@ -224,7 +224,7 @@ class ParameterBuilder: RequestInjectableVisitor {
         } else {
             var `default`: Element?
             if let value = parameter.defaultValue {
-                `default` = value
+                `default` = value()
             }
 
             endpointParameter = EndpointParameter<Element>(
@@ -259,7 +259,7 @@ extension Parameter: EncodeOptionalEndpointParameter where Element: ApodiniOptio
     ) -> AnyEndpointParameter {
         var `default`: Element.Member?
         if let value = self.defaultValue {
-            `default` = value.optionalInstance
+            `default` = value().optionalInstance
         }
 
         return EndpointParameter<Element.Member>(

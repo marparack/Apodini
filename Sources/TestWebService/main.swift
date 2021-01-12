@@ -7,6 +7,13 @@
 
 import Apodini
 
+class ClassString: Codable {
+    var name: String
+    
+    init(name: String) {
+        self.name = name
+    }
+}
 
 struct TestWebService: Apodini.WebService {
     struct PrintGuard: SyncGuard {
@@ -38,35 +45,14 @@ struct TestWebService: Apodini.WebService {
     
 
     struct TraditionalGreeter: Handler {
-        // one cannot change their gender, it must be provided
-        @Parameter(.mutability(.constant)) var gender: String
-        // one cannot change their surname, but it can be ommitted
-        @Parameter(.mutability(.constant)) var surname: String = ""
-        // one can switch between formal and informal greeting at any time
-        @Parameter var name: String?
-        
-        @Environment(\.connection) var connection: Connection
+        @Parameter var name: ClassString = ClassString(name: "Apodini")
+        @Parameter var overwrite: Bool = false
 
-        func handle() -> Action<String> {
-            print(connection.state)
-            if connection.state == .end {
-                return .end
+        func handle() -> String {
+            if overwrite {
+                self.name.name = "Max"
             }
-
-            if let firstName = name {
-                return .send("Hi, \(firstName)!")
-            } else {
-                return .send("Hello, \(gender == "male" ? "Mr." : "Mrs.") \(surname)")
-            }
-        }
-    }
-    
-    @propertyWrapper
-    struct UselessWrapper: DynamicProperty {
-        @Parameter var name: String?
-        
-        var wrappedValue: String? {
-            name
+            return "Hi, \(name.name)!"
         }
     }
 
