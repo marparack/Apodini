@@ -39,7 +39,7 @@ extension Vapor.Application {
             }
         })
         self.http.server.configuration.tlsConfiguration = app.http.tlsConfiguration
-        self.routes.defaultMaxBodySize = "5mb"
+        self.routes.defaultMaxBodySize = "7mb"
         self.logger = app.logger
     }
 }
