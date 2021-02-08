@@ -22,7 +22,7 @@ class GRPCService {
     
     var serviceName: String
     var methodNames: [String] = []
-    let queue = DispatchQueue(label: "sync-queue")
+    let semaphore = DispatchSemaphore(value: 1)
 
     /// GRPC media type, with unspecified payload encoding
     static let grpc = HTTPMediaType(type: "application", subType: "grpc")
