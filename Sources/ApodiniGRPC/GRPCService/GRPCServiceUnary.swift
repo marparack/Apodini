@@ -31,17 +31,19 @@ extension GRPCService {
                 // should be one at max (so we discard potential following messages).
                 let message = self.getMessages(from: data, remoteAddress: request.remoteAddress).first ?? GRPCMessage.defaultMessage
 
-                let response = context.handle(request: message, eventLoop: request.eventLoop, final: true)
-                let result = response.map { response -> Vapor.Response in
-                    switch response.content {
-                    case let .some(content):
-                        return self.makeResponse(content)
-                    case .none:
-                        return self.makeResponse()
+                self.queue.async(flags: .barrier) {
+                    let response = context.handle(request: message, eventLoop: request.eventLoop, final: true)
+                    let result = response.map { response -> Vapor.Response in
+                        switch response.content {
+                        case let .some(content):
+                            return self.makeResponse(content)
+                        case .none:
+                            return self.makeResponse()
+                        }
                     }
-                }
 
-                promise.completeWith(result)
+                    promise.completeWith(result)
+                }
             }
             return promise.futureResult
         }
