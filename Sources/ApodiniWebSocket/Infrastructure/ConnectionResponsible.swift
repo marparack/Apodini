@@ -14,7 +14,7 @@ typealias ContextOpener = (ConnectionResponsible, UUID) -> (ContextResponsible)
 class ConnectionResponsible: Identifiable {
     unowned var websocket: WebSocket
     
-    let logger: Logger
+    let logger: Logging.Logger
 
     let request: Vapor.Request
     
@@ -24,7 +24,7 @@ class ConnectionResponsible: Identifiable {
     
     private var contexts: [UUID: ContextResponsible] = [:]
     
-    init(_ websocket: WebSocket, request: Vapor.Request, onClose: @escaping (ID) -> Void, endpoints: [String: ContextOpener], logger: Logger) {
+    init(_ websocket: WebSocket, request: Vapor.Request, onClose: @escaping (ID) -> Void, endpoints: [String: ContextOpener], logger: Logging.Logger) {
         self.websocket = websocket
         self.onClose = onClose
         self.endpoints = endpoints

@@ -14,7 +14,7 @@ import Foundation
 struct StatelessClient {
     private let address: String
     
-    private let logger: Logger
+    private let logger: Logging.Logger
     
     private let eventLoop: EventLoop
     
@@ -24,7 +24,7 @@ struct StatelessClient {
     /// are executed on the given `eventLoop`.
     init(address: String = "ws://localhost:8080/apodini/websocket", on eventLoop: EventLoop, ignoreErrors: Bool = false) {
         self.address = address
-        var logger = Logger(label: "org.apodini.websocket.client")
+        var logger = Logging.Logger(label: "org.apodini.websocket.client")
         #if DEBUG
         logger.logLevel = .debug
         #endif

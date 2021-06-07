@@ -1,21 +1,21 @@
 //
-//  GRPCDependentStaticConfiguration.swift
+//  RESTDependentConfiguration.swift
 //  
 //
 //  Created by Philipp Zagar on 27.05.21.
 //
 
-/// `GRPCDependentStaticConfiguration`s are used to register static services dependend on the `GRPCInterfaceExporter`
-public protocol GRPCDependentStaticConfiguration: StaticConfiguration {}
+/// `RESTDependentStaticConfiguration`s are used to register static services dependend on the `RESTInterfaceExporter`
+public protocol RESTDependentStaticConfiguration: StaticConfiguration {}
 
-/// The default configuration is an `EmptyGRPCDependentStaticConfiguration`
-public struct EmptyGRPCDependentStaticConfiguration: GRPCDependentStaticConfiguration {
+/// The default configuration is an `EmptyRESTDependentStaticConfiguration`
+public struct EmptyRESTDependentStaticConfiguration: RESTDependentStaticConfiguration {
     public func configure(_ app: Application, parentConfiguration: ExporterConfiguration) { }
     
     public init() { }
 }
 
-extension Array where Element == GRPCDependentStaticConfiguration {
+extension Array where Element == RESTDependentStaticConfiguration {
     /**
      A method that handels the configuration of dependend static exporters
      - Parameters:

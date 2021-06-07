@@ -38,10 +38,10 @@ struct TypeIndexBuilder: CustomDebugStringConvertible {
         typeIndex.values.map { value in value.debugDescription }.joined(separator: ", ")
     }
 
-    var logger: Logger
+    var logger: Logging.Logger
     fileprivate var typeIndex: [ObjectIdentifier: CapturedTypeIndex] = [:]
 
-    init(logger: Logger) {
+    init(logger: Logging.Logger) {
         self.logger = logger
     }
 
@@ -234,7 +234,7 @@ extension TypeIndexBuilder {
 }
 
 extension CapturedTypeIndex {
-    func build(logger: Logger, for operation: Operation, entry: inout TypeIndexEntry?, sources: inout [RelationshipSourceCandidate]) {
+    func build(logger: Logging.Logger, for operation: Operation, entry: inout TypeIndexEntry?, sources: inout [RelationshipSourceCandidate]) {
         if let parsedEntry = entries[operation] {
             parsedEntry.build(logger: logger, entry: &entry, sources: &sources)
         }
@@ -243,7 +243,7 @@ extension CapturedTypeIndex {
 
 extension ParsedTypeIndexEntry {
     /// This method is uses raw captured data to build the final TypeIndexEntry and collect potential Relationship sources.
-    func build(logger: Logger, entry: inout TypeIndexEntry?, sources: inout [RelationshipSourceCandidate]) {
+    func build(logger: Logging.Logger, entry: inout TypeIndexEntry?, sources: inout [RelationshipSourceCandidate]) {
         if markedDefaultCount > 1 {
             // Illegal use of `.defaultRelationship`
             fatalError("""

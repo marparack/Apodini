@@ -112,7 +112,7 @@ extension DeploymentProvider {
     /// Read the web service's structure, and return it encoded as a `WebServiceStructure` object
     public func readWebServiceStructure() throws -> WebServiceStructure {
         let fileManager = FileManager()
-        let logger = Logger(label: "ApodiniDeployCLI.Localhost")
+        let logger = Logging.Logger(label: "ApodiniDeployCLI.Localhost")
         
         let modelFileUrl = fileManager.temporaryDirectory.appendingPathComponent("AM_\(UUID().uuidString).json")
         guard fileManager.createFile(atPath: modelFileUrl.path, contents: nil, attributes: nil) else {

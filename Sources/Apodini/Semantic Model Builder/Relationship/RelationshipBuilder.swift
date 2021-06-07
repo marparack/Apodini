@@ -25,7 +25,7 @@ struct RelationshipBuilderResult {
 /// The `RelationshipInstanceBuilder` is used to collect `Relationship` instances
 /// manually defined by the user, to build `EndpointRelationship`s out of it.
 class RelationshipBuilder {
-    private let logger: Logger
+    private let logger: Logging.Logger
 
     private var endpoints: [EndpointReference: BuildingEndpoint] = [:]
     /// Collects any endpoint reference which needs resolving of inherited relationships afterwards.
@@ -34,7 +34,7 @@ class RelationshipBuilder {
     private var collectedRelationshipInstances: [UUID: RelationshipInstance] = [:]
     private(set) var collectedRelationshipCandidates: [PartialRelationshipSourceCandidate] = []
 
-    init(logger: Logger) {
+    init(logger: Logging.Logger) {
         self.logger = logger
     }
 

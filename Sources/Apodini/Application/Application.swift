@@ -69,7 +69,7 @@ public final class Application {
     /// Enables swift extensions to declare "stored" properties for use in application configuration
     public var storage: Storage
     /// Used for logging
-    public var logger: Logger
+    public var logger: Logging.Logger
     private var didShutdown: Bool
     private var isBooted: Bool
     private var signalSources: [DispatchSourceSignal] = []

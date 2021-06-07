@@ -40,7 +40,7 @@ class AWSIntegration { // swiftlint:disable:this type_body_length
     
     private let tmpDirUrl: URL
     private let fileManager = FileManager.default
-    private let logger = Logger(label: "de.lukaskollmer.ApodiniLambda.AWSIntegration")
+    private let logger = Logging.Logger(label: "de.lukaskollmer.ApodiniLambda.AWSIntegration")
     
     private let awsRegion: SotoCore.Region
     private let awsClient: AWSClient

@@ -40,7 +40,7 @@ public struct Storage {
     struct Value<T>: AnyStorageValue {
         var value: T
         var onShutdown: ((T) throws -> Void)?
-        func shutdown(logger: Logger) {
+        func shutdown(logger: Logging.Logger) {
             do {
                 try self.onShutdown?(self.value)
             } catch {
@@ -48,10 +48,10 @@ public struct Storage {
             }
         }
     }
-    let logger: Logger
+    let logger: Logging.Logger
 
     /// Initialize application storage
-    public init(logger: Logger = .init(label: "org.apodini.storage")) {
+    public init(logger: Logging.Logger = .init(label: "org.apodini.storage")) {
         self.storage = [:]
         self.logger = logger
     }
@@ -149,7 +149,7 @@ public struct Storage {
 
 
 protocol AnyStorageValue {
-    func shutdown(logger: Logger)
+    func shutdown(logger: Logging.Logger)
 }
 
 

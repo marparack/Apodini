@@ -62,7 +62,7 @@ struct LocalhostDeploymentProvider: DeploymentProvider {
     let endpointProcessesBasePort: Int
     
     private let fileManager = FileManager.default
-    private let logger = Logger(label: "DeploymentTargetLocalhost")
+    private let logger = Logging.Logger(label: "DeploymentTargetLocalhost")
     
     func run() throws {
         try fileManager.initialize()

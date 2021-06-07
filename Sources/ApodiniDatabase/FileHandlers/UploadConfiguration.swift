@@ -8,7 +8,7 @@ import Logging
 /// If not existent, sub directories will be automatically created.
 public struct UploadConfiguration {
     @Environment(\.logger)
-    var logger: Logger
+    var logger: Logging.Logger
     
     private let directories: Directories
     private let subPath: String?

@@ -109,7 +109,7 @@ final class VaporWSRouter: Router {
     
     private let app: Application
     
-    private let logger: Logger
+    private let logger: Logging.Logger
     
     private let path: [PathComponent]
     
@@ -120,7 +120,7 @@ final class VaporWSRouter: Router {
 
     init(
         _ app: Application,
-        logger: Logger = .init(label: "org.apodini.websocket.vapor_ws_router"),
+        logger: Logging.Logger = .init(label: "org.apodini.websocket.vapor_ws_router"),
         at path: String
     ) {
         self.app = app

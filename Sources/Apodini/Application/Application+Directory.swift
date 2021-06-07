@@ -63,7 +63,7 @@ public struct Directory {
     ///
     /// - returns: The derived `Directory` if it could be created, otherwise just "./".
     public static func detect() -> Directory {
-        let logger = Logger(label: "org.apodini.application")
+        let logger = Logging.Logger(label: "org.apodini.application")
         
         // get actual working directory
         let cwd = getcwd(nil, Int(PATH_MAX))

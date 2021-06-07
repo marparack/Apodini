@@ -90,7 +90,7 @@ public struct APNS {
 }
 
 extension APNS: APNSwiftClient {
-    public var logger: Logger? {
+    public var logger: Logging.Logger? {
         self.application.logger
     }
     
@@ -127,7 +127,7 @@ extension APNS: APNSwiftClient {
         priority: Int?,
         collapseIdentifier: String?,
         topic: String?,
-        logger: Logger?,
+        logger: Logging.Logger?,
         apnsID: UUID? = nil
     ) -> EventLoopFuture<Void> {
         self.application.apns.pool.withConnection(
@@ -157,7 +157,7 @@ internal final class APNSConnectionSource: ConnectionPoolSource {
     }
     
     func makeConnection(
-        logger: Logger,
+        logger: Logging.Logger,
         on eventLoop: EventLoop
     ) -> EventLoopFuture<APNSwiftConnection> {
         APNSwiftConnection.connect(configuration: self.configuration, on: eventLoop)

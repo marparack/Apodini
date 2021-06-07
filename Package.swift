@@ -11,24 +11,6 @@ import PackageDescription
 /// your package caches for this to take effect.
 let experimentalAsyncAwait = false
 
-var apodiniSwiftSettings: [SwiftSetting] {
-    if experimentalAsyncAwait {
-        return [
-            .unsafeFlags(
-                [
-                    "-Xfrontend",
-                    "-enable-experimental-concurrency"
-                ]
-            )
-        ]
-    } else {
-        return [
-            // We can not pass an empty array to SwiftSetting in Swift 5.3
-            .define("PLACEHOLDER")
-        ]
-    }
-}
-
 
 // MARK: Package Definition
 
@@ -65,8 +47,6 @@ let package = Package(
         .package(url: "https://github.com/vapor/fluent.git", from: "4.1.0"),
         .package(url: "https://github.com/vapor/fluent-kit.git", from: "1.0.0"),
         .package(url: "https://github.com/vapor/fluent-sqlite-driver.git", from: "4.0.1"),
-        // Used to parse command line arguments
-        .package(url: "https://github.com/vapor/console-kit.git", from: "4.2.4"),
         // Used by the `NotificationCenter` to send push notifications to `APNS`.
         .package(name: "apnswift", url: "https://github.com/kylebrowning/APNSwift.git", from: "3.0.0"),
         // Used by the `NotificationCenter` to send push notifications to `FCM`.
@@ -128,7 +108,6 @@ let package = Package(
                 .product(name: "NIOSSL", package: "swift-nio-ssl"),
                 .product(name: "Logging", package: "swift-log"),
                 .product(name: "Runtime", package: "Runtime"),
-                .product(name: "ConsoleKit", package: "console-kit"),
                 .product(name: "ArgumentParser", package: "swift-argument-parser")
             ] + (
                 experimentalAsyncAwait ? [
@@ -138,7 +117,12 @@ let package = Package(
             exclude: [
                 "Components/ComponentBuilder.swift.gyb"
             ],
-            swiftSettings: apodiniSwiftSettings
+            swiftSettings: [
+                .unsafeFlags(experimentalAsyncAwait ? [
+                    "-Xfrontend",
+                    "-enable-experimental-concurrency"
+                ] : [])
+            ]
         ),
 
         .testTarget(

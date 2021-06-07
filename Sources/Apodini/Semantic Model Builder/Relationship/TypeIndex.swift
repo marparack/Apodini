@@ -40,7 +40,7 @@ struct TypeIndex {
         case explicit
     }
 
-    private let logger: Logger
+    private let logger: Logging.Logger
 
     private var typeIndex: TypeIndexStorage
     private let relationshipBuilder: RelationshipBuilder

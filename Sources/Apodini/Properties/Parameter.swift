@@ -1,5 +1,5 @@
 //
-//  Body.swift
+//  Parameter.swift
 //  Apodini
 //
 //  Created by Paul Schmiedmayer on 6/26/20.
@@ -70,7 +70,7 @@ public struct Parameter<Element: Codable>: Property {
     
     /// Creates a new `@Parameter` that indicates input of a `Component` without a default value, different name for the encoding, or special options.
     public init() {
-        // We need to pass any argument otherwise we would call the same initializer again resulting in a infinite loop
+        // We need to pass any argument otherwise we would call the same initializer again resulting in an infinite loop
         self.init(id: UUID())
     }
     

@@ -33,7 +33,7 @@ private func _findExecutable(_ name: String) throws -> URL {
 let dockerBin = try _findExecutable("docker")
 let zipBin = try _findExecutable("zip")
 
-let logger = Logger(label: "de.lukaskollmer.ApodiniLambda")
+let logger = Logging.Logger(label: "de.lukaskollmer.ApodiniLambda")
 
 
 struct LambdaDeploymentProviderCLI: ParsableCommand {
