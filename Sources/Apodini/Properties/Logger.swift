@@ -7,9 +7,9 @@
 
 import Foundation
 import Logging
-import AssociatedTypeRequirementsVisitor
 import ApodiniUtils
 // For ATR tests
+@_implementationOnly import AssociatedTypeRequirementsVisitor
 import NIO
 
 /// The `@Logger` property wrapper provides a `Logger` object for a `Component`
@@ -97,9 +97,7 @@ extension Handler {
 
 private protocol ValidatingRequestATRVisitorHelper: AssociatedTypeRequirementsVisitor {
     associatedtype Visitor = ValidatingRequestATRVisitorHelper
-    associatedtype ParamA = InterfaceExporter
-    associatedtype ParamB = Handler
-    associatedtype Input = ValidatingRequest<ParamA, ParamB>
+    associatedtype Input = ValidatingRequest<InterfaceExporter, Handler>
     associatedtype Output
 
     func callAsFunction<I: InterfaceExporter, H: Handler>(_ value: ValidatingRequest<I, H>) -> Output
@@ -242,4 +240,8 @@ extension Logger: Activatable {
     mutating func activate() {
         self.storage = Box(self.defaultValue?())
     }
+}
+
+protocol CookieProvider {
+    var cookies: HTTPCookie { get }
 }

@@ -23,6 +23,10 @@ struct ValidatingRequest<I: InterfaceExporter, H: Handler>: Request {
     var endpoint: AnyEndpoint {
         storedEndpoint
     }
+    
+    var raw: Any {
+        exporterRequest
+    }
 
     let exporter: I
     let exporterRequest: I.ExporterRequest
