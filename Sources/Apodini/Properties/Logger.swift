@@ -7,7 +7,10 @@
 
 import Foundation
 import Logging
+import AssociatedTypeRequirementsVisitor
 import ApodiniUtils
+// For ATR tests
+import NIO
 
 /// The `@Logger` property wrapper provides a `Logger` object for a `Component`
 @propertyWrapper
@@ -49,7 +52,82 @@ public struct Logger: Property {
     }
 }
 
+/*
+private protocol IdentifiableHandlerATRVisitorHelper: AssociatedTypeRequirementsVisitor {
+    associatedtype Visitor = IdentifiableHandlerATRVisitorHelper
+    associatedtype Input = IdentifiableHandler
+    associatedtype Output
+    func callAsFunction<T: IdentifiableHandler>(_ value: T) -> Output
+}
+
+private struct TestHandlerType: IdentifiableHandler {
+    typealias Response = Never
+    let handlerId = ScopedHandlerIdentifier<Self>("main")
+}
+
+extension IdentifiableHandlerATRVisitorHelper {
+    @inline(never)
+    @_optimize(none)
+    fileprivate func _test() {
+        _ = self(TestHandlerType())
+    }
+}
+
+private struct IdentifiableHandlerATRVisitor: IdentifiableHandlerATRVisitorHelper {
+    func callAsFunction<T: IdentifiableHandler>(_ value: T) -> AnyHandlerIdentifier {
+        value.handlerId
+    }
+}
+
+
+extension Handler {
+    /// If `self` is an `IdentifiableHandler`, returns the handler's `handlerId`. Otherwise nil
+    internal func getExplicitlySpecifiedIdentifier() -> AnyHandlerIdentifier? {
+        // Intentionally using the if-let here to make sure we get an error
+        // if for some reason the ATRVisitor's return type isn't an optional anymore,
+        // since that (a guaranteed non-nil return value) would defeat the whole point of this function
+        if let identifier = IdentifiableHandlerATRVisitor()(self) {
+            return identifier
+        } else {
+            return nil
+        }
+    }
+}
+*/
+
+private protocol ValidatingRequestATRVisitorHelper: AssociatedTypeRequirementsVisitor {
+    associatedtype Visitor = ValidatingRequestATRVisitorHelper
+    associatedtype ParamA = InterfaceExporter
+    associatedtype ParamB = Handler
+    associatedtype Input = ValidatingRequest<ParamA, ParamB>
+    associatedtype Output
+
+    func callAsFunction<I: InterfaceExporter, H: Handler>(_ value: ValidatingRequest<I, H>) -> Output
+}
+
+private struct ValidatingRequestATRVisitor: ValidatingRequestATRVisitorHelper {
+    func callAsFunction<I: InterfaceExporter, H: Handler>(_ value: ValidatingRequest<I, H>) -> SocketAddress {
+        value.remoteAddress!
+    }
+}
+
+extension ValidatingRequestATRVisitorHelper {
+    @inline(never)
+    @_optimize(none)
+    fileprivate func _test() {
+        struct TestRequestType: ValidatingRequest<InterfaceExporter, Handler> {
+            let remoteAddress = SocketAddress(sockaddr_un())
+        }
+        
+        _ = self(TestRequestType())
+    }
+}
+
 extension Logger: RequestInjectable {
+    func someFunction<I: InterfaceExporter, H: Handler>(_ validated: ValidatingRequest<I, H>) {
+        
+    }
+    
     func inject(using request: Request) throws {
         guard let storage = self.storage
                 // Sadly not possible since no idea what the types are, would contain lots of information
@@ -58,7 +136,7 @@ extension Logger: RequestInjectable {
             fatalError("Cannot inject request information before Logger was activated.")
         }
         
-        //request.retrieveParameter(<#T##parameter: Parameter<Decodable & Encodable>##Parameter<Decodable & Encodable>#>)
+        someFunction(request)
         
         /// Set label of `Logger` to handled `Endpoint` name
         storage.value = Logging.Logger(label: "org.apodini.endpoint.\(request.endpoint.description)")
