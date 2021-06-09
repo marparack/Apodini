@@ -111,12 +111,10 @@ class _ApodiniDeployInterfaceExporter: InterfaceExporter {
     private(set) var deploymentProviderRuntime: DeploymentProviderRuntime?
     
     
-    required init(_ app: Apodini.Application, _ exporterConfiguration: ExporterConfiguration = ApodiniDeployExporterConfiguration()) {
-        guard let castedConfiguration = dynamicCast(exporterConfiguration, to: ApodiniDeployExporterConfiguration.self) else {
-            fatalError("Wrong configuration type passed to exporter, \(type(of: exporterConfiguration)) instead of \(Self.self)")
-        }
+    init(_ app: Apodini.Application,
+         _ exporterConfiguration: ApodiniDeployExporterConfiguration = ApodiniDeployExporterConfiguration()) {
         self.app = app
-        self.exporterConfiguration = castedConfiguration
+        self.exporterConfiguration = exporterConfiguration
         app.storage.set(ApplicationStorageKey.self, to: self)
     }
     
@@ -289,20 +287,23 @@ private protocol HandlerWithDeploymentOptionsATRVisitorHelper: AssociatedTypeReq
     func callAsFunction<T: HandlerWithDeploymentOptions>(_ value: T) -> Output
 }
 
+private struct TestHandlerWithDeploymentOptions: HandlerWithDeploymentOptions {
+    typealias Response = Never
+    static var deploymentOptions: [AnyDeploymentOption] { [] }
+}
+
+extension HandlerWithDeploymentOptionsATRVisitorHelper {
+    @inline(never)
+    @_optimize(none)
+    fileprivate func _test() {
+        _ = self(TestHandlerWithDeploymentOptions())
+    }
+}
+
 
 private struct HandlerWithDeploymentOptionsATRVisitor: HandlerWithDeploymentOptionsATRVisitorHelper {
     func callAsFunction<H: HandlerWithDeploymentOptions>(_: H) -> [AnyDeploymentOption] {
         H.deploymentOptions
-    }
-    
-    @inline(never)
-    @_optimize(none)
-    fileprivate func _test() {
-        struct TestHandler: HandlerWithDeploymentOptions {
-            typealias Response = Never
-            static var deploymentOptions: [AnyDeploymentOption] { [] }
-        }
-        _ = self(TestHandler())
     }
 }
 

@@ -8,7 +8,6 @@
 @testable import Apodini
 @testable import ApodiniREST
 @testable import ApodiniOpenAPI
-import ApodiniUtils
 import SotoXML
 import Vapor
 import XCTest
@@ -26,6 +25,7 @@ extension XMLEncoder: AnyEncoder {
         try body.writeBytes(self.encode(encodable))
     }
 }
+
 extension XMLDecoder: AnyDecoder {
     public func decode<T>(_ type: T.Type, from data: Data) throws -> T where T: Decodable {
         let xmlElement = try XML.Element(xmlData: data)
@@ -321,7 +321,7 @@ class RESTExporterConfigurationTests: ApodiniTests {
     struct TestExporterCollectionWithXMLCoderAndOpenAPI: ConfigurationCollection {
         var configuration: Configuration {
             /// Doesn't compile (it shouldn't) -> sometimes weird useless error messages
-            //RESTInterfaceExporter(encoder: XMLEncoder(), decoder: JSONDecoder())
+            //RESTInterfaceExporter(encoder: XMLEncoder(), decoder: JSONDecoder()) {
             RESTInterfaceExporter(encoder: JSONEncoder(), decoder: JSONDecoder()) {
                 OpenAPIInterfaceExporter()
             }

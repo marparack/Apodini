@@ -6,12 +6,11 @@
 //
 
 import Apodini
-import NIOWebSocket
 
-public struct WebSocketExporterConfiguration: ExporterConfiguration {
+struct WebSocketExporterConfiguration {
     let path: String
     
-    public init(path: String = "apodini/websocket") {
+    init(path: String = "apodini/websocket") {
         self.path = path
     }
 }

@@ -2,18 +2,16 @@
 // Created by Andreas Bauer on 25.12.20.
 //
 
-#if DEBUG
 import Foundation
 import class Vapor.Application
 import class Vapor.Request
-@testable import Apodini
+import Apodini
 
 extension String: ExporterRequest {}
 
 open class MockExporter<Request: ExporterRequest>: InterfaceExporter {
     var parameterValues: [Any??] = []
     
-    let exporterConfiguration: ExporterConfiguration?
     let onExport: (AnyEndpoint) -> Void
     let onFinished: (WebServiceModel) -> Void
 
@@ -24,7 +22,6 @@ open class MockExporter<Request: ExporterRequest>: InterfaceExporter {
         self.parameterValues = parameterValues
         self.onExport = onExport
         self.onFinished = onFinished
-        self.exporterConfiguration = nil
     }
 
     // See https://bugs.swift.org/browse/SR-128
@@ -34,13 +31,11 @@ open class MockExporter<Request: ExporterRequest>: InterfaceExporter {
         self.parameterValues = parameterValues
         self.onExport = onExport
         self.onFinished = onFinished
-        self.exporterConfiguration = nil
     }
 
-    public required init(_ app: Apodini.Application, _ exporterConfiguration: ExporterConfiguration) {
+    public required init(_ app: Apodini.Application) {
         self.onExport = { _ in }
         self.onFinished = { _ in }
-        self.exporterConfiguration = exporterConfiguration
     }
 
     open func export<H: Handler>(_ endpoint: Endpoint<H>) {
@@ -79,4 +74,3 @@ open class MockExporter<Request: ExporterRequest>: InterfaceExporter {
         return casted
     }
 }
-#endif
