@@ -7,7 +7,7 @@
 import Foundation
 import NIO
 
-protocol Request: CustomStringConvertible, CustomDebugStringConvertible {
+public protocol Request: CustomStringConvertible, CustomDebugStringConvertible {
     /// Returns a description of the Request.
     /// If the `ExporterRequest` also conforms to `CustomStringConvertible`, its `description`
     /// will be appended.
@@ -24,4 +24,7 @@ protocol Request: CustomStringConvertible, CustomDebugStringConvertible {
     var remoteAddress: SocketAddress? { get }
 
     func retrieveParameter<Element: Codable>(_ parameter: Parameter<Element>) throws -> Element
+    
+    /// The `ExporterRequest` that can be used by eg. the logger
+    var raw: Any { get }
 }

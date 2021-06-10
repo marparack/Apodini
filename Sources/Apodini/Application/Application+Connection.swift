@@ -65,5 +65,5 @@ public struct Connection {
     public var eventLoop: EventLoop { request.eventLoop }
     
     /// Holds the latest `Request`
-    var request: Request
+    public var request: Request
 }

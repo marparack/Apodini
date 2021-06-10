@@ -3,13 +3,14 @@
 //
 
 import Apodini
+import ApodiniObserve
 import Vapor
 import NIO
 
 extension Vapor.Request: ExporterRequest, WithEventLoop, WithRemote {}
 
 /// Apodini Interface Exporter for REST.
-public final class RESTInterfaceExporter: InterfaceExporter {
+public final class RESTInterfaceExporter: InterfaceExporter, BaseLoggerCompliantExporter {
     public static let parameterNamespace: [ParameterNamespace] = .individual
 
     let app: Vapor.Application
@@ -99,5 +100,21 @@ public final class RESTInterfaceExporter: InterfaceExporter {
         case .header:
             return request.headers.first(name: parameter.name) as? Type
         }
+    }
+}
+
+extension Vapor.Request: HTTPMethodProvider {}
+
+extension Vapor.Request: URIProvider {}
+
+extension Vapor.Request: ParameterProvider {
+    public var parametersDictionary: [String : String] {
+        return [:]
+    }
+}
+
+extension Vapor.Request: ExporterTypeProvider {
+    public var exporterType: String {
+        String(describing: RESTInterfaceExporter.self)
     }
 }

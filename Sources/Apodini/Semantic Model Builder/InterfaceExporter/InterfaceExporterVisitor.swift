@@ -75,6 +75,8 @@ private struct StandardStaticExporterVisitableVisitor: StaticExporterVisitableVi
 // MARK: AssociatedKit workaround
 
 private struct TestRequest: ExporterRequest {
+    var requestCount: Int = 0
+    
     var remoteAddress: SocketAddress? {
         nil
     }

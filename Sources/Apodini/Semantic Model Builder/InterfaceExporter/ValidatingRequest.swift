@@ -30,6 +30,10 @@ struct ValidatingRequest<I: InterfaceExporter, H: Handler>: Request {
     let storedEndpoint: Endpoint<H>
     let eventLoop: EventLoop
     let remoteAddress: SocketAddress?
+    
+    var raw: Any {
+        exporterRequest
+    }
 
     init(
         for exporter: I,

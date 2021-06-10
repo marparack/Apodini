@@ -57,7 +57,10 @@ let package = Package(
         .executable(name: "DeploymentTargetLocalhost", targets: ["DeploymentTargetLocalhost"]),
         .executable(name: "DeploymentTargetAWSLambda", targets: ["DeploymentTargetAWSLambda"]),
         .library(name: "DeploymentTargetLocalhostRuntime", targets: ["DeploymentTargetLocalhostRuntime"]),
-        .library(name: "DeploymentTargetAWSLambdaRuntime", targets: ["DeploymentTargetAWSLambdaRuntime"])
+        .library(name: "DeploymentTargetAWSLambdaRuntime", targets: ["DeploymentTargetAWSLambdaRuntime"]),
+        //Observe
+        .library(name: "ApodiniObserve", targets: ["ApodiniObserve"])
+        
     ],
     dependencies: [
         //.package(name: "ApodiniDeploy", path: "./ApodiniDeploy"),
@@ -233,6 +236,24 @@ let package = Package(
                 .process("Resources")
             ]
         ),
+        
+        .target(
+            name: "ApodiniObserve",
+            dependencies: [
+                .target(name: "Apodini"),
+                .target(name: "ApodiniUtils"),
+                //.target(name: "ApodiniDatabase"),
+                //.target(name: "ApodiniREST"),
+                //.target(name: "ApodiniGRPC"),
+                //.target(name: "ApodiniOpenAPI"),
+                .target(name: "ApodiniWebSocket"),
+                //.target(name: "ApodiniProtobuffer"),
+                .product(name: "NIO", package: "swift-nio"),
+                .product(name: "NIOHTTP2", package: "swift-nio-http2"),
+                .product(name: "NIOSSL", package: "swift-nio-ssl"),
+                .product(name: "Logging", package: "swift-log"),
+            ]
+        ),
 
         .target(
             name: "ApodiniOpenAPI",
@@ -264,6 +285,7 @@ let package = Package(
             dependencies: [
                 .target(name: "Apodini"),
                 .target(name: "ApodiniVaporSupport"),
+                .target(name: "ApodiniObserve"),
                 .product(name: "FluentKit", package: "fluent-kit")
             ]
         ),

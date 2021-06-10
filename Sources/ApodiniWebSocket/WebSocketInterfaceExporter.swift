@@ -263,11 +263,13 @@ public struct WebSocketInput: ExporterRequest, WithEventLoop, WithRemote {
     internal var input: SomeInput
     public let eventLoop: EventLoop
     public let remoteAddress: SocketAddress?
+    public var requestCount: Int
     
-    internal init(_ input: SomeInput, eventLoop: EventLoop, remoteAddress: SocketAddress? = nil) {
+    internal init(_ input: SomeInput, eventLoop: EventLoop, remoteAddress: SocketAddress? = nil, requestCount: Int = 1) {
         self.input = input
         self.eventLoop = eventLoop
         self.remoteAddress = remoteAddress
+        self.requestCount = requestCount
     }
 }
 
@@ -284,7 +286,7 @@ extension WebSocketInput: Reducible {
                 newParameters[name] = value
             }
         }
-        return WebSocketInput(SomeInput(parameters: newParameters), eventLoop: new.eventLoop, remoteAddress: new.remoteAddress)
+        return WebSocketInput(SomeInput(parameters: newParameters), eventLoop: new.eventLoop, remoteAddress: new.remoteAddress, requestCount: new.requestCount + 1)
     }
 }
 
