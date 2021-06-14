@@ -11,7 +11,7 @@ import Apodini
 import ApodiniWebSocket
 
 @propertyWrapper
-public struct MyLogger: DynamicProperty {
+public struct ConfigureLogger: DynamicProperty {
     @Environment(\.connection)
     var connection: Connection
     
@@ -88,6 +88,27 @@ public struct MyLogger: DynamicProperty {
                 /// Prio 1: User specifies a `Logger.LogLevel` in the property wrapper for a specific `Handler`
                 if let logLevel = self.logLevel {
                     builtLogger?.logLevel = logLevel
+                    
+                    /// If logging level is configured gloally
+                    if let globalConfiguredLogLevel = storage.get(LoggingStorageKey.self)?.configuration.logLevel {
+                        if logLevel < globalConfiguredLogLevel {
+                            print("The global configured logging level is \(globalConfiguredLogLevel.description) but Handler \(request.endpoint.description) has logging level \(logLevel.description) which is lower than the configured global logging level")
+                        }
+                    /// If logging level is automatically set to a default value
+                    } else {
+                        var globalLogLevel: Logger.Level
+                        #if DEBUG
+                        globalLogLevel = .debug
+                        #else
+                        globalLogLevel = .info
+                        #endif
+                        
+                        if logLevel < globalLogLevel {
+                            print("The global default logging level is \(globalLogLevel.description) but Handler \(request.endpoint.description) has logging level \(logLevel.description) which is lower than the global default logging level")
+                        }
+                    }
+                    
+                    
                 }
                 /// Prio 2: User specifies a `Logger.LogLevel`either via a CLI argument or via a `LoggerConfiguration` in the configuration of the `WebService`
                 else if let loggingConfiguraiton = storage.get(LoggingStorageKey.self)?.configuration {
