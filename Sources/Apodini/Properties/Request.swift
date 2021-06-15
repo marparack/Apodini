@@ -6,6 +6,7 @@
 //
 import Foundation
 import NIO
+import Logging
 
 public protocol Request: CustomStringConvertible, CustomDebugStringConvertible {
     /// Returns a description of the Request.
@@ -27,4 +28,35 @@ public protocol Request: CustomStringConvertible, CustomDebugStringConvertible {
     
     /// The `ExporterRequest` that can be used by eg. the logger
     var raw: Any { get }
+    
+    /// Returns metadata from request
+    var loggingMetadata: Logger.Metadata { get }
+}
+
+public extension Request {
+    var loggingMetadata: Logger.Metadata {
+        defaultLoggingMetadata
+    }
+    
+    var defaultLoggingMetadata: Logger.Metadata {
+        [
+         /// Identifies the current logger instance
+         "logger-uuid" : .string("\(UUID())"),
+         /// Name of the endpoint (so the name of the handler class)
+         "endpoint": .string("\(self.endpoint.description)"),
+         /// Absolut path of the request
+         "endpointAbsolutePath": .string("\(self.endpoint.absolutePath.asPathString())"),
+         /// If size of the value a parameter is too big -> discard it and insert error message?
+         // "@Parameter var name: String = World"
+         "parameters": .array(
+            self.endpoint.parameters.map { parameter in
+                .string(parameter.description)
+            }),
+         /// A textual description of the request, most detailed for the RESTExporter
+         "request-desciption": .string(self.description),
+         /// Set remote address
+         "remoteAddress": .string("\(self.remoteAddress?.description ?? "")")
+        
+        ]
+    }
 }

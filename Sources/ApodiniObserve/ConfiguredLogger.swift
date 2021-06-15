@@ -107,8 +107,6 @@ public struct ConfigureLogger: DynamicProperty {
                             print("The global default logging level is \(globalLogLevel.description) but Handler \(request.endpoint.description) has logging level \(logLevel.description) which is lower than the global default logging level")
                         }
                     }
-                    
-                    
                 }
                 /// Prio 2: User specifies a `Logger.LogLevel`either via a CLI argument or via a `LoggerConfiguration` in the configuration of the `WebService`
                 else if let loggingConfiguraiton = storage.get(LoggingStorageKey.self)?.configuration {
