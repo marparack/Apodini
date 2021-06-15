@@ -34,6 +34,12 @@ struct ValidatingRequest<I: InterfaceExporter, H: Handler>: Request {
     var raw: Any {
         exporterRequest
     }
+    
+    // kann auch weitergespinnt werden, zB. loggingMetadata from exporterRequest
+    // shifte es soweit "runter" bis der Typ bekannt ist
+    var loggingMetadata: Logger.Metadata {
+        
+    }
 
     init(
         for exporter: I,

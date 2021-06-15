@@ -33,6 +33,7 @@ struct RESTLoggerParameterPrasing: LoggerParameterParsing {
     }
     
     func parseParameter(parameter: AnyEndpointParameter) throws -> String? {
+        parameter.propertyType
         switch parameter.parameterType {
         case .lightweight:
 
