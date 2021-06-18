@@ -120,10 +120,16 @@ public class SyntaxTreeVisitor: HandlerVisitor {
     }
     
     private func formHandlerIndexPathForCurrentNode() -> HandlerIndexPath {
-        let rawValue = currentNodeIndexPath
-            .map { String($0 - 1) } // We remove one from the current indexPath to have 0 as the first index
-            .joined(separator: ".")
-        return HandlerIndexPath(rawValue: rawValue)
+        var result: String = ""
+        for value in currentNodeIndexPath {
+            let rawValue = String(value-1)
+            result.append(rawValue)
+            result.append(".")
+        }
+//        let rawValue = currentNodeIndexPath
+//            .map { String($0 - 1) } // We remove one from the current indexPath to have 0 as the first index
+//            .joined(separator: ".")
+        return HandlerIndexPath(rawValue: result)
     }
 }
 
