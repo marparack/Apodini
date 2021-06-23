@@ -29,7 +29,12 @@ struct ValidatingRequest<I: InterfaceExporter, H: Handler>: Request {
     let endpointValidator: EndpointValidator<I, H>
     let storedEndpoint: Endpoint<H>
     let eventLoop: EventLoop
-    let remoteAddress: SocketAddress?
+    var remoteAddress: SocketAddress? {
+        exporterRequest.remoteAddress
+    }
+    var information: Set<AnyInformation> {
+        exporterRequest.information
+    }
     
     var raw: Any {
         exporterRequest
@@ -38,6 +43,8 @@ struct ValidatingRequest<I: InterfaceExporter, H: Handler>: Request {
     // kann auch weitergespinnt werden, zB. loggingMetadata from exporterRequest
     // shifte es soweit "runter" bis der Typ bekannt ist
     var loggingMetadata: Logger.Metadata {
+    
+    }
         
     }
 
@@ -46,15 +53,13 @@ struct ValidatingRequest<I: InterfaceExporter, H: Handler>: Request {
         with request: I.ExporterRequest,
         using endpointValidator: EndpointValidator<I, H>,
         on endpoint: Endpoint<H>,
-        running eventLoop: EventLoop,
-        remoteAddress: SocketAddress?
+        running eventLoop: EventLoop
     ) {
         self.exporter = exporter
         self.exporterRequest = request
         self.endpointValidator = endpointValidator
         self.storedEndpoint = endpoint
         self.eventLoop = eventLoop
-        self.remoteAddress = remoteAddress
     }
 
     func retrieveParameter<Element: Codable>(_ parameter: Parameter<Element>) throws -> Element {
