@@ -3,6 +3,7 @@
 //
 import NIO
 import Foundation
+import Logging
 
 struct ValidatingRequest<I: InterfaceExporter, H: Handler>: Request {
     var description: String {
@@ -43,9 +44,9 @@ struct ValidatingRequest<I: InterfaceExporter, H: Handler>: Request {
     // kann auch weitergespinnt werden, zB. loggingMetadata from exporterRequest
     // shifte es soweit "runter" bis der Typ bekannt ist
     var loggingMetadata: Logger.Metadata {
-    
-    }
+        let validateLoggingMetaData = self.endpoint.  endpointValidator.validateLoggingMetaData(one: <#T##UUID#>)
         
+        return self.defaultLoggingMetadata.merging(["test": "test"]) { (_, new) in new }
     }
 
     init(

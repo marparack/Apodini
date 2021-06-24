@@ -54,8 +54,6 @@ struct RESTLoggerParameterPrasing: LoggerParameterParsing {
             let decodedData = try? content.decode(String.self, using: JSONDecoder())
             
             return decodedData
-        case .header:
-            return headers.first(name: parameter.name)
         }
     }
 }
