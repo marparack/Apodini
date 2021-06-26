@@ -32,12 +32,17 @@ public protocol Request: CustomStringConvertible, CustomDebugStringConvertible {
     var raw: Any { get }
     
     /// Returns metadata from request
-    var loggingMetadata: Logger.Metadata { get }
+    var loggingMetadata: Logger.Metadata { get set }
 }
 
 public extension Request {
     var loggingMetadata: Logger.Metadata {
-        defaultLoggingMetadata
+        get {
+            defaultLoggingMetadata
+        }
+        set {
+            fatalError("You cannot set metadata in the default Request protocol")
+        }
     }
     
     var defaultLoggingMetadata: Logger.Metadata {

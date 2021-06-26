@@ -42,7 +42,7 @@ extension WebService {
     @discardableResult
     static func start(waitForCompletion: Bool = true, webService: Self = Self()) throws -> Application {
         let app = Application()
-        LoggingSystem.bootstrap(StreamLogHandler.standardError)
+        //LoggingSystem.bootstrap(StreamLogHandler.standardError)
 
         start(app: app, webService: webService)
         

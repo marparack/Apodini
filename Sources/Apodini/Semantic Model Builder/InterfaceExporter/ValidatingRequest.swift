@@ -1,11 +1,12 @@
 //
 // Created by Andreas Bauer on 29.12.20.
 //
+
 import NIO
 import Foundation
 import Logging
 
-struct ValidatingRequest<I: InterfaceExporter, H: Handler>: Request {
+class ValidatingRequest<I: InterfaceExporter, H: Handler>: Request {
     var description: String {
         var request = "Validating Request:\n"
         if let convertible = exporterRequest as? CustomStringConvertible {
@@ -41,12 +42,32 @@ struct ValidatingRequest<I: InterfaceExporter, H: Handler>: Request {
         exporterRequest
     }
     
+    private var wrappedLoggingMetadata: Logger.Metadata = [:]
+    
     // kann auch weitergespinnt werden, zB. loggingMetadata from exporterRequest
     // shifte es soweit "runter" bis der Typ bekannt ist
     var loggingMetadata: Logger.Metadata {
-        let validateLoggingMetaData = self.endpoint.  endpointValidator.validateLoggingMetaData(one: <#T##UUID#>)
+        get {
+            wrappedLoggingMetadata.isEmpty ? [
+                /// Identifies the current logger instance
+                "logger-uuid" : .string("\(UUID())"),
+                /// Name of the endpoint (so the name of the handler class)
+                "endpoint": .string("\(endpoint.description)"),
+                /// Absolut path of the request
+                "endpointAbsolutePath": .string("\(endpoint.absolutePath.asPathString())"),
+                /// Empty parameter dictionary since property is immutable
+                "parameters": .dictionary([:]),
+                /// A textual description of the request, most detailed for the RESTExporter
+                "request-desciption": .string(description.replacingOccurrences(of: "\n", with: ", ").trimmingCharacters(in: .init(charactersIn: ", "))),
+                /// Set remote address
+                "remoteAddress": .string("\(remoteAddress?.description ?? "")")
+            ] : wrappedLoggingMetadata
+        }
+        set {
+            wrappedLoggingMetadata = newValue
+        }
         
-        return self.defaultLoggingMetadata.merging(["test": "test"]) { (_, new) in new }
+        //return self.defaultLoggingMetadata.merging(["test": "test"]) { (_, new) in new }
     }
 
     init(
@@ -64,10 +85,47 @@ struct ValidatingRequest<I: InterfaceExporter, H: Handler>: Request {
     }
 
     func retrieveParameter<Element: Codable>(_ parameter: Parameter<Element>) throws -> Element {
-        try endpointValidator.validate(one: parameter.id)
+        let validatedParameter: Element = try endpointValidator.validate(one: parameter.id)
+        
+        do {
+            let encoder = JSONEncoder()
+            encoder.outputFormatting = [.sortedKeys, .withoutEscapingSlashes]    // maybe .withoutEscapingSlashes? (maybe interferes with kibana?)
+            encoder.dateEncodingStrategy = .iso8601
+            encoder.dataEncodingStrategy = .base64
+            encoder.keyEncodingStrategy = .useDefaultKeys
+            encoder.nonConformingFloatEncodingStrategy = .convertToString(positiveInfinity: "+inf", negativeInfinity: "-inf", nan: "NaN")
+
+            guard let encodedParameterString = String(data: try encoder.encode(validatedParameter), encoding: .utf8) else {
+                fatalError("Logging of parameters failed - Encoding failed")
+            }
+            
+            updateParameterLoggingMetadata(parameterID: parameter.id, parameterJSONEncodedValue: encodedParameterString)
+        } catch {
+            fatalError("Logging of parameters failed")
+        }
+        
+        return validatedParameter
     }
     
     func retrieveAnyParameter(_ id: UUID) throws -> Any {
         try endpointValidator.validate(one: id)
+    }
+    
+    private func updateParameterLoggingMetadata(parameterID: UUID, parameterJSONEncodedValue: String) {
+        switch loggingMetadata["parameters"] {
+        case .dictionary(var parameterDictionary):
+            parameterDictionary[getParameterName(ID: parameterID)] = .string(parameterJSONEncodedValue)
+            loggingMetadata["parameters"] = .dictionary(parameterDictionary)
+        default:
+            fatalError("Parameter metadata value is not a dictionary!")
+        }
+    }
+    
+    private func getParameterName(ID: UUID) -> String {
+        guard let parameterName = endpoint.parameters.filter({ $0.id == ID }).first?.name else {
+            fatalError("Logging of parameters failed - Parameter doesn't exist or has no name")
+        }
+        
+        return parameterName
     }
 }

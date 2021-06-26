@@ -4,7 +4,7 @@
 //
 //  Created by Philipp Zagar on 09.06.21.
 //
-
+/*
 import Foundation
 import NIOHTTP1
 import Apodini
@@ -35,3 +35,4 @@ public protocol FullLoggerCompliantExporter: BaseLoggerCompliantExporter
           ExporterRequest: URIProvider {
     
 }
+*/

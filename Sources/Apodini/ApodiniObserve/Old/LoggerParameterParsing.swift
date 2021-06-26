@@ -4,9 +4,8 @@
 //
 //  Created by Philipp Zagar on 10.06.21.
 //
-
+/*
 import Foundation
-import Apodini
 import Vapor
 
 protocol LoggerParameterParsing {
@@ -57,3 +56,4 @@ struct RESTLoggerParameterPrasing: LoggerParameterParsing {
         }
     }
 }
+ */

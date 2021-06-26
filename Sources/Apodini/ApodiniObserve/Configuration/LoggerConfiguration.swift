@@ -6,21 +6,32 @@
 //
 import Foundation
 import Logging
-import Apodini
 
 /// A `Configuration` for the `Logger`.
 public final class LoggerConfiguration: Configuration {
     internal let logLevel: Logger.Level
+    internal let hostname: String
+    internal let port: Int
 
     /// initalize `LoggerConfiguration`
-    public init(logLevel: Logger.Level) {
+    public init(logLevel: Logger.Level, hostname: String = "127.0.0.1", port: Int = 31311) {
         self.logLevel = logLevel
+        self.hostname = hostname
+        self.port = port
     }
 
     /// Configure application
     public func configure(_ app: Application) {
         app.storage.set(LoggingStorageKey.self,
                         to: LoggingStorageValue(logger: app.logger, configuration: self))
+        
+        /// Bootstrap the logging system
+        LoggingSystem.bootstrap { label in
+            MultiplexLogHandler([
+                StreamLogHandler.standardError(label: label),
+                LogstashLogHandler.logstashOutput(label: label, app: app)
+            ])
+        }
     }
 }
 

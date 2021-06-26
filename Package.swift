@@ -60,7 +60,7 @@ let package = Package(
         .library(name: "DeploymentTargetLocalhostRuntime", targets: ["DeploymentTargetLocalhostRuntime"]),
         .library(name: "DeploymentTargetAWSLambdaRuntime", targets: ["DeploymentTargetAWSLambdaRuntime"]),
         //Observe
-        .library(name: "ApodiniObserve", targets: ["ApodiniObserve"])
+        //.library(name: "ApodiniObserve", targets: ["ApodiniObserve"])
         
     ],
     dependencies: [
@@ -107,7 +107,11 @@ let package = Package(
         // Deploy
         .package(url: "https://github.com/vapor-community/vapor-aws-lambda-runtime", from: "0.4.0"),
         .package(url: "https://github.com/soto-project/soto.git", from: "5.0.0"),
-        .package(url: "https://github.com/soto-project/soto-s3-file-transfer", from: "0.3.0")
+        .package(url: "https://github.com/soto-project/soto-s3-file-transfer", from: "0.3.0"),
+        
+        // Observe
+        //.package(url: "https://github.com/Apodini/ApodiniAsyncHTTPClient.git", from: "0.1.0"),
+        .package(url: "https://github.com/swift-server/async-http-client.git", from: "1.0.0")
     ],
     targets: [
         .target(name: "CApodiniUtils"),
@@ -132,7 +136,11 @@ let package = Package(
                 .product(name: "NIOSSL", package: "swift-nio-ssl"),
                 .product(name: "Logging", package: "swift-log"),
                 .product(name: "Runtime", package: "Runtime"),
-                .product(name: "ArgumentParser", package: "swift-argument-parser")
+                .product(name: "ArgumentParser", package: "swift-argument-parser"),
+                /// Use the "originial" AsyncHTTPClient from https://github.com/swift-server/async-http-client
+                .product(name: "AsyncHTTPClient", package: "async-http-client"),
+                /// Apodini HTTP Client
+                //.product(name: "ApodiniAsyncHTTPClient", package: "ApodiniAsyncHTTPClient")
             ] + (
                 experimentalAsyncAwait ? [
                     .product(name: "_NIOConcurrency", package: "swift-nio")
@@ -241,7 +249,7 @@ let package = Package(
                 .process("Resources")
             ]
         ),
-        
+        /*
         .target(
             name: "ApodiniObserve",
             dependencies: [
@@ -257,9 +265,13 @@ let package = Package(
                 .product(name: "NIOHTTP2", package: "swift-nio-http2"),
                 .product(name: "NIOSSL", package: "swift-nio-ssl"),
                 .product(name: "Logging", package: "swift-log"),
+                /// Does not work since it creates cyclic dependency "Apodini -> ApodiniAsyncHTTPClient -> Apodini"
+                //.product(name: "ApodiniAsyncHTTPClient", package: "ApodiniAsyncHTTPClient")
+                /// Use the "originial" AsyncHTTPClient from https://github.com/swift-server/async-http-client
+                .product(name: "AsyncHTTPClient", package: "async-http-client")
             ]
         ),
-
+        */
         .target(
             name: "ApodiniOpenAPI",
             dependencies: [
@@ -290,7 +302,7 @@ let package = Package(
             name: "ApodiniREST",
             dependencies: [
                 .target(name: "Apodini"),
-                .target(name: "ApodiniObserve"),
+                //.target(name: "ApodiniObserve"),
                 .target(name: "ApodiniVaporSupport")
             ]
         ),

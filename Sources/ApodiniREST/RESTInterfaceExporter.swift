@@ -3,7 +3,6 @@
 //
 
 import Apodini
-import ApodiniObserve
 import Vapor
 import NIO
 import ApodiniVaporSupport
@@ -181,21 +180,4 @@ extension AnyEndpoint {
     var absoluteRESTPath: [EndpointPath] {
         self[EndpointPathComponentsHTTP.self].value
     }
-
-/*
-    extension Vapor.Request: HTTPMethodProvider {}
-
-extension Vapor.Request: URIProvider {}
-
-extension Vapor.Request: ParameterProvider {
-    public var parametersDictionary: [String : String] {
-        return [:]
-    }
-}
-
-extension Vapor.Request: ExporterTypeProvider {
-    public var exporterType: String {
-        String(describing: RESTInterfaceExporter.self)
-    }
-    */
 }

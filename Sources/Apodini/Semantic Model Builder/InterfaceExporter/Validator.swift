@@ -152,37 +152,6 @@ internal class EndpointValidator<I: InterfaceExporter, H: Handler>: Validator {
         }
     }
     
-    func validateLoggingMetaData(one parameter: UUID) throws -> String {
-        if let cachedResult = validated[parameter] {
-            return String(describing: cachedResult)
-        }
-        
-        guard let request = self.request else {
-            fatalError("EndpointValidator tried to validate parameter while no request was present.")
-        }
-        
-        guard var validator = self.validators[parameter] else {
-            throw ApodiniError(type: .badInput, description: "EndpointValidator tried to validate an unknown parameter.")
-        }
-        
-        do {
-            let result = try validator.validate(request, with: Void())
-            self.validators[parameter] = validator
-            validated[parameter] = result
-            
-            return String(describing: cachedResult)
-        } catch {
-            for (id, _) in validated {
-                if var validator = validators[id] {
-                    validator.reset()
-                    validators[id] = validator
-                }
-            }
-            validated = [:]
-            throw error
-        }
-    }
-    
     func reset() {
         for (id, _) in validators {
             validators[id]?.reset()
