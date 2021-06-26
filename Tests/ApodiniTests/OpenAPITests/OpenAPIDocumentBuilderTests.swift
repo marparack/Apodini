@@ -5,13 +5,17 @@
 import XCTest
 @_implementationOnly import OpenAPIKit
 @testable import Apodini
+@testable import ApodiniExtension
+@testable import Apodini
 @testable import ApodiniOpenAPI
+@testable import Apodini
 @testable import ApodiniVaporSupport
+import Apodini
 import ApodiniREST
 
 
 final class OpenAPIDocumentBuilderTests: ApodiniTests {
-    struct SomeStruct: Apodini.Content {
+    struct SomeStruct: ApodiniExtension.Content {
         var someProp = 4
     }
 

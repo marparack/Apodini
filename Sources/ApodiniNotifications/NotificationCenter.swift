@@ -4,6 +4,7 @@ import APNSwift
 import FCM
 import NIO
 import Apodini
+import ApodiniExtension
 
 /// The `NotificationCenter` is responsible for push notifications in Apodini.
 /// It can send messages to both APNS and FCM and also manages storing and configuring of `Device`s in a database.

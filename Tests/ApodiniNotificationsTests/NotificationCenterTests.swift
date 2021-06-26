@@ -6,6 +6,8 @@ import FCM
 import APNSwift
 import XCTVapor
 import Apodini
+import ApodiniExtension
+@testable import Apodini
 @testable import ApodiniNotifications
 
 final class NotificationCenterTests: XCTApodiniTest {

@@ -3,13 +3,14 @@
 //
 
 import Apodini
+import ApodiniExtension
 import Vapor
 
 
 extension Vapor.HTTPMethod {
     /// Creates a `Vapor``HTTPMethod` based on an `Apodini` `Operation`.
     /// - Parameter operation: The `Apodini` `Operation` that should be transformed in a `Vapor``HTTPMethod`
-    public init(_ operation: Apodini.Operation) {
+    public init(_ operation: ApodiniExtension.Operation) {
         switch operation {
         case .create:
             self =  .POST

@@ -1,4 +1,5 @@
 import Apodini
+import ApodiniExtension
 
 /// A enum to tell the `UploadConfiguration` in which directory the file should be stored.
 public enum Directories: String {

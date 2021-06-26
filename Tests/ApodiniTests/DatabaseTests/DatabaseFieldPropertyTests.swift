@@ -3,6 +3,8 @@ import XCTest
 import Vapor
 @_implementationOnly import Runtime
 @testable import Apodini
+@testable import ApodiniExtension
+@testable import Apodini
 @testable import ApodiniDatabase
 
 final class DatabaseFieldPropertyTests: ApodiniTests {

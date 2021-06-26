@@ -1,6 +1,7 @@
 #if DEBUG || RELEASE_TESTING
 import XCTest
 @testable import Apodini
+@testable import ApodiniExtension
 
 /// Evaluates the given `handler` on the given `app` using the given `parameterValues`.
 public func mockQuery<Value: Encodable, H: Handler>(

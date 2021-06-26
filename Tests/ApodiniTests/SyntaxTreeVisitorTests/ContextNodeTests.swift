@@ -5,6 +5,7 @@
 import XCTest
 import XCTApodini
 @testable import Apodini
+@testable import ApodiniExtension
 
 
 struct TestComponent: Handler {

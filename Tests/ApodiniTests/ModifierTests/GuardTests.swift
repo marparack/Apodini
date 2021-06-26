@@ -9,7 +9,10 @@ import XCTest
 import XCTVapor
 import protocol Fluent.Database
 @testable import Apodini
+@testable import ApodiniExtension
+@testable import Apodini
 @testable import ApodiniREST
+@testable import Apodini
 @testable import ApodiniVaporSupport
 
 
@@ -60,7 +63,7 @@ final class GuardTests: ApodiniTests {
     
     func testGuard() throws {
         struct TestGuard: Guard {
-            @Apodini.Environment(\.database)
+            @ApodiniExtension.Environment(\.database)
             var database: Database
             
             func check() -> EventLoopFuture<Void> {

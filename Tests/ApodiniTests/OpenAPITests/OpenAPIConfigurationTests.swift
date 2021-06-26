@@ -4,7 +4,10 @@
 
 import XCTest
 @testable import Apodini
+@testable import ApodiniExtension
+@testable import Apodini
 @testable import ApodiniOpenAPI
+@testable import Apodini
 @testable import ApodiniREST
 
 final class OpenAPIConfigurationTests: ApodiniTests {

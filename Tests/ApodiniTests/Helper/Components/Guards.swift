@@ -3,6 +3,7 @@
 //
 
 @testable import Apodini
+@testable import ApodiniExtension
 
 struct PrintGuard: SyncGuard {
     func check() {

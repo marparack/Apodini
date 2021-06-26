@@ -3,8 +3,12 @@
 //
 
 import Apodini
+import ApodiniExtension
+import Apodini
 import ApodiniVaporSupport
+import Apodini
 import ApodiniGRPC
+import Apodini
 import ApodiniTypeReflection
 import ApodiniUtils
 @_implementationOnly import class Vapor.Application
@@ -16,7 +20,7 @@ public final class Protobuffer: GRPCDependentStaticConfiguration {
         self.configuration = Protobuffer.ExporterConfiguration()
     }
     
-    public func configure(_ app: Apodini.Application, parentConfiguration: GRPC.ExporterConfiguration) {
+    public func configure(_ app: ApodiniExtension.Application, parentConfiguration: GRPC.ExporterConfiguration) {
         /// Set configartion of parent
         self.configuration.parentConfiguration = parentConfiguration
         
@@ -39,7 +43,7 @@ final class ProtobufferInterfaceExporter: StaticInterfaceExporter {
     }
     
     // MARK: Properties
-    private let app: Apodini.Application
+    private let app: ApodiniExtension.Application
     private let builder: Builder
     private let exporterConfiguration: Protobuffer.ExporterConfiguration
     
@@ -47,7 +51,7 @@ final class ProtobufferInterfaceExporter: StaticInterfaceExporter {
     private var services: Set<ProtobufferService> = .init()
     
     // MARK: Initialization
-    init(_ app: Apodini.Application,
+    init(_ app: ApodiniExtension.Application,
          _ exporterConfiguration: Protobuffer.ExporterConfiguration = Protobuffer.ExporterConfiguration()) {
         self.app = app
         self.exporterConfiguration = exporterConfiguration

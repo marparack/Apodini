@@ -3,6 +3,7 @@
 //
 
 import Apodini
+import ApodiniExtension
 
 public struct TestingRelationshipFormatter: RelationshipFormatter {
     var hideHidden: Bool

@@ -3,11 +3,16 @@
 //
 
 import XCTest
+import Apodini
 import ApodiniTypeReflection
 @_implementationOnly import OpenAPIKit
 @testable import Apodini
+@testable import ApodiniExtension
+@testable import Apodini
 @testable import ApodiniVaporSupport
+@testable import Apodini
 @testable import ApodiniOpenAPI
+import Apodini
 import ApodiniREST
 
 

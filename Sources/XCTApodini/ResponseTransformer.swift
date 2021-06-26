@@ -8,6 +8,7 @@
 
 #if DEBUG || RELEASE_TESTING
 @testable import Apodini
+@testable import ApodiniExtension
 import ApodiniUtils
 
 // MARK: Guarded Handler

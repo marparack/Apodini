@@ -3,6 +3,7 @@
 //
 
 import Apodini
+import ApodiniExtension
 
 private struct TestContent: Content {
     static var metadata: Metadata {

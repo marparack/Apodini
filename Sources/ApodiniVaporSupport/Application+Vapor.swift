@@ -6,14 +6,15 @@
 //
 
 import Apodini
+import ApodiniExtension
 import Vapor
 
 
 extension Vapor.Application {
-    struct LifecycleHandlery: Apodini.LifecycleHandler {
+    struct LifecycleHandlery: ApodiniExtension.LifecycleHandler {
         var app: Vapor.Application
 
-        func didBoot(_ application: Apodini.Application) throws {
+        func didBoot(_ application: ApodiniExtension.Application) throws {
             if let address = application.http.address {
                 try app.server.start(address: Vapor.BindAddress(from: address))
             } else {
@@ -22,13 +23,13 @@ extension Vapor.Application {
             try app.boot()
         }
 
-        func shutdown(_ application: Apodini.Application) {
+        func shutdown(_ application: ApodiniExtension.Application) {
             app.server.shutdown()
             app.shutdown()
         }
     }
 
-    convenience init(from app: Apodini.Application, environment env: Vapor.Environment = .production) {
+    convenience init(from app: ApodiniExtension.Application, environment env: Vapor.Environment = .production) {
         self.init(env, .shared(app.eventLoopGroup))
         app.lifecycle.use(LifecycleHandlery(app: self))
 
@@ -46,7 +47,7 @@ extension Vapor.Application {
 }
 
 
-public extension Apodini.Application {
+public extension ApodiniExtension.Application {
     /// Configuration related to vapor.
     var vapor: VaporApp {
         .init(application: self)
@@ -54,7 +55,7 @@ public extension Apodini.Application {
 
     /// Holds the APNS Configuration
     struct VaporApp {
-        struct ConfigurationKey: Apodini.StorageKey {
+        struct ConfigurationKey: ApodiniExtension.StorageKey {
             // swiftlint:disable nesting
             typealias Value = Vapor.Application
         }
@@ -72,16 +73,16 @@ public extension Apodini.Application {
             self.application.storage[ConfigurationKey.self] = .init(from: application)
         }
 
-        private let application: Apodini.Application
+        private let application: ApodiniExtension.Application
 
-        init(application: Apodini.Application) {
+        init(application: ApodiniExtension.Application) {
             self.application = application
         }
     }
 }
 
 extension Vapor.BindAddress {
-    init(from address: Apodini.BindAddress) {
+    init(from address: ApodiniExtension.BindAddress) {
         switch address {
         case let .hostname(host, port):
             self = .hostname(host, port: port)

@@ -1,6 +1,8 @@
 import FluentSQLiteDriver
 import Apodini
+import ApodiniExtension
 import XCTest
+import Apodini
 import ApodiniDatabase
 import ApodiniUtils
 

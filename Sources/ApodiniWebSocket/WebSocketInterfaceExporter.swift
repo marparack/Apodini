@@ -6,8 +6,11 @@
 //
 
 import Apodini
-import ApodiniUtils
 import ApodiniExtension
+import ApodiniUtils
+import ApodiniExtensionX
+import ApodiniExtension
+import Apodini
 import ApodiniVaporSupport
 import NIOWebSocket
 @_implementationOnly import OpenCombine
@@ -22,7 +25,7 @@ public final class WebSocket: Configuration {
         self.configuration = WebSocket.ExporterConfiguration(path: path)
     }
     
-    public func configure(_ app: Apodini.Application) {
+    public func configure(_ app: ApodiniExtension.Application) {
         /// Instanciate exporter
         let webSocketExporter = WebSocketInterfaceExporter(app, self.configuration)
         
@@ -35,12 +38,12 @@ public final class WebSocket: Configuration {
 /// This protocol can handle multiple concurrent connections on the same or different endpoints over one WebSocket channel.
 /// The Apodini service listens on /apodini/websocket for clients that want to communicate via the WebSocket Interface Exporter.
 final class WebSocketInterfaceExporter: StandardErrorCompliantExporter {
-    private let app: Apodini.Application
+    private let app: ApodiniExtension.Application
     private let exporterConfiguration: WebSocket.ExporterConfiguration
     private let router: VaporWSRouter
 
     /// Initalize a `WebSocketInterfaceExporter` from an `Application`
-    init(_ app: Apodini.Application,
+    init(_ app: ApodiniExtension.Application,
          _ exporterConfiguration: WebSocket.ExporterConfiguration = WebSocket.ExporterConfiguration()) {
         self.app = app
         self.exporterConfiguration = exporterConfiguration
@@ -95,7 +98,7 @@ final class WebSocketInterfaceExporter: StandardErrorCompliantExporter {
             // messages are never dropped.
             input
                 .buffer(size: Int.max, prefetch: .keepFull, whenFull: .dropNewest)
-                .syncMap { evaluation -> EventLoopFuture<Apodini.Response<H.Response.Content>> in
+                .syncMap { evaluation -> EventLoopFuture<ApodiniExtension.Response<H.Response.Content>> in
                     switch evaluation {
                     case .input(let inputValue):
                         let request = WebSocketInput(inputValue, eventLoop: eventLoop, remoteAddress: request.remoteAddress)
@@ -188,7 +191,7 @@ final class WebSocketInterfaceExporter: StandardErrorCompliantExporter {
     }
     
     private static func handleValue<C: Encodable>(
-        result: Result<Apodini.Response<C>, Error>,
+        result: Result<ApodiniExtension.Response<C>, Error>,
         output: PassthroughSubject<Message<C>, Error>
     ) {
         switch result {
@@ -200,7 +203,7 @@ final class WebSocketInterfaceExporter: StandardErrorCompliantExporter {
     }
     
     private static func handleCompletionResponse<C: Encodable>(
-        response: Apodini.Response<C>,
+        response: ApodiniExtension.Response<C>,
         output: PassthroughSubject<Message<C>, Error>
     ) {
         if let content = response.content {
@@ -210,7 +213,7 @@ final class WebSocketInterfaceExporter: StandardErrorCompliantExporter {
     }
     
     private static func handleRegularResponse<C: Encodable>(
-        response: Apodini.Response<C>,
+        response: ApodiniExtension.Response<C>,
         output: PassthroughSubject<Message<C>, Error>
     ) {
         if let content = response.content {
@@ -294,7 +297,7 @@ public struct WebSocketInput: ExporterRequestWithEventLoop {
 
 // MARK: Input Accumulation
 
-extension WebSocketInput: Apodini.Reducible {
+extension WebSocketInput: ApodiniExtension.Reducible {
     public func reduce(to new: WebSocketInput) -> WebSocketInput {
         var newParameters: [String: InputParameter] = [:]
         for (name, value) in new.input.parameters {

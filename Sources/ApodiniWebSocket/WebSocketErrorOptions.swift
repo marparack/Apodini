@@ -6,6 +6,7 @@
 //
 
 import Apodini
+import ApodiniExtension
 import NIOWebSocket
 
 // MARK: WebSocketErrorCode

@@ -1,6 +1,7 @@
 import Foundation
 import XCTest
 @testable import Apodini
+@testable import ApodiniExtension
 
 class FileHandlerTests: ApodiniTests {
     override func setUpWithError() throws {

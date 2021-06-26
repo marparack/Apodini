@@ -6,4 +6,6 @@
 //
 
 @_exported import Apodini
+@_exported import ApodiniExtension
+@_exported import Apodini
 @_exported import ApodiniDeployBuildSupport

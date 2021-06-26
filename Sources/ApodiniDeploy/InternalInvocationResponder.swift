@@ -10,6 +10,7 @@ import NIO
 import NIOHTTP1
 @_implementationOnly import Vapor
 import Apodini
+import ApodiniExtension
 
 
 struct InternalInvocationResponder<H: Handler>: Vapor.Responder {

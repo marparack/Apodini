@@ -5,6 +5,7 @@
 import XCTest
 import XCTApodini
 @testable import Apodini
+@testable import ApodiniExtension
 
 class RelationshipDSLTests: ApodiniTests {
     struct User: Content, Identifiable {

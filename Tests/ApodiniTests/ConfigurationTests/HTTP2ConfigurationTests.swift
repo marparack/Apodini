@@ -1,4 +1,5 @@
 @testable import Apodini
+@testable import ApodiniExtension
 import NIOSSL
 import XCTest
 

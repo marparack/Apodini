@@ -7,6 +7,7 @@
 
 import Foundation
 import Apodini
+import ApodiniExtension
 @_implementationOnly import Vapor
 
 // MARK: Unary request handler

@@ -10,6 +10,8 @@
 
 import Foundation
 import Apodini
+import ApodiniExtension
+import Apodini
 import ApodiniDeployBuildSupport
 import ApodiniUtils
 

@@ -7,8 +7,11 @@
 
 import Foundation
 import Apodini
+import ApodiniExtension
 
+import Apodini
 import ApodiniDeployBuildSupport
+import Apodini
 import ApodiniDeployRuntimeSupport
 
 extension ApodiniDeploy {
@@ -76,7 +79,7 @@ extension Group {
 }
 
 
-struct HandlerDeploymentOptionsContextKey: Apodini.ContextKey {
+struct HandlerDeploymentOptionsContextKey: ApodiniExtension.ContextKey {
     typealias Value = [AnyDeploymentOption]
     
     static let defaultValue: Value = []

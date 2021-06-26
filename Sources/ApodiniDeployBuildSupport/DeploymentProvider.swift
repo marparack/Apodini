@@ -9,6 +9,7 @@
 import Foundation
 import Logging
 import Apodini
+import ApodiniExtension
 import ApodiniUtils
 
 

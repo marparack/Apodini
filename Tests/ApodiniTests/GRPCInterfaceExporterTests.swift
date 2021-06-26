@@ -7,7 +7,9 @@
 
 import XCTest
 @testable import Apodini
+@testable import ApodiniExtension
 @testable import Vapor
+@testable import Apodini
 @testable import ApodiniGRPC
 
 private struct GRPCTestHandler: Handler {
@@ -34,7 +36,7 @@ private struct GRPCTestHandler2: Handler {
 }
 
 private struct GRPCNothingHandler: Handler {
-    func handle() -> Apodini.Response<Int32> {
+    func handle() -> ApodiniExtension.Response<Int32> {
         .nothing
     }
 }

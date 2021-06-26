@@ -9,7 +9,10 @@ import XCTest
 import XCTVapor
 import XCTApodini
 @testable import Apodini
+@testable import ApodiniExtension
+@testable import Apodini
 @testable import ApodiniREST
+@testable import Apodini
 @testable import ApodiniVaporSupport
 
 
@@ -37,9 +40,9 @@ final class ResponseTransformerTests: ApodiniTests {
     }
     
     private struct ResponseHandler: Handler {
-        let response: Apodini.Response<String>
+        let response: ApodiniExtension.Response<String>
         
-        func handle() -> Apodini.Response<String> {
+        func handle() -> ApodiniExtension.Response<String> {
             response
         }
     }
@@ -201,7 +204,7 @@ final class ResponseTransformerTests: ApodiniTests {
     }
     
     func testFailingResponseTransformer() throws {
-        let response: Apodini.Response<Int> = .final(42)
+        let response: ApodiniExtension.Response<Int> = .final(42)
         XCTAssertRuntimeFailure(
             EmojiResponseTransformer()
                 .transform(response: response.typeErasured, on: self.app.eventLoopGroup.next())

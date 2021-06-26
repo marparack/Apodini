@@ -1,6 +1,7 @@
 import APNSwift
 import JWTKit
 import Apodini
+import ApodiniExtension
 
 /// A `Configuration` used for APNS authentication
 public struct APNSConfiguration: Configuration {

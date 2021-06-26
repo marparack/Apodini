@@ -8,7 +8,10 @@
 import Foundation
 import Vapor
 import Apodini
+import ApodiniExtension
+import Apodini
 import ApodiniVaporSupport
+import Apodini
 import ApodiniDeployRuntimeSupport
 import DeploymentTargetAWSLambdaCommon
 import VaporAWSLambdaRuntime
@@ -34,7 +37,7 @@ public class LambdaRuntime: DeploymentProviderRuntime {
     }
     
     
-    public func configure(_ app: Apodini.Application) throws {
+    public func configure(_ app: ApodiniExtension.Application) throws {
         print("-[\(Self.self) \(#function)] env", ProcessInfo.processInfo.environment)
         app.vapor.app.servers.use(.lambda)
     }

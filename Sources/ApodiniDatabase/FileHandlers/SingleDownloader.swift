@@ -1,5 +1,6 @@
 import Foundation
 import Apodini
+import ApodiniExtension
 import NIO
 
 

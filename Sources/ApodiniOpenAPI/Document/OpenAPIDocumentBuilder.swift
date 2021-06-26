@@ -4,6 +4,7 @@
 
 import Foundation
 import Apodini
+import ApodiniExtension
 import OpenAPIKit
 
 /// Creates the OpenAPI specification document

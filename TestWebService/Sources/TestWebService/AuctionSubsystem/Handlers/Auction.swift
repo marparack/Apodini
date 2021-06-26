@@ -6,6 +6,7 @@
 //
 
 import Apodini
+import ApodiniExtension
 
 struct Auction: Handler {
     @Throws(.badInput, reason: "The placed bid was too low") var bidTooLowError: ApodiniError

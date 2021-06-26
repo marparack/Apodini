@@ -8,9 +8,13 @@
 import Foundation
 import NIO
 import Apodini
+import ApodiniExtension
 import ApodiniUtils
+import Apodini
 import ApodiniDeployBuildSupport
+import Apodini
 import ApodiniDeployRuntimeSupport
+import Apodini
 import ApodiniVaporSupport
 @_implementationOnly import Vapor
 
@@ -41,14 +45,14 @@ public struct CollectedArgument<HandlerType: Handler> {
 /// A handler which wishes to access other (invocable) handler's functionality defines a private property of this type.
 /// See [the documentation](https://github.com/Apodini/Apodini/blob/develop/Documentation/Components/Inter-Component%20Communication.md) for more info.
 public struct RemoteHandlerInvocationManager {
-    private let app: Apodini.Application
+    private let app: ApodiniExtension.Application
     
     private var eventLoop: EventLoop {
         app.eventLoopGroup.next()
     }
     
     /// This is the initializer
-    internal init(app: Apodini.Application) {
+    internal init(app: ApodiniExtension.Application) {
         self.app = app
     }
 }
@@ -159,7 +163,7 @@ extension RemoteHandlerInvocationManager {
         let invocationParams: [HandlerInvocation<H>.Parameter] = collectedInputArgs.map { collectedArg in
             // The @Parameter property wrapper declaration in the handler
             guard
-                let handlerParamId = Apodini.Internal.getParameterId(ofBinding: targetEndpoint.handler[keyPath: collectedArg.handlerKeyPath])
+                let handlerParamId = ApodiniExtension.Internal.getParameterId(ofBinding: targetEndpoint.handler[keyPath: collectedArg.handlerKeyPath])
             else {
                 fatalError("Unable to get @Parameter id for collected parameter with key path \(collectedArg.handlerKeyPath)")
             }
@@ -281,8 +285,8 @@ extension Endpoint {
         on eventLoop: EventLoop
     ) -> EventLoopFuture<H.Response.Content> {
         let context = self.createConnectionContext(for: internalInterfaceExporter)
-        let responseFuture: EventLoopFuture<Apodini.Response<H.Response.Content>> = context.handle(request: request, eventLoop: eventLoop)
-        return responseFuture.flatMapThrowing { (response: Apodini.Response<H.Response.Content>) -> H.Response.Content in
+        let responseFuture: EventLoopFuture<ApodiniExtension.Response<H.Response.Content>> = context.handle(request: request, eventLoop: eventLoop)
+        return responseFuture.flatMapThrowing { (response: ApodiniExtension.Response<H.Response.Content>) -> H.Response.Content in
             guard response.connectionEffect == .close else {
                 throw ApodiniDeployError(message: "Unexpected response value: \(response). Expected '.final'.")
             }
@@ -304,7 +308,7 @@ extension Vapor.URI {
 
 // MARK: Environment
 
-extension Apodini.Application {
+extension ApodiniExtension.Application {
     /// A remote handler invocation manager object, which can be used to invoke other handlers from within a handler's `handle` function.
     public var RHI: RemoteHandlerInvocationManager {
         RemoteHandlerInvocationManager(app: self)

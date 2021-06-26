@@ -3,6 +3,7 @@
 //
 
 import Apodini
+import ApodiniExtension
 
 struct TestVoidContextKey: ContextKey {
     typealias Value = Void

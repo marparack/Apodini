@@ -7,6 +7,8 @@
 
 import Foundation
 import Apodini
+import ApodiniExtension
+import Apodini
 import ApodiniGRPC
 
 extension Protobuffer {

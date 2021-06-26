@@ -3,6 +3,7 @@
 //
 
 import Apodini
+import ApodiniExtension
 
 /// A `Configuration` for the protocol buffer coding strategy of `FixedWidthInteger`s that depend on
 /// the target architecture.

@@ -8,10 +8,11 @@
 import XCTest
 import XCTApodini
 @testable import Apodini
+@testable import ApodiniExtension
 
 final class EnvironmentTests: ApodiniTests {
     struct BirdHandler: Handler {
-        @Apodini.Environment(\.birdFacts) var birdFacts: BirdFacts
+        @ApodiniExtension.Environment(\.birdFacts) var birdFacts: BirdFacts
 
         func handle() -> String {
             birdFacts.someFact
@@ -29,7 +30,7 @@ final class EnvironmentTests: ApodiniTests {
 
     func testEnvironmentObjectInjection() throws {
         struct AnotherBirdHandler: Handler {
-            @Apodini.Environment(\Keys.bird) var bird: BirdFacts
+            @ApodiniExtension.Environment(\Keys.bird) var bird: BirdFacts
 
             func handle() -> String {
                 bird.dodoFact = "Until humans, the Dodo had no predators"
@@ -63,7 +64,7 @@ final class EnvironmentTests: ApodiniTests {
         
         var environment = Environment(\Keys.bird)
         environment.inject(app: app)
-        environment.activate()
+        environment._activate()
 
         XCTAssertEqual(birdFacts2.someFact, environment.wrappedValue.someFact)
     }
@@ -77,7 +78,7 @@ final class EnvironmentTests: ApodiniTests {
         
         var environment = Environment(\Application.birdFacts)
         environment.inject(app: app)
-        environment.activate()
+        environment._activate()
         let injectedValue = environment.wrappedValue
 
         XCTAssert(injectedValue.dodoFact == newFact)
@@ -143,7 +144,7 @@ final class EnvironmentTests: ApodiniTests {
                                 "The Application instance wasn't injected correctly.")
         
         var environment = Environment(\.locks)
-        environment.activate()
+        environment._activate()
         XCTAssertRuntimeFailure(environment.wrappedValue,
                                 "The wrapped value was accessed before it was activated.")
     }

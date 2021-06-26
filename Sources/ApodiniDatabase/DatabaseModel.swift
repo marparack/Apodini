@@ -1,9 +1,10 @@
 import Fluent
 import Foundation
 import Apodini
+import ApodiniExtension
 
 ///A protocol all Models that are used with `ApodiniDatabase` need conform to
-public protocol DatabaseModel: Model, Apodini.Content {
+public protocol DatabaseModel: Model, ApodiniExtension.Content {
     ///Has to be overwritten to use `Update` handler.
     func update(_ object: Self)
 }

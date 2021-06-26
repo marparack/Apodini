@@ -4,6 +4,7 @@
 
 import Foundation
 import Apodini
+import ApodiniExtension
 import OpenAPIKit
 
 extension OpenAPIKit.OpenAPI.Parameter.Context {

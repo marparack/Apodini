@@ -1,6 +1,8 @@
 import Foundation
 import Vapor
 @testable import Apodini
+@testable import ApodiniExtension
+@testable import Apodini
 @testable import ApodiniDatabase
 import XCTApodini
 

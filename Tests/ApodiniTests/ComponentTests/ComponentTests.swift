@@ -7,7 +7,10 @@
 
 import ApodiniUtils
 @testable import Apodini
+@testable import ApodiniExtension
+@testable import Apodini
 @testable import ApodiniVaporSupport
+@testable import Apodini
 @testable import ApodiniREST
 import XCTest
 import XCTApodini

@@ -1,6 +1,7 @@
 import Foundation
 import NIO
 import Apodini
+import ApodiniExtension
 @_implementationOnly import SwifCron
 
 /// A convenient interface to schedule background running tasks on an event loop using `Job`s and crontab syntax.
@@ -69,7 +70,7 @@ public class Scheduler {
                   for: RequestBasedPropertyWrapper.self,
                   throw: JobErrors.requestPropertyWrapper)
         
-        // Activates all `Activatable`s.
+        // Activates all `_Activatable`s.
         var activatedJob = job
         activate(&activatedJob)
         

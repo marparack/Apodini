@@ -7,6 +7,7 @@
 
 import Foundation
 import Apodini
+import ApodiniExtension
 
 extension GRPC {
     /// Configuration of the `GRPCInterfaceExporter`

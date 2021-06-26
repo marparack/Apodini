@@ -1,3 +1,4 @@
+import ApodiniExtension
 import Apodini
 
 extension Application {

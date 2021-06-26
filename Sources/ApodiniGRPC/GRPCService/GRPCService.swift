@@ -8,7 +8,9 @@
 import Foundation
 import NIO
 import Apodini
+import ApodiniExtension
 import ApodiniUtils
+import Apodini
 import ApodiniVaporSupport
 @_implementationOnly import Vapor
 @_implementationOnly import ProtobufferCoding
@@ -16,7 +18,7 @@ import ApodiniVaporSupport
 /// Used by the `GRPCInterfaceExporter` to expose
 /// `handle` functions of `Handler`s.
 class GRPCService {
-    private let app: Apodini.Application
+    private let app: ApodiniExtension.Application
     private let exporterConfiguration: GRPC.ExporterConfiguration
     var vaporApp: Vapor.Application {
         app.vapor.app
@@ -34,7 +36,7 @@ class GRPCService {
     /// - Parameters:
     ///     - name: The name of the service. Will be part of the route at which the service is exposed.
     ///     - app: The current Apodini application.
-    init(name: String, using app: Apodini.Application, _ configuration: GRPC.ExporterConfiguration) {
+    init(name: String, using app: ApodiniExtension.Application, _ configuration: GRPC.ExporterConfiguration) {
         self.serviceName = name
         self.app = app
         self.exporterConfiguration = configuration

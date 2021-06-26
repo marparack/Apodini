@@ -7,6 +7,8 @@
 
 import XCTApodini
 @testable import Apodini
+@testable import ApodiniExtension
+@testable import Apodini
 @testable import ApodiniDatabase
 
 

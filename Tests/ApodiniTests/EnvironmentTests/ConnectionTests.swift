@@ -6,6 +6,8 @@
 //
 
 @testable import Apodini
+@testable import ApodiniExtension
+import Apodini
 import ApodiniREST
 import XCTApodini
 import XCTVapor
@@ -17,13 +19,13 @@ final class ConnectionTests: ApodiniTests {
     let openMessage = "Open"
     
     struct TestHandler: Handler {
-        @Apodini.Environment(\.connection)
+        @ApodiniExtension.Environment(\.connection)
         var connection: Connection
         
         var endMessage: String
         var openMessage: String
         
-        func handle() -> Apodini.Response<String> {
+        func handle() -> ApodiniExtension.Response<String> {
             switch connection.state {
             case .open:
                 return .send(openMessage)
@@ -75,7 +77,7 @@ final class ConnectionTests: ApodiniTests {
 
     func testConnectionRemoteAddress() throws {
         struct TestHandler: Handler {
-            @Apodini.Environment(\.connection)
+            @ApodiniExtension.Environment(\.connection)
             var connection: Connection
 
             func handle() -> String {
@@ -103,7 +105,7 @@ final class ConnectionTests: ApodiniTests {
 
     func testConnectionEventLoop() throws {
         struct TestHandler: Handler {
-            @Apodini.Environment(\.connection)
+            @ApodiniExtension.Environment(\.connection)
             var connection: Connection
 
             func handle() -> String {

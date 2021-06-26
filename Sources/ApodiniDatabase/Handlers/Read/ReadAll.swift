@@ -1,6 +1,7 @@
 import Foundation
 import Fluent
 import Apodini
+import ApodiniExtension
 
 /// A Handler that returns an array of `DatabaseModel` which all conform to the query parameters of the request.
 /// It accepts all parameters that represent properties of the specified `DatabaseModel`.
@@ -12,7 +13,7 @@ import Apodini
 /// Sending a request to  ~/api/birds/birds?age=19&name=Foo would 
 /// return an array of `Bird` object that have an age of 19 and the name Foo.
 public struct ReadAll<Model: DatabaseModel>: Handler {
-    @Apodini.Environment(\.database)
+    @ApodiniExtension.Environment(\.database)
     private var database: Fluent.Database
 
     @Properties

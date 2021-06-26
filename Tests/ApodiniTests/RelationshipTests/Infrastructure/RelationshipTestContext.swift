@@ -5,8 +5,10 @@
 
 import XCTApodini
 import XCTest
+@testable import Apodini
 @testable import ApodiniREST
 @testable import Apodini
+@testable import ApodiniExtension
 import ApodiniUtils
 
 class RelationshipTestContext {

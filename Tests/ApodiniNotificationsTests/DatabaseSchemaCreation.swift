@@ -1,6 +1,7 @@
 import Apodini
 import ApodiniDatabase
 import XCTest
+@testable import ApodiniExtension
 @testable import ApodiniNotifications
 
 final class DatabaseConfigurationTests: XCTestCase {

@@ -4,6 +4,7 @@
 
 import Foundation
 import Apodini
+import ApodiniExtension
 import ApodiniREST
 import ApodiniUtils
 import ApodiniTypeReflection

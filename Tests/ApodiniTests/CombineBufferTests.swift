@@ -6,6 +6,8 @@
 //
 
 @testable import Apodini
+@testable import ApodiniExtension
+@testable import Apodini
 @testable import ApodiniWebSocket
 import OpenCombine
 import XCTApodini

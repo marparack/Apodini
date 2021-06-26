@@ -7,11 +7,12 @@
 
 import Foundation
 import Vapor
+import Apodini
 import ApodiniDeployBuildSupport
 import DeploymentTargetLocalhostCommon
 import Logging
 import OpenAPIKit
-import class Apodini.AnyHandlerIdentifier
+import class ApodiniExtension.AnyHandlerIdentifier
 
 
 class ProxyServer {

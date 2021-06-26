@@ -7,13 +7,14 @@
 
 import Foundation
 import XCTApodini
+@testable import Apodini
 @testable import ApodiniDeploy
 import ApodiniUtils
 
 
 /// The base class for all test cases which test deployment providers.
 /// This class intentionally does not inherit from `XCTApodiniTest`, the reason being that
-/// that class creates an implicit `Apodini.Application`, which we do not need when testing the deployment providers.
+/// that class creates an implicit `ApodiniExtension.Application`, which we do not need when testing the deployment providers.
 class ApodiniDeployTestCase: XCTestCase {
     struct ApodiniDeployTestError: Swift.Error {
         let message: String

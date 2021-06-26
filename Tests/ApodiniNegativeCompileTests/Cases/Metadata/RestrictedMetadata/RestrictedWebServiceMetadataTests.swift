@@ -3,6 +3,7 @@
 //
 
 import Apodini
+import ApodiniExtension
 
 private struct TestWebService: WebService {
     var content: some Component {

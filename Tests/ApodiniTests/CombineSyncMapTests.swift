@@ -8,6 +8,8 @@
 import XCTest
 import OpenCombine
 @testable import Apodini
+@testable import ApodiniExtension
+@testable import Apodini
 @testable import ApodiniWebSocket
 
 class CombineSyncMapTests: ApodiniTests {

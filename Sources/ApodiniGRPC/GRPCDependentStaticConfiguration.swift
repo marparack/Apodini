@@ -6,6 +6,7 @@
 //
 
 import Apodini
+import ApodiniExtension
 
 /// `GRPCDependentStaticConfiguration`s are used to register static services dependend on the `GRPCInterfaceExporter`
 public protocol GRPCDependentStaticConfiguration {

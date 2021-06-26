@@ -7,6 +7,7 @@
 
 import Foundation
 import Apodini
+import ApodiniExtension
 
 
 struct User: Content, Identifiable {

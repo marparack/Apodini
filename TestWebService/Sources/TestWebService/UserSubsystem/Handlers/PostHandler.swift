@@ -4,6 +4,7 @@
 
 import Foundation
 import Apodini
+import ApodiniExtension
 
 struct PostHandler: Handler {
     @Binding var userId: Int

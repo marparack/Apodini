@@ -1,5 +1,6 @@
 import Foundation
 @testable import Apodini
+@testable import ApodiniExtension
 
 enum FileUtilities {
     static func pathParameter(for handler: Any) throws -> Parameter<String> {

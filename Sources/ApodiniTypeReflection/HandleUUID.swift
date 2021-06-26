@@ -4,6 +4,7 @@
 
 import Foundation
 import Apodini
+import ApodiniExtension
 
 /// Handle the `Foundation.UUID` type.
 ///

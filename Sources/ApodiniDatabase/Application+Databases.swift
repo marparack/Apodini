@@ -29,6 +29,7 @@
 // SOFTWARE.
 
 import Apodini
+import ApodiniExtension
 import FluentKit
 
 extension Application {

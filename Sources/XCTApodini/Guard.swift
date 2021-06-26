@@ -7,6 +7,7 @@
 
 #if DEBUG || RELEASE_TESTING
 @testable import Apodini
+@testable import ApodiniExtension
 
 // MARK: Guarded Handler
 public extension Handler {

@@ -3,6 +3,7 @@
 //
 
 import Apodini
+import ApodiniExtension
 
 /// Handle Apodini-supported primitive types.
 ///

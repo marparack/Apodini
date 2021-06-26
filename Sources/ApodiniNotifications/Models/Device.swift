@@ -1,6 +1,7 @@
 import Foundation
 import Fluent
 import Apodini
+import ApodiniExtension
 
 public final class DeviceDatabaseModel: Model, Content {
     public static let schema = "notification_device"

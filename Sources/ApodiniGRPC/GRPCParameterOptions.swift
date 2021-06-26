@@ -7,6 +7,7 @@
 
 import Foundation
 import Apodini
+import ApodiniExtension
 
  // MARK: gRPC specific `@Parameter` options
 

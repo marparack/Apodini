@@ -6,6 +6,7 @@
 import XCTest
 import Foundation
 @testable import Apodini
+@testable import ApodiniExtension
 
 
 /// A namespace for methods that generate `ValidatedRequest`s from mock data.

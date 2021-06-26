@@ -2,10 +2,11 @@ import XCTest
 import protocol Fluent.Database
 import XCTApodini
 @testable import Apodini
+@testable import ApodiniExtension
 
 final class DatabaseEnvironmentTests: ApodiniTests {
     struct DatabaseComponent: Handler {
-        @Apodini.Environment(\.database) var database: Database
+        @ApodiniExtension.Environment(\.database) var database: Database
         
         func handle() -> String {
             database.history.debugDescription

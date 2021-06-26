@@ -3,6 +3,7 @@
 //
 
 import Apodini
+import ApodiniExtension
 import Vapor
 
 /// A RoutesHandler which is automatically registered to the root path

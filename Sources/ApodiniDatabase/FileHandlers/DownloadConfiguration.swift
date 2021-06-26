@@ -1,5 +1,6 @@
 import Foundation
 import Apodini
+import ApodiniExtension
 
 /// Used to specify the directory in which the file is stored.
 /// It is possible to pass a `subPath` relative to the passed directory.

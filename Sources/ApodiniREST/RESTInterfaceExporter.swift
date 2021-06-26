@@ -3,8 +3,10 @@
 //
 
 import Apodini
+import ApodiniExtension
 import Vapor
 import NIO
+import Apodini
 import ApodiniVaporSupport
 
 /// Public Apodini Interface Exporter for REST
@@ -34,7 +36,7 @@ public final class REST: Configuration {
         self.staticConfigurations = [EmptyRESTDependentStaticConfiguration()]
     }
     
-    public func configure(_ app: Apodini.Application) {
+    public func configure(_ app: ApodiniExtension.Application) {
         /// Instanciate exporter
         let restExporter = RESTInterfaceExporter(app, self.configuration)
         
@@ -71,7 +73,7 @@ final class RESTInterfaceExporter: InterfaceExporter, TruthAnchor {
     let exporterConfiguration: REST.ExporterConfiguration
     
     /// Initialize `RESTInterfaceExporter` from `Application`
-    init(_ app: Apodini.Application,
+    init(_ app: ApodiniExtension.Application,
          _ exporterConfiguration: REST.ExporterConfiguration = REST.ExporterConfiguration()) {
         self.app = app.vapor.app
         self.configuration = REST.Configuration(app.vapor.app.http.server.configuration)

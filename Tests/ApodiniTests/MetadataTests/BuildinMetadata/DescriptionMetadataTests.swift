@@ -4,6 +4,7 @@
 
 import XCTest
 @testable import Apodini
+@testable import ApodiniExtension
 
 final class DescriptionModifierTests: ApodiniTests {
     struct TestContent: Content {

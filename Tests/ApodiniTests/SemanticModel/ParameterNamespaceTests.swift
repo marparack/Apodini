@@ -5,6 +5,7 @@
 import XCTest
 import XCTApodini
 @testable import Apodini
+@testable import ApodiniExtension
 
 class ParameterNamespaceTests: ApodiniTests {
     struct EmptyParameterNameHandler: Handler {

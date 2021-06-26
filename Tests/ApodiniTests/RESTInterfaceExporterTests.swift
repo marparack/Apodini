@@ -3,6 +3,8 @@
 //
 
 @testable import Apodini
+@testable import ApodiniExtension
+@testable import Apodini
 @testable import ApodiniREST
 import Vapor
 import XCTApodini
@@ -11,7 +13,7 @@ import XCTApodini
 class RESTInterfaceExporterTests: ApodiniTests {
     lazy var application = Vapor.Application(.testing)
 
-    struct Parameters: Apodini.Content, Decodable, Equatable {
+    struct Parameters: ApodiniExtension.Content, Decodable, Equatable {
         var param0: String
         var param1: String?
         var pathA: String
@@ -46,7 +48,7 @@ class RESTInterfaceExporterTests: ApodiniTests {
         }
     }
 
-    struct User: Apodini.Content, Identifiable, Decodable {
+    struct User: ApodiniExtension.Content, Identifiable, Decodable {
         let id: String
         let name: String
     }
@@ -301,7 +303,7 @@ class RESTInterfaceExporterTests: ApodiniTests {
     }
     
     func testEndpointPaths() throws {
-        struct WebService: Apodini.WebService {
+        struct WebService: ApodiniExtension.WebService {
             var content: some Component {
                 Group("api") {
                     Group("user") {

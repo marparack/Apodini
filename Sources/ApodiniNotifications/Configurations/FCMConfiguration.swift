@@ -1,6 +1,7 @@
 import Foundation
 import FCM
 import Apodini
+import ApodiniExtension
 
 
 public struct FirebaseConfiguration: Configuration {

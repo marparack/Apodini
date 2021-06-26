@@ -8,6 +8,7 @@
 #if DEBUG || RELEASE_TESTING
 import Foundation
 @testable import Apodini
+@testable import ApodiniExtension
 
 /// A `Blackboard` which only provides access to the `contents` provided on initialization or values
 /// that have previously been placed on the board.

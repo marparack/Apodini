@@ -7,7 +7,9 @@
 
 import Foundation
 import Apodini
+import ApodiniExtension
 import NIO
+@_exported import Apodini
 @_exported import ApodiniDeployBuildSupport
 
 
@@ -30,7 +32,7 @@ public enum RemoteHandlerInvocationRequestResponse<Response: Decodable> {
 /// 1. When the system is initialised. This is when the runtime is also being initialised.
 /// 2. When the system is being configured.
 ///   This is when the runtime's `configure(_ app:)` function will be called, giving it an opportunity
-///   to perform custom configuration on the `Apodini.Application` object
+///   to perform custom configuration on the `ApodiniExtension.Application` object
 /// 3. When the remote handler invocation API was used to invoke a handler, and the dispatcher determined that the handler
 ///   should be invoked remotely (i.e. not in the current process).
 ///   In this case the runtime is given the option to simply forward the invocation to some url, or implement and perform the invocation manually.
@@ -45,7 +47,7 @@ public protocol DeploymentProviderRuntime: AnyObject {
     var deployedSystem: DeployedSystem { get }
     var currentNodeId: DeployedSystem.Node.ID { get }
     
-    func configure(_ app: Apodini.Application) throws
+    func configure(_ app: ApodiniExtension.Application) throws
     
     /// This function is called when a handler uses the remote handler invocation API to invoke another
     /// handler and the remote handler invocation manager has determined that the invocation's target handler is not in the current node.

@@ -9,6 +9,7 @@
 import Foundation
 import Runtime
 import Apodini
+import ApodiniExtension
 
 
 public struct HandlerTypeIdentifier: Codable, Hashable, Equatable {

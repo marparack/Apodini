@@ -3,6 +3,7 @@
 //
 
 import Apodini
+import ApodiniExtension
 import ApodiniUtils
 
 /// `HandleArrayDidEncounterCircle` is a type to mark the repetition of a type in a type hierarchy,

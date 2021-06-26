@@ -1,5 +1,6 @@
 import Foundation
 import Apodini
+import ApodiniExtension
 @_implementationOnly import SwifCron
 
 /// `Configuration` to start `Job`s at server startup.

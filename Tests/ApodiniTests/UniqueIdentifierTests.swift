@@ -7,6 +7,7 @@
 
 import XCTest
 @testable import Apodini
+@testable import ApodiniExtension
 import XCTApodini
 
 final class UniqueIdentifierTests: ApodiniTests {
@@ -23,7 +24,7 @@ final class UniqueIdentifierTests: ApodiniTests {
     
     func testUniqueIdentifiers() {
         struct IdentifierAccessing: Configuration {
-            func configure(_ app: Apodini.Application) {
+            func configure(_ app: ApodiniExtension.Application) {
                 let identifierExporter = IdentifierAccessingExporter(app)
                 app.registerExporter(staticExporter: identifierExporter)
             }

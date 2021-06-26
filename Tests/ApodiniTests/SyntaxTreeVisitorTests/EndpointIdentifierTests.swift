@@ -8,7 +8,10 @@
 import Foundation
 import XCTest
 @testable import Apodini
+@testable import ApodiniExtension
+@testable import Apodini
 @testable import ApodiniREST
+@testable import Apodini
 @testable import ApodiniVaporSupport
 
 
@@ -177,7 +180,7 @@ final class HandlerIdentifierTests: ApodiniTests {
                 }
             }
         }
-        struct TestWebService: Apodini.WebService {
+        struct TestWebService: ApodiniExtension.WebService {
             var content: some Component {
                 NestedTextComponent(level: 5)
             }

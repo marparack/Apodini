@@ -7,6 +7,7 @@
 
 import XCTest
 import Apodini
+import ApodiniExtension
 
 
 class ApplicationTests: XCTestCase {

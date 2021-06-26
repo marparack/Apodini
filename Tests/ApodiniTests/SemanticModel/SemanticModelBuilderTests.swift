@@ -6,6 +6,8 @@
 //
 
 @testable import Apodini
+@testable import ApodiniExtension
+@testable import Apodini
 @testable import ApodiniREST
 import Vapor
 import XCTApodini
@@ -55,10 +57,10 @@ final class SemanticModelBuilderTests: ApodiniTests {
     }
 
     struct ResponseHandler1: Handler {
-        @Apodini.Environment(\.connection)
+        @ApodiniExtension.Environment(\.connection)
         var connection: Connection
 
-        func handle() -> Apodini.Response<String> {
+        func handle() -> ApodiniExtension.Response<String> {
             switch connection.state {
             case .open:
                 return .send("Send")
@@ -69,10 +71,10 @@ final class SemanticModelBuilderTests: ApodiniTests {
     }
 
     struct ResponseHandler2: Handler {
-        @Apodini.Environment(\.connection)
+        @ApodiniExtension.Environment(\.connection)
         var connection: Connection
 
-        func handle() -> Apodini.Response<String> {
+        func handle() -> ApodiniExtension.Response<String> {
             switch connection.state {
             case .open:
                 return .nothing
@@ -180,7 +182,7 @@ final class SemanticModelBuilderTests: ApodiniTests {
     func testResponsePassthrough_final() throws {
         let mockRequest = MockRequest.createRequest(running: app.eventLoopGroup.next(), queuedParameters: .none)
         let exporter = RESTInterfaceExporter(app)
-        let handler = ResponseHandler1().environment(Connection(state: .end, request: mockRequest), for: \Apodini.Application.connection)
+        let handler = ResponseHandler1().environment(Connection(state: .end, request: mockRequest), for: \ApodiniExtension.Application.connection)
         let endpoint = handler.mockEndpoint(app: app)
         let context = endpoint.createConnectionContext(for: exporter)
         let request = Vapor.Request(application: app.vapor.app,
@@ -216,7 +218,7 @@ final class SemanticModelBuilderTests: ApodiniTests {
     func testResponsePassthrough_end() throws {
         let mockRequest = MockRequest.createRequest(running: app.eventLoopGroup.next(), queuedParameters: .none)
         let exporter = RESTInterfaceExporter(app)
-        let handler = ResponseHandler2().environment(Connection(state: .end, request: mockRequest), for: \Apodini.Application.connection)
+        let handler = ResponseHandler2().environment(Connection(state: .end, request: mockRequest), for: \ApodiniExtension.Application.connection)
         let endpoint = handler.mockEndpoint(app: app)
         let context = endpoint.createConnectionContext(for: exporter)
         let request = Vapor.Request(application: app.vapor.app,

@@ -3,6 +3,7 @@
 //
 
 import Apodini
+import ApodiniExtension
 
 public struct TagContextKey: OptionalContextKey {
     public typealias Value = [String]

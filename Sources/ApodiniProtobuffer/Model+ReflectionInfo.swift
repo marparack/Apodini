@@ -3,7 +3,9 @@
 //
 
 import Apodini
+import ApodiniExtension
 import ApodiniUtils
+import Apodini
 import ApodiniTypeReflection
 @_implementationOnly import Runtime
 

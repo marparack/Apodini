@@ -6,6 +6,7 @@
 //
 
 @testable import Apodini
+@testable import ApodiniExtension
 import ApodiniUtils
 import XCTest
 import XCTApodini
@@ -41,7 +42,7 @@ final class ResponseTests: ApodiniTests {
             eventLoop.makeSucceededFuture(
                 eventLoop.makeSucceededFuture(
                     eventLoop.makeSucceededFuture(
-                        Apodini.Response.send(message)
+                        ApodiniExtension.Response.send(message)
                     )
                )
             )

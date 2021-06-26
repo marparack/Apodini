@@ -11,11 +11,15 @@
 import Foundation
 import NIO
 import Apodini
+import ApodiniExtension
 //import ApodiniDeployBuildSupport
+import Apodini
 import ApodiniDeploy
 import DeploymentTargetLocalhostRuntime
 import DeploymentTargetAWSLambdaRuntime
+import Apodini
 import ApodiniREST
+import Apodini
 import ApodiniOpenAPI
 
 
@@ -61,7 +65,7 @@ struct LH_GreeterResponse: Codable {
 }
 
 struct LH_Greeter: Handler {
-    @Apodini.Environment(\.RHI) private var RHI
+    @ApodiniExtension.Environment(\.RHI) private var RHI
     
     @Parameter(.http(.path)) var name: String
     
@@ -122,7 +126,7 @@ struct AWS_RandomNumberGenerator: InvocableHandler, HandlerWithDeploymentOptions
 
 
 struct AWS_Greeter: Handler {
-    @Apodini.Environment(\.RHI) private var RHI
+    @ApodiniExtension.Environment(\.RHI) private var RHI
     
     @Parameter private var age: Int
     @Parameter(.http(.path)) var name: String
@@ -155,7 +159,7 @@ struct Text2: Handler {
     }
 }
 
-struct WebService: Apodini.WebService {    
+struct WebService: ApodiniExtension.WebService {    
     var content: some Component {
         Group("aws_rand") {
             Text2("").operation(.create)

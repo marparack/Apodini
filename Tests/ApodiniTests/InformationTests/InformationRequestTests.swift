@@ -6,6 +6,8 @@
 //
 
 @testable import Apodini
+@testable import ApodiniExtension
+@testable import Apodini
 @testable import ApodiniREST
 import XCTApodini
 import Vapor
@@ -17,7 +19,7 @@ final class InformationRequestTests: XCTApodiniTest {
             let testExpectations: (Set<AnyInformation>) throws -> Void
             
             
-            @Apodini.Environment(\.connection) var connection: Connection
+            @ApodiniExtension.Environment(\.connection) var connection: Connection
             
             
             func handle() -> Int {

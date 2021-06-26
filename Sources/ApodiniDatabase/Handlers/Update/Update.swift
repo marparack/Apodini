@@ -2,6 +2,7 @@ import Foundation
 import Fluent
 @_implementationOnly import Vapor
 import Apodini
+import ApodiniExtension
 
 /// A Handler that updates a `DatabaseModel` with the given id with the new object or single parameters of the request.
 /// If the request contains a encoded model, `Update` uses this to replace the model found under the given `ID` in the database.
@@ -9,7 +10,7 @@ import Apodini
 /// in the model found under the given `ID` in the database.
 /// It uses the database that has been specified in the `DatabaseConfiguration`.
 public struct Update<Model: DatabaseModel>: Handler {
-    @Apodini.Environment(\.database)
+    @ApodiniExtension.Environment(\.database)
     private var database: Fluent.Database
     
     @Parameter<[String: TypeContainer]>

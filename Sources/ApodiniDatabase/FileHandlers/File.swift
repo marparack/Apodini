@@ -1,6 +1,7 @@
 import Foundation
 import NIO
 import Apodini
+import ApodiniExtension
 
 /// An internal struct to hold the data of a file uploaded to Apodini.
 public struct File: Codable {

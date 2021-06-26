@@ -6,14 +6,20 @@
 //
 
 import Apodini
+import ApodiniExtension
+import Apodini
 import ApodiniREST
+import Apodini
 import ApodiniGRPC
+import Apodini
 import ApodiniProtobuffer
+import Apodini
 import ApodiniOpenAPI
+import Apodini
 import ApodiniWebSocket
 
 
-struct TestWebService: Apodini.WebService {
+struct TestWebService: ApodiniExtension.WebService {
     let greeterRelationship = Relationship(name: "greeter")
 
     var content: some Component {

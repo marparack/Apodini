@@ -1,6 +1,7 @@
 import Foundation
 import NIO
 import Apodini
+import ApodiniExtension
 
 /// A Handler which enables the download of files saved to Apodini.
 /// The `MultipleDownloader` will returns all file it finds under the given name or suffix

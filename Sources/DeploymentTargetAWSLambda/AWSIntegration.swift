@@ -7,7 +7,8 @@
 
 import Foundation
 import ApodiniUtils
-import class Apodini.AnyHandlerIdentifier
+import class ApodiniExtension.AnyHandlerIdentifier
+import Apodini
 import ApodiniDeployBuildSupport
 import DeploymentTargetAWSLambdaCommon
 import Logging

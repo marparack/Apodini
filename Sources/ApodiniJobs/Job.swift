@@ -1,5 +1,6 @@
 import NIO
 import Apodini
+import ApodiniExtension
 @_implementationOnly import SwifCron
 
 /// `Job`s allow to create background running tasks

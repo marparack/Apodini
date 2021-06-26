@@ -6,6 +6,7 @@
 //
 
 import Apodini
+import ApodiniExtension
 
 /// `RESTDependentStaticConfiguration`s are used to register static services dependend on the `RESTInterfaceExporter`
 public protocol RESTDependentStaticConfiguration {

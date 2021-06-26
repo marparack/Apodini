@@ -1,10 +1,11 @@
 import Fluent
 import Apodini
+import ApodiniExtension
 
 /// Creates, if possible, an array of object in the database that conform to `DatabaseModel`
 /// See also `Create`.
 public struct CreateAll<Model: DatabaseModel>: Handler {
-    @Apodini.Environment(\.database)
+    @ApodiniExtension.Environment(\.database)
     private var database: Fluent.Database
     
     @Environment(\.eventLoopGroup)

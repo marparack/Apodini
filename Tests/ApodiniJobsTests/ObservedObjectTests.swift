@@ -1,4 +1,5 @@
 import Apodini
+@testable import Apodini
 @testable import ApodiniJobs
 import XCTApodini
 
@@ -16,8 +17,8 @@ final class ObservedObjectTests: XCTApodiniTest {
         }
     }
     
-    class Observer: Apodini.ObservableObject {
-        @Apodini.Published var num = 0
+    class Observer: ApodiniExtension.ObservableObject {
+        @ApodiniExtension.Published var num = 0
         var text = "Hello"
     }
     
@@ -69,7 +70,7 @@ final class ObservedObjectTests: XCTApodiniTest {
     
     func testJobAsObservableObject() throws {
         struct EmittingJob: Job {
-            @Apodini.Published var num = 0
+            @ApodiniExtension.Published var num = 0
             
             func run() {
                 num = 42

@@ -7,6 +7,8 @@
 
 import Foundation
 import Apodini
+import ApodiniExtension
+import Apodini
 import ApodiniDeployRuntimeSupport
 import DeploymentTargetLocalhostCommon
 
@@ -33,7 +35,7 @@ public class LocalhostRuntime: DeploymentProviderRuntime {
         self.currentNodeCustomLaunchInfo = launchInfo
     }
     
-    public func configure(_ app: Apodini.Application) throws {
+    public func configure(_ app: ApodiniExtension.Application) throws {
         app.http.address = .hostname(nil, port: currentNodeCustomLaunchInfo.port)
     }
     

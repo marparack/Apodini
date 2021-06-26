@@ -3,6 +3,7 @@
 //
 
 import Apodini
+import ApodiniExtension
 import Foundation
 
 struct LinksFormatter: RelationshipFormatter {
@@ -21,7 +22,7 @@ struct LinksFormatter: RelationshipFormatter {
     }
 }
 
-extension Apodini.Operation {
+extension ApodiniExtension.Operation {
     /// Defines the order of formatting for the `LinksFormatter`.
     /// Bigger number means bigger priority.
     /// Higher priority will shadow lower priority.

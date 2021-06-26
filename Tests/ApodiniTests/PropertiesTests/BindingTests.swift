@@ -8,8 +8,10 @@
 import Foundation
 
 @testable import Apodini
+@testable import ApodiniExtension
 import XCTest
 import XCTApodini
+import Apodini
 import ApodiniREST
 
 final class BindingTests: ApodiniTests, EnvironmentAccessible {

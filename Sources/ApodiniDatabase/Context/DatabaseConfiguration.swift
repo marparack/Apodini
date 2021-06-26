@@ -1,5 +1,6 @@
 import Fluent
 import Apodini
+import ApodiniExtension
 import NIOSSL
 @_implementationOnly import FluentSQLiteDriver
 @_implementationOnly import FluentMySQLDriver

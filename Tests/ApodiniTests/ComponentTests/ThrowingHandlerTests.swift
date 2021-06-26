@@ -6,7 +6,10 @@
 //
 
 @testable import Apodini
+@testable import ApodiniExtension
+@testable import Apodini
 @testable import ApodiniREST
+@testable import Apodini
 @testable import ApodiniVaporSupport
 import XCTest
 import Fluent
@@ -25,7 +28,7 @@ class ThrowingErrorTests: ApodiniTests {
     }
     
     struct ThrowingEventLoopFutureHandler: Handler {
-        @Apodini.Environment(\.database)
+        @ApodiniExtension.Environment(\.database)
         var database: Database
         
         func handle() throws -> EventLoopFuture<String> {

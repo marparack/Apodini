@@ -4,6 +4,8 @@
 
 import Foundation
 import Apodini
+import ApodiniExtension
+import Apodini
 import ApodiniVaporSupport
 import Vapor
 
@@ -30,7 +32,7 @@ struct RESTEndpointHandler<H: Handler> {
     }
     
     
-    func register(at routesBuilder: Vapor.RoutesBuilder, using operation: Apodini.Operation) {
+    func register(at routesBuilder: Vapor.RoutesBuilder, using operation: ApodiniExtension.Operation) {
         routesBuilder.on(Vapor.HTTPMethod(operation), [], use: self.handleRequest)
     }
 
@@ -47,7 +49,7 @@ struct RESTEndpointHandler<H: Handler> {
                                     parameters: parameters)
                 }
             }
-            .flatMap { (response: Apodini.Response<EnrichedContent>) in
+            .flatMap { (response: ApodiniExtension.Response<EnrichedContent>) in
                 guard let enrichedContent = response.content else {
                     return ResponseContainer(Empty.self, status: response.status, information: response.information)
                         .encodeResponse(for: request)

@@ -5,6 +5,7 @@
 import XCTest
 import XCTApodini
 @testable import Apodini
+@testable import ApodiniExtension
 
 class NameShadowingTests: ApodiniTests {
     var aRelationship = Relationship(name: "a")

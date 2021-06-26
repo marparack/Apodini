@@ -1,4 +1,5 @@
 import Apodini
+import ApodiniExtension
 
 extension Application {
     /// Holds the `Scheduler` of the web service.

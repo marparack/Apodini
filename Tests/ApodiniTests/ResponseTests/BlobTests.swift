@@ -6,7 +6,10 @@
 //
 
 import XCTApodini
+@testable import Apodini
 @testable import ApodiniREST
+@testable import Apodini
+@testable import ApodiniExtension
 @testable import Apodini
 @testable import ApodiniOpenAPI
 import Vapor
@@ -58,7 +61,7 @@ final class BlobTests: ApodiniTests {
             @Parameter var name: String
             @Parameter var mimeType: MimeType
             
-            func handle() -> Apodini.Response<Blob> {
+            func handle() -> ApodiniExtension.Response<Blob> {
                 .send(Blob(Data(name.utf8), type: mimeType), status: .ok)
             }
         }

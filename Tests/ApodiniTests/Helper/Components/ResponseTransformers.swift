@@ -3,6 +3,7 @@
 //
 
 @testable import Apodini
+@testable import ApodiniExtension
 
 struct EmojiMediator: ResponseTransformer {
     private let emojis: String

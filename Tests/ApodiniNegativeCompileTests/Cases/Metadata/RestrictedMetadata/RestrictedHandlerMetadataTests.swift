@@ -3,6 +3,7 @@
 //
 
 import Apodini
+import ApodiniExtension
 
 private struct TestHandler: Handler {
     func handle() -> String {

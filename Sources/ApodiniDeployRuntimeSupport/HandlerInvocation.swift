@@ -7,7 +7,9 @@
 
 import Foundation
 import Apodini
+import ApodiniExtension
 import ApodiniUtils
+import Apodini
 import ApodiniDeployBuildSupport
 import Vapor
 @_implementationOnly import AssociatedTypeRequirementsVisitor

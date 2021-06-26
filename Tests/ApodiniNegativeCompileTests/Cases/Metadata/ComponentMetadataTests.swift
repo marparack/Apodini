@@ -3,6 +3,7 @@
 //
 
 import Apodini
+import ApodiniExtension
 
 private struct TestComponent: Component {
     var content: some Component {

@@ -7,6 +7,7 @@
 
 import XCTest
 @testable import Apodini
+@testable import ApodiniExtension
 
 
 final class PropertiesTests: ApodiniTests {
@@ -15,10 +16,10 @@ final class PropertiesTests: ApodiniTests {
             ("number", Parameter<Int>(wrappedValue: 42)),
             ("anOtherNumber", Parameter<Int>(wrappedValue: 0)),
             ("string", Parameter<String>(wrappedValue: "Paul")),
-            ("enironment", Apodini.Environment(\.database))
+            ("enironment", ApodiniExtension.Environment(\.database))
         ]
         
-        let properties = Apodini.Properties(elements)
+        let properties = ApodiniExtension.Properties(elements)
         XCTAssertEqual(properties.wrappedValue.count, elements.count)
         
         for (key, value) in elements {

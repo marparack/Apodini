@@ -6,6 +6,7 @@
 //
 
 import Apodini
+import ApodiniExtension
 import XCTApodini
 
 // This file doesn't test functionality, but only that certain expressions, which

@@ -5,6 +5,8 @@
 import XCTest
 @_implementationOnly import OpenAPIKit
 @testable import Apodini
+@testable import ApodiniExtension
+@testable import Apodini
 @testable import ApodiniOpenAPI
 
 final class OpenAPIPathsObjectBuilderTests: ApodiniTests {
@@ -13,7 +15,7 @@ final class OpenAPIPathsObjectBuilderTests: ApodiniTests {
         var someProp = "somesome"
     }
 
-    struct ResponseStruct: Apodini.Content {
+    struct ResponseStruct: ApodiniExtension.Content {
         var someResponse = "response"
         var someCount: Int?
     }

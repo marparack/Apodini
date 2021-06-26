@@ -1,4 +1,5 @@
 import Apodini
+import ApodiniExtension
 import Fluent
 @_implementationOnly import Vapor
 

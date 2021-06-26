@@ -9,6 +9,7 @@
 import XCTest
 import XCTApodini
 @testable import Apodini
+@testable import ApodiniExtension
 
 
 final class ThreadSafetyTests: ApodiniTests {
@@ -29,7 +30,7 @@ final class ThreadSafetyTests: ApodiniTests {
             let id = randomString(length: 40)
             let request = MockRequest.createRequest(on: greeter, running: app.eventLoopGroup.next(), queuedParameters: id)
             var greeter = greeter
-            Apodini.activate(&greeter)
+            ApodiniExtension.activate(&greeter)
             let response: String = try! request.enterRequestContext(with: greeter) { component in
                 component.handle()
             }
@@ -50,7 +51,7 @@ final class ThreadSafetyTests: ApodiniTests {
         for _ in 0..<count {
             let id = randomString(length: 40)
             let request = MockRequest.createRequest(on: greeter, running: app.eventLoopGroup.next(), queuedParameters: id)
-            Apodini.activate(&greeter)
+            ApodiniExtension.activate(&greeter)
             let response: String = try request.enterRequestContext(with: greeter) { component in
                 component.handle()
             }

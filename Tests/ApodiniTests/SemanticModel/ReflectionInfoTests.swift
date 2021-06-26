@@ -3,10 +3,12 @@
 //
 
 import XCTest
+import Apodini
 import ApodiniTypeReflection
 @_implementationOnly import Runtime
 
 @testable import Apodini
+@testable import ApodiniExtension
 
 class ReflectionInfoTests: ApodiniTests {
     func testCardinalityIsEquatable() throws {

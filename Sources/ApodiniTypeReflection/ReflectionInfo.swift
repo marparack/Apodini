@@ -3,6 +3,7 @@
 //
 
 import Apodini
+import ApodiniExtension
 import Runtime
 
 /// `PropertyInfo` models the property/field/member layout in a composite type.

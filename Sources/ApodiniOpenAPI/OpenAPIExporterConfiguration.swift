@@ -4,6 +4,8 @@
 
 import Foundation
 import Apodini
+import ApodiniExtension
+import Apodini
 import ApodiniREST
 import OpenAPIKit
 
@@ -66,7 +68,7 @@ extension ApodiniOpenAPI.OpenAPI {
     }
 
     /// The storage key for OpenAPI-related information.
-    public struct StorageKey: Apodini.StorageKey {
+    public struct StorageKey: ApodiniExtension.StorageKey {
         public typealias Value = StorageValue
     }
 

@@ -6,7 +6,10 @@
 //
 
 @testable import Apodini
+@testable import ApodiniExtension
+@testable import Apodini
 @testable import ApodiniREST
+@testable import Apodini
 @testable import ApodiniOpenAPI
 import SotoXML
 import Vapor
@@ -107,7 +110,7 @@ class ExporterConfigurationTests: XCTestCase {
 class RESTExporterConfigurationTests: ApodiniTests {
     lazy var application = Vapor.Application(.testing)
 
-    struct User: Apodini.Content, Identifiable, Decodable {
+    struct User: ApodiniExtension.Content, Identifiable, Decodable {
         let id: String
         let name: String
     }

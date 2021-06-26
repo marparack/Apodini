@@ -40,7 +40,9 @@ let package = Package(
     ],
     products: [
         .library(name: "Apodini", targets: ["Apodini"]),
+        .library(name: "ApodiniVisitors", targets: ["ApodiniVisitors"]),
         .library(name: "ApodiniExtension", targets: ["ApodiniExtension"]),
+        .library(name: "ApodiniExtensionX", targets: ["ApodiniExtensionX"]),
         .library(name: "ApodiniUtils", targets: ["ApodiniUtils"]),
         .library(name: "ApodiniDatabase", targets: ["ApodiniDatabase"]),
         .library(name: "ApodiniGRPC", targets: ["ApodiniGRPC"]),
@@ -120,9 +122,28 @@ let package = Package(
         ),
         
         .target(
-            name: "Apodini",
+            name: "ApodiniVisitors",
             dependencies: [
                 .target(name: "ApodiniUtils"),
+                .product(name: "NIO", package: "swift-nio"),
+            ]
+        ),
+        
+            .target(
+                name: "Apodini",
+                dependencies: [
+                    .target(name: "ApodiniUtils"),
+                    .target(name: "ApodiniVisitors"),
+                    .product(name: "NIO", package: "swift-nio"),
+                ]
+            ),
+        
+        .target(
+            name: "ApodiniExtension",
+            dependencies: [
+                .target(name: "ApodiniUtils"),
+                .target(name: "ApodiniVisitors"),
+                .target(name: "Apodini"),
                 .product(name: "AssociatedTypeRequirementsKit", package: "AssociatedTypeRequirementsKit"),
                 .product(name: "NIO", package: "swift-nio"),
                 .product(name: "NIOFoundationCompat", package: "swift-nio"),
@@ -143,10 +164,11 @@ let package = Package(
         ),
         
         .target(
-            name: "ApodiniExtension",
+            name: "ApodiniExtensionX",
             dependencies: [
                 .target(name: "ApodiniUtils"),
                 .target(name: "Apodini"),
+				.target(name: "ApodiniExtension"),
                 .product(name: "OpenCombine", package: "OpenCombine"),
                 .product(name: "NIO", package: "swift-nio"),
             ]
@@ -183,7 +205,8 @@ let package = Package(
         .testTarget(
             name: "ApodiniNegativeCompileTests",
             dependencies: [
-                .target(name: "Apodini")
+                .target(name: "Apodini"),
+				.target(name: "ApodiniExtension")
             ],
             exclude: ["Cases"]
         ),
@@ -192,6 +215,7 @@ let package = Package(
             name: "ApodiniDatabase",
             dependencies: [
                 .target(name: "Apodini"),
+				.target(name: "ApodiniExtension"),
                 .target(name: "ApodiniVaporSupport"),
                 .product(name: "Fluent", package: "fluent"),
                 .product(name: "FluentKit", package: "fluent-kit"),
@@ -206,6 +230,7 @@ let package = Package(
             name: "ApodiniGRPC",
             dependencies: [
                 .target(name: "Apodini"),
+				.target(name: "ApodiniExtension"),
                 .target(name: "ApodiniVaporSupport"),
                 .target(name: "ProtobufferCoding")
             ]
@@ -215,6 +240,7 @@ let package = Package(
             name: "ApodiniJobs",
             dependencies: [
                 .target(name: "Apodini"),
+				.target(name: "ApodiniExtension"),
                 .product(name: "SwifCron", package: "SwifCron")
             ]
         ),
@@ -231,6 +257,7 @@ let package = Package(
             name: "ApodiniNotifications",
             dependencies: [
                 .target(name: "Apodini"),
+				.target(name: "ApodiniExtension"),
                 .target(name: "ApodiniVaporSupport"),
                 .target(name: "ApodiniDatabase"),
                 .product(name: "APNSwift", package: "apnswift"),
@@ -254,6 +281,7 @@ let package = Package(
             name: "ApodiniOpenAPI",
             dependencies: [
                 .target(name: "Apodini"),
+				.target(name: "ApodiniExtension"),
                 .target(name: "ApodiniREST"),
                 .target(name: "ApodiniVaporSupport"),
                 .target(name: "ApodiniTypeReflection"),
@@ -269,6 +297,7 @@ let package = Package(
             name: "ApodiniProtobuffer",
             dependencies: [
                 .target(name: "Apodini"),
+				.target(name: "ApodiniExtension"),
                 .target(name: "ApodiniTypeReflection"),
                 .target(name: "ApodiniVaporSupport"),
                 .target(name: "ProtobufferCoding"),
@@ -280,6 +309,7 @@ let package = Package(
             name: "ApodiniREST",
             dependencies: [
                 .target(name: "Apodini"),
+				.target(name: "ApodiniExtension"),
                 .target(name: "ApodiniVaporSupport")
             ]
         ),
@@ -288,6 +318,7 @@ let package = Package(
             name: "ApodiniTypeReflection",
             dependencies: [
                 .target(name: "Apodini"),
+				.target(name: "ApodiniExtension"),
                 .product(name: "Runtime", package: "Runtime")
             ]
         ),
@@ -296,6 +327,7 @@ let package = Package(
             name: "ApodiniVaporSupport",
             dependencies: [
                 .target(name: "Apodini"),
+				.target(name: "ApodiniExtension"),
                 .product(name: "Vapor", package: "vapor")
             ]
         ),
@@ -304,8 +336,9 @@ let package = Package(
             name: "ApodiniWebSocket",
             dependencies: [
                 .target(name: "Apodini"),
+				.target(name: "ApodiniExtension"),
                 .target(name: "ApodiniUtils"),
-                .target(name: "ApodiniExtension"),
+                .target(name: "ApodiniExtensionX"),
                 .target(name: "ApodiniVaporSupport"),
                 .product(name: "OpenCombine", package: "OpenCombine"),
                 .product(name: "OpenCombineFoundation", package: "OpenCombine"),
@@ -342,6 +375,7 @@ let package = Package(
                 .product(name: "FluentSQLiteDriver", package: "fluent-sqlite-driver"),
                 .product(name: "CwlPreconditionTesting", package: "CwlPreconditionTesting", condition: .when(platforms: [.macOS])),
                 .target(name: "Apodini"),
+				.target(name: "ApodiniExtension"),
                 .target(name: "ApodiniDatabase"),
                 .target(name: "ApodiniUtils")
             ]
@@ -352,6 +386,7 @@ let package = Package(
             name: "ApodiniDeployTestWebService",
             dependencies: [
                 .target(name: "Apodini"),
+				.target(name: "ApodiniExtension"),
                 .target(name: "ApodiniDeployBuildSupport"),
                 .target(name: "DeploymentTargetLocalhostRuntime"),
                 .target(name: "DeploymentTargetAWSLambdaRuntime"),
@@ -373,6 +408,7 @@ let package = Package(
             name: "ApodiniDeploy",
             dependencies: [
                 .target(name: "Apodini"),
+				.target(name: "ApodiniExtension"),
                 .target(name: "ApodiniUtils"),
                 .target(name: "ApodiniVaporSupport"),
                 .target(name: "ApodiniOpenAPI"),
@@ -386,6 +422,7 @@ let package = Package(
             name: "ApodiniDeployBuildSupport",
             dependencies: [
                 .target(name: "Apodini"),
+				.target(name: "ApodiniExtension"),
                 .target(name: "ApodiniUtils"),
                 .product(name: "Logging", package: "swift-log"),
                 .product(name: "Runtime", package: "Runtime"),
@@ -397,6 +434,7 @@ let package = Package(
             dependencies: [
                 .target(name: "ApodiniDeployBuildSupport"),
                 .target(name: "Apodini"),
+				.target(name: "ApodiniExtension"),
                 .target(name: "ApodiniUtils"),
                 .target(name: "ApodiniVaporSupport"),
                 .product(name: "Vapor", package: "vapor"),

@@ -1,6 +1,7 @@
 import Foundation
 import NIO
 import Apodini
+import ApodiniExtension
 
 /// A Handler which enables the upload of files and
 /// images to a specified directory in Apodini.

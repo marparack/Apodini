@@ -7,6 +7,7 @@
 
 import Foundation
 import Apodini
+import ApodiniExtension
 
 /// Provides utility functionality that is common to
 /// both, the `ProtobufferInterfaceExporter` and

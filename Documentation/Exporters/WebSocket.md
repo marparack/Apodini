@@ -106,10 +106,10 @@ struct StatefulUserHandler: Handler {
     var userId: Int
     @Parameter
     var name: String
-    @Apodini.Environment(\.connection)
+    @ApodiniExtension.Environment(\.connection)
     var connection: Connection
 
-    func handle() -> Apodini.Response<User> {
+    func handle() -> ApodiniExtension.Response<User> {
         if connection.state == .end {
             return .end
         } else {

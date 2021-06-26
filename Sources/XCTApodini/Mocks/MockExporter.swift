@@ -6,6 +6,7 @@ import Foundation
 import class Vapor.Application
 import class Vapor.Request
 import Apodini
+import ApodiniExtension
 
 extension String: ExporterRequest {}
 
@@ -33,7 +34,7 @@ open class MockExporter<Request: ExporterRequest>: InterfaceExporter {
         self.onFinished = onFinished
     }
 
-    public required init(_ app: Apodini.Application) {
+    public required init(_ app: ApodiniExtension.Application) {
         self.onExport = { _ in }
         self.onFinished = { _ in }
     }
@@ -56,7 +57,7 @@ open class MockExporter<Request: ExporterRequest>: InterfaceExporter {
 
     public func retrieveParameter<Type: Decodable>(_ parameter: EndpointParameter<Type>, for request: Request) throws -> Type?? {
         guard let first = parameterValues.first else {
-            Apodini.Application.logger.warning("MockExporter failed to retrieve next parameter for '\(parameter.description)'. Queue is empty")
+            ApodiniExtension.Application.logger.warning("MockExporter failed to retrieve next parameter for '\(parameter.description)'. Queue is empty")
             return nil // non existence
         }
         parameterValues.removeFirst()

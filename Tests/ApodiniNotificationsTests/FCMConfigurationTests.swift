@@ -1,5 +1,6 @@
 import XCTest
 import XCTApodini
+@testable import Apodini
 @testable import ApodiniNotifications
 
 class FCMConfigurationTests: XCTApodiniTest {

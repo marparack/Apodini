@@ -7,9 +7,13 @@
 
 import Foundation
 import Apodini
+import ApodiniExtension
 import ApodiniUtils
+import Apodini
 import ApodiniVaporSupport
+import Apodini
 import ApodiniDeployBuildSupport
+import Apodini
 import ApodiniDeployRuntimeSupport
 @_implementationOnly import Vapor
 @_implementationOnly import AssociatedTypeRequirementsVisitor
@@ -46,7 +50,7 @@ public final class ApodiniDeploy: Configuration {
                                 config: config)
     }
     
-    public func configure(_ app: Apodini.Application) {
+    public func configure(_ app: ApodiniExtension.Application) {
         /// Instanciate exporter
         let deployExporter = ApodiniDeployInterfaceExporter(app, self.configuration)
         
@@ -61,7 +65,7 @@ public final class ApodiniDeploy: Configuration {
 /// b) is responsible for handling parameter retrieval when manually invoking handlers.
 /// c) exports an additional endpoint used to manually invoke a handler remotely over the network.
 class ApodiniDeployInterfaceExporter: InterfaceExporter {
-    struct ApplicationStorageKey: Apodini.StorageKey {
+    struct ApplicationStorageKey: ApodiniExtension.StorageKey {
         typealias Value = ApodiniDeployInterfaceExporter
     }
     
@@ -90,7 +94,7 @@ class ApodiniDeployInterfaceExporter: InterfaceExporter {
     }
     
     
-    let app: Apodini.Application
+    let app: ApodiniExtension.Application
     let exporterConfiguration: ApodiniDeploy.ExporterConfiguration
     var vaporApp: Vapor.Application { app.vapor.app }
     
@@ -100,7 +104,7 @@ class ApodiniDeployInterfaceExporter: InterfaceExporter {
     private(set) var deploymentProviderRuntime: DeploymentProviderRuntime?
     
     
-    init(_ app: Apodini.Application,
+    init(_ app: ApodiniExtension.Application,
          _ exporterConfiguration: ApodiniDeploy.ExporterConfiguration = ApodiniDeploy.ExporterConfiguration()) {
         self.app = app
         self.exporterConfiguration = exporterConfiguration
@@ -241,7 +245,7 @@ class ApodiniDeployInterfaceExporter: InterfaceExporter {
 // MARK: ApodiniDeployInterfaceExporter.ExporterRequest
 
 extension ApodiniDeployInterfaceExporter {
-    struct ExporterRequest: Apodini.ExporterRequest {
+    struct ExporterRequest: ApodiniExtension.ExporterRequest {
         enum Argument {
             case value(Any)    // the value, as-is
             case encoded(Data) // the value, encoded
@@ -251,7 +255,7 @@ extension ApodiniDeployInterfaceExporter {
         
         init<H: Handler>(endpoint: Endpoint<H>, collectedArguments: [CollectedArgument<H>]) {
             argumentValues = .init(uniqueKeysWithValues: collectedArguments.map { argument -> (String, Argument) in
-                guard let paramId = Apodini.Internal.getParameterId(ofBinding: endpoint.handler[keyPath: argument.handlerKeyPath]) else {
+                guard let paramId = ApodiniExtension.Internal.getParameterId(ofBinding: endpoint.handler[keyPath: argument.handlerKeyPath]) else {
                     fatalError("Unable to get @Parameter id from collected parameter with key path \(argument.handlerKeyPath)")
                 }
                 let endpointParam = endpoint.parameters.first { $0.id == paramId }!

@@ -9,12 +9,16 @@
 
 import Foundation
 @testable import Apodini
+@testable import ApodiniExtension
+import Apodini
 import ApodiniREST
 import XCTApodini
 import Vapor
+@testable import Apodini
 @testable import ApodiniVaporSupport
 import XCTVapor
 import XCTest
+import Apodini
 import ApodiniDeploy
 
 
@@ -29,7 +33,7 @@ extension Vapor.ContentContainer {
 }
 
 
-private struct TestWebService: Apodini.WebService {
+private struct TestWebService: ApodiniExtension.WebService {
     struct F: InvocableHandler {
         class HandlerIdentifier: ScopedHandlerIdentifier<F> {
             static let main = HandlerIdentifier("main")
@@ -41,7 +45,7 @@ private struct TestWebService: Apodini.WebService {
     }
     
     struct FInvoker: Handler {
-        @Apodini.Environment(\.RHI) private var RHI
+        @ApodiniExtension.Environment(\.RHI) private var RHI
         
         func handle() -> EventLoopFuture<String> {
             RHI.invoke(F.self, identifiedBy: .main)
@@ -96,7 +100,7 @@ private struct TestWebService: Apodini.WebService {
 
 
     struct Greeter: Handler {
-        @Apodini.Environment(\.RHI) private var RHI
+        @ApodiniExtension.Environment(\.RHI) private var RHI
         
         @Parameter var name: String
         @Parameter var transformation: TextTransformer.Transformation?
@@ -157,7 +161,7 @@ private struct TestWebService: Apodini.WebService {
     
     
     struct Calculator: Handler {
-        @Apodini.Environment(\.RHI) private var RHI
+        @ApodiniExtension.Environment(\.RHI) private var RHI
         
         @Parameter var operation: String
         @Parameter var lhs: Int

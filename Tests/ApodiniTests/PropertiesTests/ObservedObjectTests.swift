@@ -1,4 +1,6 @@
 @testable import Apodini
+@testable import ApodiniExtension
+@testable import Apodini
 @testable import ApodiniREST
 import Vapor
 import Foundation
@@ -7,9 +9,9 @@ import XCTApodini
 
 class ObservedObjectTests: ApodiniTests {
     // check setting changed
-    class TestObservable: Apodini.ObservableObject {
-        @Apodini.Published var number: Int
-        @Apodini.Published var text: String
+    class TestObservable: ApodiniExtension.ObservableObject {
+        @ApodiniExtension.Published var number: Int
+        @ApodiniExtension.Published var text: String
         
         init(_ number: Int = 0, _ text: String = "Hello") {
             self.number = number
@@ -39,7 +41,7 @@ class ObservedObjectTests: ApodiniTests {
     
     func testObservedObjectEnvironmentInjection() throws {
         struct TestHandler: Handler {
-            @Apodini.Environment(\Keys.testObservable) var testObservable: TestObservable
+            @ApodiniExtension.Environment(\Keys.testObservable) var testObservable: TestObservable
             
             func handle() -> String {
                 testObservable.text
@@ -61,13 +63,13 @@ class ObservedObjectTests: ApodiniTests {
         
         XCTAssertNoThrow(handler.handle())
         XCTAssertEqual(observedObjects.count, 1)
-        let observedObject = try XCTUnwrap(observedObjects[0] as? Apodini.Environment<Keys, TestObservable>)
+        let observedObject = try XCTUnwrap(observedObjects[0] as? ApodiniExtension.Environment<Keys, TestObservable>)
         XCTAssert(observedObject.wrappedValue === testObservable)
     }
     
     func testRegisterObservedListener() throws {
         struct TestHandler: Handler {
-            @Apodini.Environment(\Keys.testObservable) var testObservable: TestObservable
+            @ApodiniExtension.Environment(\Keys.testObservable) var testObservable: TestObservable
             
             func handle() -> String {
                 testObservable.text
@@ -122,7 +124,7 @@ class ObservedObjectTests: ApodiniTests {
     
     func testObservedListenerNotShared() {
         struct TestHandler: Handler {
-            @Apodini.Environment(\Keys.testObservable) var testObservable: TestObservable
+            @ApodiniExtension.Environment(\Keys.testObservable) var testObservable: TestObservable
             
             func handle() -> String {
                 testObservable.text
@@ -188,7 +190,7 @@ class ObservedObjectTests: ApodiniTests {
         let testObservable = TestObservable()
         
         struct TestHandler: Handler {
-            @Apodini.Environment(\Keys.testObservable) var observable: TestObservable
+            @ApodiniExtension.Environment(\Keys.testObservable) var observable: TestObservable
             
             @State var shouldBeTriggeredByObservedObject = false
             
@@ -245,8 +247,8 @@ class ObservedObjectTests: ApodiniTests {
     }
     
     func testDeferredDefualtValueInitialization() throws {
-        class InitializationObserver: Apodini.ObservableObject {
-            @Apodini.Published var date = Date()
+        class InitializationObserver: ApodiniExtension.ObservableObject {
+            @ApodiniExtension.Published var date = Date()
         }
         
         struct TestHandler: Handler {
@@ -311,13 +313,13 @@ class ObservedObjectTests: ApodiniTests {
         struct TestHandler: Handler {
             @ObservedObject var testObservable = TestObservable()
             
-            @Apodini.Environment(\.connection) var connection
+            @ApodiniExtension.Environment(\.connection) var connection
             
             @State var count: Int = 1
             
             let secondObservable: TestObservable
             
-            func handle() -> Apodini.Response<String> {
+            func handle() -> ApodiniExtension.Response<String> {
                 defer {
                     count += 1
                     if testObservable.text == "World" {
@@ -398,15 +400,15 @@ class ObservedObjectTests: ApodiniTests {
     
     func testObservationAfterUsingEnvironmentInjection() throws {
         struct TestHandler: Handler {
-            @Apodini.Environment(\Keys.testObservable) var testObservable
+            @ApodiniExtension.Environment(\Keys.testObservable) var testObservable
             
-            @Apodini.Environment(\.connection) var connection
+            @ApodiniExtension.Environment(\.connection) var connection
             
             @State var count: Int = 1
             
             let secondObservable: TestObservable
 
-            func handle() -> Apodini.Response<String> {
+            func handle() -> ApodiniExtension.Response<String> {
                 defer {
                     count += 1
                     if testObservable.text == "World" {
@@ -489,7 +491,7 @@ class ObservedObjectTests: ApodiniTests {
         struct TestHandler: Handler {
             @EnvironmentObject var testObservable: TestObservable
             
-            @Apodini.Environment(\.connection) var connection
+            @ApodiniExtension.Environment(\.connection) var connection
             
             @State var count: Int = 1
             
@@ -502,7 +504,7 @@ class ObservedObjectTests: ApodiniTests {
                 self.secondObservable = secondObservable
             }
             
-            func handle() -> Apodini.Response<String> {
+            func handle() -> ApodiniExtension.Response<String> {
                 defer {
                     count += 1
                     if testObservable.text == "World" {

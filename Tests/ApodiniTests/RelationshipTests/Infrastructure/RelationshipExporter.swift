@@ -5,6 +5,7 @@
 import XCTest
 import XCTApodini
 @testable import Apodini
+@testable import ApodiniExtension
 
 class RelationshipExporter: MockExporter<String> {
     var endpoints: [(AnyEndpoint, AnyRelationshipEndpoint)] = []
@@ -55,7 +56,7 @@ class RelationshipExporterRetriever: InterfaceExporterVisitor {
 }
 
 
-extension Apodini.Operation: Comparable {
+extension ApodiniExtension.Operation: Comparable {
     func num() -> Int {
         switch self {
         case .read:
@@ -69,7 +70,7 @@ extension Apodini.Operation: Comparable {
         }
     }
 
-    public static func < (lhs: Apodini.Operation, rhs: Apodini.Operation) -> Bool {
+    public static func < (lhs: ApodiniExtension.Operation, rhs: ApodiniExtension.Operation) -> Bool {
         lhs.num() < rhs.num()
     }
 }

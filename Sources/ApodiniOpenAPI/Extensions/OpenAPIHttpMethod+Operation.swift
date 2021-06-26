@@ -4,10 +4,11 @@
 
 import Foundation
 import Apodini
+import ApodiniExtension
 import OpenAPIKit
 
 extension OpenAPIKit.OpenAPI.HttpMethod {
-    init(_ operation: Apodini.Operation) {
+    init(_ operation: ApodiniExtension.Operation) {
         switch operation {
         case .read:
             self = .get

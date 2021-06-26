@@ -8,6 +8,8 @@
 import Foundation
 import XCTest
 @testable import Apodini
+@testable import ApodiniExtension
+@testable import Apodini
 @testable import ApodiniDeploy
 import XCTApodini
 
@@ -62,7 +64,7 @@ struct ComposableOption<Impl: ComposableOptionImpl>: OptionValue, RawRepresentab
 }
 
 
-private struct TestWebService: Apodini.WebService {
+private struct TestWebService: ApodiniExtension.WebService {
     static let handler1Id = AnyHandlerIdentifier("handler1")
     static let handler2Id = AnyHandlerIdentifier("handler2")
     static let handler3Id = AnyHandlerIdentifier("handler3")

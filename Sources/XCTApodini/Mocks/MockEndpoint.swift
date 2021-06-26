@@ -4,6 +4,7 @@
 
 #if DEBUG || RELEASE_TESTING
 @testable import Apodini
+@testable import ApodiniExtension
 import struct Foundation.UUID
 
 // MARK: Mock Endpoint

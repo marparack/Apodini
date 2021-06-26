@@ -1,13 +1,15 @@
 import Foundation
 import XCTest
 @testable import Apodini
+@testable import ApodiniExtension
+@testable import Apodini
 @testable import ApodiniDatabase
 
 final class DirectoriesTests: FileHandlerTests {
     func testDirectories() {
         var environment = Environment(\.directory)
         environment.inject(app: app)
-        environment.activate()
+        environment._activate()
         let directory = environment.wrappedValue
         
         let publicDir: Directories = .public

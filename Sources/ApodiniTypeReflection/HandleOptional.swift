@@ -3,6 +3,7 @@
 //
 
 import Apodini
+import ApodiniExtension
 import ApodiniUtils
 
 /// Handle the `Optional` type.

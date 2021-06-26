@@ -6,6 +6,8 @@
 //
 
 @testable import Apodini
+@testable import ApodiniExtension
+@testable import Apodini
 @testable import ApodiniWebSocket
 import XCTApodini
 
@@ -306,7 +308,7 @@ struct RemoteAddressChecker: Handler {
     }
 }
 
-struct Parameters: Apodini.Content, Equatable {
+struct Parameters: ApodiniExtension.Content, Equatable {
     var param0: String
     var param1: String?
     var pathA: String
@@ -341,7 +343,7 @@ struct ParameterRetrievalTestHandler: Handler {
     }
 }
 
-struct User: Apodini.Content, Identifiable, Decodable {
+struct User: ApodiniExtension.Content, Identifiable, Decodable {
     let id: String
     let name: String
 }
@@ -366,10 +368,10 @@ struct StatefulUserHandler: Handler {
     var userId: User.ID
     @Parameter
     var name: String?
-    @Apodini.Environment(\.connection)
+    @ApodiniExtension.Environment(\.connection)
     var connection: Connection
 
-    func handle() -> Apodini.Response<User> {
+    func handle() -> ApodiniExtension.Response<User> {
         if connection.state == .end {
             XCTAssertNotNil(name)
             // swiftlint:disable:next force_unwrapping
@@ -419,8 +421,8 @@ struct ThrowingHandlerCloseChannel: Handler {
     }
 }
 
-class TestObservable: Apodini.ObservableObject {
-    @Apodini.Published var bool: Bool
+class TestObservable: ApodiniExtension.ObservableObject {
+    @ApodiniExtension.Published var bool: Bool
     
     init() {
         bool = false
@@ -441,13 +443,13 @@ struct BidirectionalHandler: Handler {
     let app: Application
     
     
-    func handle() -> EventLoopFuture<Apodini.Response<Bool>> {
+    func handle() -> EventLoopFuture<ApodiniExtension.Response<Bool>> {
         self.observed.bool.toggle()
         if connection.state == .end {
             return eventLoop.makeSucceededFuture(.end)
         }
         
-        let promise = eventLoop.makePromise(of: Apodini.Response<Bool>.self)
+        let promise = eventLoop.makePromise(of: ApodiniExtension.Response<Bool>.self)
         
         _ = self.app.threadPool.runIfActive(eventLoop: eventLoop) {
             usleep(WebSocketInterfaceExporterTests.blockTime)

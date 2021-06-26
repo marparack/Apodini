@@ -6,8 +6,12 @@
 //
 
 @testable import Apodini
+@testable import ApodiniExtension
+@testable import Apodini
 @testable import ApodiniVaporSupport
+@testable import Apodini
 @testable import ApodiniDatabase
+@testable import Apodini
 @testable import ApodiniREST
 import XCTVapor
 import XCTApodini
@@ -15,7 +19,7 @@ import XCTApodini
 
 final class CustomComponentTests: ApodiniTests {
     struct AddBirdsHandler: Handler {
-        @Apodini.Environment(\.database)
+        @ApodiniExtension.Environment(\.database)
         var database: Database
 
         @Parameter

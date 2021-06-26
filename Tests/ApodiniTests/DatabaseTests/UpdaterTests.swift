@@ -1,5 +1,6 @@
 import Foundation
 import XCTest
+@testable import Apodini
 @testable import ApodiniDatabase
 
 final class UpdaterTests: ApodiniTests {

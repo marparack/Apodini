@@ -6,6 +6,8 @@
 //
 
 @testable import Apodini
+@testable import ApodiniExtension
+import Apodini
 import ApodiniREST
 import XCTApodini
 import XCTVapor
@@ -13,8 +15,8 @@ import XCTest
 
 
 final class DelegationTests: ApodiniTests {
-    class TestObservable: Apodini.ObservableObject {
-        @Apodini.Published var date: Date
+    class TestObservable: ApodiniExtension.ObservableObject {
+        @ApodiniExtension.Published var date: Date
         
         init() {
             self.date = Date()
@@ -24,7 +26,7 @@ final class DelegationTests: ApodiniTests {
     
     struct TestDelegate {
         @Parameter var message: String
-        @Apodini.Environment(\.connection) var connection
+        @ApodiniExtension.Environment(\.connection) var connection
         @ObservedObject var observable: TestObservable
     }
     
@@ -37,13 +39,13 @@ final class DelegationTests: ApodiniTests {
         
         @Throws(.forbidden) var badUserNameError: ApodiniError
         
-        @Apodini.Environment(\.connection) var connection
+        @ApodiniExtension.Environment(\.connection) var connection
         
         init(_ observable: TestObservable? = nil) {
             self.testD = Delegate(TestDelegate(observable: observable ?? TestObservable()))
         }
 
-        func handle() throws -> Apodini.Response<String> {
+        func handle() throws -> ApodiniExtension.Response<String> {
             guard name == "Max" else {
                 switch connection.state {
                 case .open:
@@ -221,10 +223,10 @@ final class DelegationTests: ApodiniTests {
     
     func testBindingInjection() throws {
         var bindingD = Delegate(BindingTestDelegate(number: Binding.constant(0)))
-        bindingD.activate()
+        bindingD._activate()
         
         let connection = Connection(request: MockRequest.createRequest(running: app.eventLoopGroup.next()))
-        bindingD.inject(connection, for: \Apodini.Application.connection)
+        bindingD.inject(connection, for: \ApodiniExtension.Application.connection)
         
         bindingD.set(\.$number, to: 1)
         
@@ -239,7 +241,7 @@ final class DelegationTests: ApodiniTests {
     
     struct NestedEnvironmentDelegate {
         @EnvironmentObject var number: Int
-        @Apodini.Environment(\EnvKey.name) var string: String
+        @ApodiniExtension.Environment(\EnvKey.name) var string: String
     }
     
     struct DelegatingEnvironmentDelegate {
@@ -254,10 +256,10 @@ final class DelegationTests: ApodiniTests {
     func testEnvironmentInjection() throws {
         var envD = Delegate(DelegatingEnvironmentDelegate())
         inject(app: app, to: &envD)
-        envD.activate()
+        envD._activate()
         
         let connection = Connection(request: MockRequest.createRequest(running: app.eventLoopGroup.next()))
-        envD.inject(connection, for: \Apodini.Application.connection)
+        envD.inject(connection, for: \ApodiniExtension.Application.connection)
         
         envD
             .environment(\EnvKey.name, "Max")
@@ -281,10 +283,10 @@ final class DelegationTests: ApodiniTests {
         
         var envD = Delegate(BindingObservedObjectDelegate())
         inject(app: app, to: &envD)
-        envD.activate()
+        envD._activate()
         
         let connection = Connection(request: MockRequest.createRequest(running: app.eventLoopGroup.next()))
-        envD.inject(connection, for: \Apodini.Application.connection)
+        envD.inject(connection, for: \ApodiniExtension.Application.connection)
         
         let afterInitializationBeforeInjection = Date()
         

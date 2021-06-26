@@ -7,8 +7,11 @@
 
 import Foundation
 import Apodini
+import ApodiniExtension
 import ApodiniUtils
+import Apodini
 import ApodiniOpenAPI
+import Apodini
 import ApodiniDeployBuildSupport
 @_implementationOnly import Vapor
 import OpenAPIKit

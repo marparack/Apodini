@@ -1,3 +1,4 @@
+@testable import Apodini
 @testable import ApodiniNotifications
 import XCTest
 import XCTApodini

@@ -1,6 +1,9 @@
 import XCTVapor
 @testable import Apodini
+@testable import ApodiniExtension
+@testable import Apodini
 @testable import ApodiniProtobuffer
+@testable import Apodini
 @testable import ApodiniGRPC
 
 final class ProtobufferBuilderTests: XCTestCase {
@@ -232,7 +235,7 @@ extension ProtobufferBuilderTests {
 
 extension ProtobufferBuilderTests {
     func testServiceParametersZero() throws {
-        struct WebService: Apodini.WebService {
+        struct WebService: ApodiniExtension.WebService {
             var content: some Component {
                 HelloWorld()
             }
@@ -268,7 +271,7 @@ extension ProtobufferBuilderTests {
     }
     
     func testServiceParametersOne() throws {
-        struct WebService: Apodini.WebService {
+        struct WebService: ApodiniExtension.WebService {
             var content: some Component {
                 Greeter()
             }
@@ -309,7 +312,7 @@ extension ProtobufferBuilderTests {
     }
     
     func testServiceParametersTwo() throws {
-        struct WebService: Apodini.WebService {
+        struct WebService: ApodiniExtension.WebService {
             var content: some Component {
                 Multiplier()
             }
@@ -354,7 +357,7 @@ extension ProtobufferBuilderTests {
     }
     
     func testServiceParameterOptionGRPC() throws {
-        struct WebService: Apodini.WebService {
+        struct WebService: ApodiniExtension.WebService {
             var content: some Component {
                 LogarithmTester()
             }
@@ -403,7 +406,7 @@ extension ProtobufferBuilderTests {
     }
     
     func testIntegerWidthConfiguration() throws {
-        struct WebService: Apodini.WebService {
+        struct WebService: ApodiniExtension.WebService {
             var content: some Component {
                 Locator()
             }
@@ -421,7 +424,7 @@ extension ProtobufferBuilderTests {
             }
         }
         
-        struct Coordinate: Apodini.Content {
+        struct Coordinate: ApodiniExtension.Content {
             let langitude: UInt
             let longitude: UInt
         }

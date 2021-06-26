@@ -5,6 +5,7 @@
 import XCTest
 import XCTApodini
 @testable import Apodini
+@testable import ApodiniExtension
 
 class MultiInheritanceTests: ApodiniTests {
     struct TestA: Content {

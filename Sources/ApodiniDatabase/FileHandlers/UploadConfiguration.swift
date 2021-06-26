@@ -1,6 +1,7 @@
 import Foundation
 import NIO
 import Apodini
+import ApodiniExtension
 import Logging
 
 /// Used to specify the directory in which the file is stored.

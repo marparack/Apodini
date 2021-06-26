@@ -7,16 +7,20 @@
 
 import Foundation
 import XCTApodini
+import Apodini
 import ApodiniREST
+import Apodini
 import ApodiniOpenAPI
 import ApodiniUtils
+@testable import Apodini
 @testable import ApodiniDeploy
+@testable import Apodini
 @testable import ApodiniDeployBuildSupport
 import DeploymentTargetLocalhostCommon
 import DeploymentTargetAWSLambdaCommon
 
 
-private struct TestWebService: Apodini.WebService {
+private struct TestWebService: ApodiniExtension.WebService {
     var content: some Component {
         Text("a")
         Group("api") {

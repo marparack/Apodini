@@ -1,4 +1,5 @@
 import Apodini
+@testable import Apodini
 @testable import ApodiniJobs
 import XCTApodini
 

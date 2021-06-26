@@ -7,6 +7,8 @@
 
 import XCTest
 @testable import Apodini
+@testable import ApodiniExtension
+@testable import Apodini
 @testable import ApodiniGRPC
 
 final class GRPCServiceTests: ApodiniTests {
@@ -63,7 +65,7 @@ extension GRPCServiceTests {
 
 extension GRPCServiceTests {
     func testWebServiceHelloWorld() throws {
-        struct WebService: Apodini.WebService {
+        struct WebService: ApodiniExtension.WebService {
             var content: some Component {
                 HelloWorld()
                     .serviceName("service")

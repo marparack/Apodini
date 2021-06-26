@@ -3,6 +3,8 @@
 //
 
 import Apodini
+import ApodiniExtension
+import Apodini
 import ApodiniREST
 import ApodiniUtils
 import Foundation

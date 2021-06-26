@@ -4,7 +4,10 @@
 
 import Foundation
 import Apodini
+import ApodiniExtension
+import Apodini
 import ApodiniREST
+import Apodini
 import ApodiniVaporSupport
 @_implementationOnly import Vapor
 import OpenAPIKit
@@ -28,7 +31,7 @@ public final class OpenAPI: RESTDependentStaticConfiguration {
                                 serverUrls: serverUrls)
     }
     
-    public func configure(_ app: Apodini.Application, parentConfiguration: REST.ExporterConfiguration) {
+    public func configure(_ app: ApodiniExtension.Application, parentConfiguration: REST.ExporterConfiguration) {
         /// Set configartion of parent
         self.configuration.parentConfiguration = parentConfiguration
         
@@ -44,12 +47,12 @@ public final class OpenAPI: RESTDependentStaticConfiguration {
 final class OpenAPIInterfaceExporter: StaticInterfaceExporter {
     static var parameterNamespace: [ParameterNamespace] = .individual
     
-    let app: Apodini.Application
+    let app: ApodiniExtension.Application
     var documentBuilder: OpenAPIDocumentBuilder
     var exporterConfiguration: OpenAPI.ExporterConfiguration
     
     /// Initalize`OpenAPIInterfaceExporter` from `Application`
-    init(_ app: Apodini.Application,
+    init(_ app: ApodiniExtension.Application,
          _ exporterConfiguration: OpenAPI.ExporterConfiguration = OpenAPI.ExporterConfiguration()) {
         self.app = app
         self.exporterConfiguration = exporterConfiguration
@@ -76,7 +79,7 @@ final class OpenAPIInterfaceExporter: StaticInterfaceExporter {
         updateStorage()
     }
     
-    private func setApplicationServer(from app: Apodini.Application) {
+    private func setApplicationServer(from app: ApodiniExtension.Application) {
         let isHttps = app.http.tlsConfiguration != nil
         var hostName: String?
         var port: Int?

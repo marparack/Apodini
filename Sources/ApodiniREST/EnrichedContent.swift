@@ -5,6 +5,7 @@
 import Foundation
 import ApodiniUtils
 import Apodini
+import ApodiniExtension
 
 
 /// A `EnrichedContent` describes the outcome of a `ConnectionContext.handle(...)`.
@@ -35,7 +36,7 @@ struct EnrichedContent: Encodable {
     func formatRelationships<Formatter: RelationshipFormatter>(
         into initialValue: Formatter.Result,
         with formatter: Formatter,
-        for operation: Apodini.Operation
+        for operation: ApodiniExtension.Operation
     ) -> Formatter.Result {
         let context = ResolveContext(content: response.wrappedValue, parameters: parameters)
 
@@ -73,7 +74,7 @@ struct EnrichedContent: Encodable {
     func formatRelationships<Formatter: RelationshipFormatter, T: Comparable>(
         into initialValue: Formatter.Result,
         with formatter: Formatter,
-        sortedBy sortKeyPath: KeyPath<Apodini.Operation, T>
+        sortedBy sortKeyPath: KeyPath<ApodiniExtension.Operation, T>
     ) -> Formatter.Result {
         let context = ResolveContext(content: response.wrappedValue, parameters: parameters)
 
@@ -133,7 +134,7 @@ struct EnrichedContent: Encodable {
     func formatSelfRelationship<Formatter: RelationshipFormatter>(
         into initialValue: inout Formatter.Result,
         with formatter: Formatter,
-        for operation: Apodini.Operation
+        for operation: ApodiniExtension.Operation
     ) -> Bool {
         guard let relationship = endpoint.selfRelationship(for: operation) else {
             return false

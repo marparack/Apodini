@@ -4,6 +4,8 @@
 
 import XCTest
 @testable import Apodini
+@testable import ApodiniExtension
+@testable import Apodini
 @testable import ApodiniOpenAPI
 
 final class TagModifierTests: ApodiniTests {

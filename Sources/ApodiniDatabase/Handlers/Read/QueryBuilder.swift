@@ -5,6 +5,7 @@
 //  Created by Felix Desiderato on 08.12.20.
 //
 import Apodini
+import ApodiniExtension
 import Fluent
 @_implementationOnly import Vapor
 @_implementationOnly import Runtime

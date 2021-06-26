@@ -6,6 +6,7 @@
 //
 
 import Apodini
+import ApodiniExtension
 
 extension WebSocket {
     /// /// Configuration of the `WebSocketInterfaceExporter`
