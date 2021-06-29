@@ -28,9 +28,6 @@ public protocol Request: CustomStringConvertible, CustomDebugStringConvertible {
 
     func retrieveParameter<Element: Codable>(_ parameter: Parameter<Element>) throws -> Element
     
-    /// The `ExporterRequest` that can be used by eg. the logger
-    var raw: Any { get }
-    
     /// Returns metadata from request
     var loggingMetadata: Logger.Metadata { get set }
 }
@@ -45,7 +42,7 @@ public extension Request {
         }
     }
     
-    var defaultLoggingMetadata: Logger.Metadata {
+    private var defaultLoggingMetadata: Logger.Metadata {
         [
          /// Identifies the current logger instance
          "logger-uuid" : .string("\(UUID())"),

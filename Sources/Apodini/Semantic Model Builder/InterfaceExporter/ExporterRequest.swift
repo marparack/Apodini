@@ -3,6 +3,7 @@
 //
 
 import NIO
+import Logging
 
 /// The Protocol any Exporter Request type must conform to
 public protocol ExporterRequest: Reducible {
@@ -11,6 +12,9 @@ public protocol ExporterRequest: Reducible {
     
     /// Additional information that is carried with the request
     var information: Set<AnyInformation> { get }
+    
+    /// Logging Metadata
+    var loggingMetadata: Logger.Metadata { get }
 }
 
 extension ExporterRequest {
@@ -22,6 +26,11 @@ extension ExporterRequest {
     /// Additional information that is carried with the request
     public var information: Set<AnyInformation> {
         []
+    }
+    
+    /// Logging Metadata
+    public var loggingMetadata: Logger.Metadata {
+        [:]
     }
 }
 

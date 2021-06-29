@@ -38,30 +38,14 @@ class ValidatingRequest<I: InterfaceExporter, H: Handler>: Request {
         exporterRequest.information
     }
     
-    var raw: Any {
-        exporterRequest
-    }
-    
     private var wrappedLoggingMetadata: Logger.Metadata = [:]
-    
     // kann auch weitergespinnt werden, zB. loggingMetadata from exporterRequest
     // shifte es soweit "runter" bis der Typ bekannt ist
     var loggingMetadata: Logger.Metadata {
         get {
-            wrappedLoggingMetadata.isEmpty ? [
-                /// Identifies the current logger instance
-                "logger-uuid" : .string("\(UUID())"),
-                /// Name of the endpoint (so the name of the handler class)
-                "endpoint": .string("\(endpoint.description)"),
-                /// Absolut path of the request
-                "endpointAbsolutePath": .string("\(endpoint.absolutePath.asPathString())"),
-                /// Empty parameter dictionary since property is immutable
-                "parameters": .dictionary([:]),
-                /// A textual description of the request, most detailed for the RESTExporter
-                "request-desciption": .string(description.replacingOccurrences(of: "\n", with: ", ").trimmingCharacters(in: .init(charactersIn: ", "))),
-                /// Set remote address
-                "remoteAddress": .string("\(remoteAddress?.description ?? "")")
-            ] : wrappedLoggingMetadata
+            wrappedLoggingMetadata.isEmpty ?
+                defaultLoggingMetadata
+                : wrappedLoggingMetadata
         }
         set {
             wrappedLoggingMetadata = newValue
@@ -87,22 +71,7 @@ class ValidatingRequest<I: InterfaceExporter, H: Handler>: Request {
     func retrieveParameter<Element: Codable>(_ parameter: Parameter<Element>) throws -> Element {
         let validatedParameter: Element = try endpointValidator.validate(one: parameter.id)
         
-        do {
-            let encoder = JSONEncoder()
-            encoder.outputFormatting = [.sortedKeys, .withoutEscapingSlashes]    // maybe .withoutEscapingSlashes? (maybe interferes with kibana?)
-            encoder.dateEncodingStrategy = .iso8601
-            encoder.dataEncodingStrategy = .base64
-            encoder.keyEncodingStrategy = .useDefaultKeys
-            encoder.nonConformingFloatEncodingStrategy = .convertToString(positiveInfinity: "+inf", negativeInfinity: "-inf", nan: "NaN")
-
-            guard let encodedParameterString = String(data: try encoder.encode(validatedParameter), encoding: .utf8) else {
-                fatalError("Logging of parameters failed - Encoding failed")
-            }
-            
-            updateParameterLoggingMetadata(parameterID: parameter.id, parameterJSONEncodedValue: encodedParameterString)
-        } catch {
-            fatalError("Logging of parameters failed")
-        }
+        logParameterMetadata(parameter: validatedParameter, parameterID: parameter.id)
         
         return validatedParameter
     }
@@ -110,7 +79,56 @@ class ValidatingRequest<I: InterfaceExporter, H: Handler>: Request {
     func retrieveAnyParameter(_ id: UUID) throws -> Any {
         try endpointValidator.validate(one: id)
     }
+}
+
+extension ValidatingRequest {
+    private var defaultLoggingMetadata: Logger.Metadata {
+        [
+            /// Identifies the current logger instance
+            "logger-uuid" : .string("\(UUID())"),
+            /// Name of the endpoint (so the name of the handler class)
+            "endpoint": .string("\(endpoint.description)"),
+            /// Absolut path of the request
+            "endpointAbsolutePath": .string("\(endpoint.absolutePath.asPathString())"),
+            /// Empty parameter dictionary since property is immutable
+            "parameters": .dictionary([:]),
+            /// A textual description of the request, most detailed for the RESTExporter
+            "request-desciption": .string(description.replacingOccurrences(of: "\n", with: " ").trimmingCharacters(in: .whitespacesAndNewlines)),
+            /// Set remote address
+            "remoteAddress": .string("\(remoteAddress?.description ?? "")"),
+            /// Exporter type, full name would be 'ApodiniREST.RESTInterfaceExporter', we are only interested in the name after the point
+            "exporter": .string(String(describing: exporter).components(separatedBy: ".")[1]),
+            /// Static parameter namespace
+            "exporterParameterNamespace": .string(I.parameterNamespace.map({$0.description}).joined(separator: ", "))
+        ].merging(exporterRequest.loggingMetadata) { (_, new) in new }
+    }
     
+    /// Default `JSONEncoder`that is used for parameter encoding
+    private var jsonEncoder: JSONEncoder {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = [.sortedKeys, .withoutEscapingSlashes]    // maybe .withoutEscapingSlashes? (maybe interferes with kibana?)
+        encoder.dateEncodingStrategy = .iso8601
+        encoder.dataEncodingStrategy = .base64
+        encoder.keyEncodingStrategy = .useDefaultKeys
+        encoder.nonConformingFloatEncodingStrategy = .convertToString(positiveInfinity: "+inf", negativeInfinity: "-inf", nan: "NaN")
+        
+        return encoder
+    }
+    
+    /// Encode the parameters to JSON and save them in the `loggingMetadata` computed variable
+    private func logParameterMetadata<Element: Codable>(parameter: Element, parameterID: UUID) {
+        do {
+            guard let encodedParameterString = String(data: try jsonEncoder.encode(parameter), encoding: .utf8) else {
+                fatalError("Logging of parameters failed - Encoding failed")
+            }
+            
+            updateParameterLoggingMetadata(parameterID: parameterID, parameterJSONEncodedValue: encodedParameterString)
+        } catch {
+            fatalError("Logging of parameters failed")
+        }
+    }
+    
+    /// Update paremeter logging metadata in the `loggingMetadata` computed variable
     private func updateParameterLoggingMetadata(parameterID: UUID, parameterJSONEncodedValue: String) {
         switch loggingMetadata["parameters"] {
         case .dictionary(var parameterDictionary):
@@ -121,6 +139,7 @@ class ValidatingRequest<I: InterfaceExporter, H: Handler>: Request {
         }
     }
     
+    /// Match parameter UUID to name of parameter
     private func getParameterName(ID: UUID) -> String {
         guard let parameterName = endpoint.parameters.filter({ $0.id == ID }).first?.name else {
             fatalError("Logging of parameters failed - Parameter doesn't exist or has no name")

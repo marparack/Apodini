@@ -7,27 +7,30 @@
 
 import Foundation
 import Logging
+import ApodiniUtils
 //import ApodiniWebSocket
 
 @propertyWrapper
 public struct ConfiguredLogger: DynamicProperty {
     @Environment(\.connection)
     var connection: Connection
-    
+
     @Environment(\.logger)
     var logger: Logger
-    
-    //@Environment(\LoggingStorageValue.configuration)
-    //var loggerConfiguration: LoggerConfiguration
-    
+
+//    @Environment(\LoggingStorageValue.configuration)
+//    var loggerConfiguration: LoggerConfiguration
+
     @Environment(\.storage)
     var storage: Storage
     
     @State
-    var builtLogger: Logger?
+    private var builtLogger: Logger?
     
     @State
-    var lastRequest: Int = 1
+    private var lastRequest: Int = 1
+    
+    private var app: Application?
     
     private let id: UUID
     private let logLevel: Logger.Level?
@@ -39,9 +42,15 @@ public struct ConfiguredLogger: DynamicProperty {
                 
                 // setup basic logger (and parse parameters!)
                 
+                /// Get request and parameters
                 let request = connection.request
+                let loggingMetadata = request.loggingMetadata
                 
-                request.loggingMetadata.forEach { key, value in
+                /// Also able to access connection simply like that, but that wouldn't work anymore if we are in another package since the property is internal
+                // let request = app?.connection.request
+                
+                /// Write metadata from request metadata property to built logger
+                loggingMetadata.forEach { key, value in
                     builtLogger?[metadataKey: key] = value
                 }
                 
@@ -53,7 +62,7 @@ public struct ConfiguredLogger: DynamicProperty {
                     /// If logging level is configured gloally
                     if let globalConfiguredLogLevel = storage.get(LoggingStorageKey.self)?.configuration.logLevel {
                         if logLevel < globalConfiguredLogLevel {
-                            print("The global configured logging level is \(globalConfiguredLogLevel.rawValue) but Handler \(request.endpoint.description) has logging level \(logLevel.rawValue) which is lower than the configured global logging level")
+                            print("The global configured logging level is \(globalConfiguredLogLevel.rawValue) but Handler \(String(describing: loggingMetadata["endpoint"])) has logging level \(logLevel.rawValue) which is lower than the configured global logging level")
                         }
                     /// If logging level is automatically set to a default value
                     } else {
@@ -65,7 +74,7 @@ public struct ConfiguredLogger: DynamicProperty {
                         #endif
                         
                         if logLevel < globalLogLevel {
-                            print("The global default logging level is \(globalLogLevel.rawValue) but Handler \(request.endpoint.description) has logging level \(logLevel.rawValue) which is lower than the global default logging level")
+                            print("The global default logging level is \(globalLogLevel.rawValue) but Handler \(String(describing: loggingMetadata["endpoint"])) has logging level \(logLevel.rawValue) which is lower than the global default logging level")
                         }
                     }
                 }
@@ -95,21 +104,17 @@ public struct ConfiguredLogger: DynamicProperty {
                  */
             }
             
-            
-            
-            //if let cookies = (connection.request.raw as?)
-            
             return builtLogger!
         }
     }
     
-    private init(id: UUID = UUID(),
-                 logLevel: Logger.Level? = nil) {
+    /// Private initializer
+    private init(id: UUID = UUID(), logLevel: Logger.Level? = nil) {
         self.id = id
         self.logLevel = logLevel
     }
     
-    /// Creates a new `@MyLogger` without any arguments
+    /// Creates a new `@ConfiguredLogger` without any arguments
     public init() {
         // We need to pass any argument otherwise we would call the same initializer again resulting in an infinite loop
         self.init(id: UUID())
@@ -118,36 +123,5 @@ public struct ConfiguredLogger: DynamicProperty {
     /// Creates a new `@Mylogger` and specify a `Logger.Level`
     public init(logLevel: Logger.Level) {
         self.init(id: UUID(), logLevel: logLevel)
-    }
-    
-    /// Not needed for much longer
-    private func parseRequestDescription(_ requestDescription: String) -> Logging.Logger.Metadata {
-        /// Build a dictionary out of request description string
-        var dictionary: Logging.Logger.Metadata = [:]
-        
-        /// Parse request description string into a dictionary
-        requestDescription
-            /// Remove trailing "Validating " text
-            .replacingFirstOccurrence(of: "Validating ", with: "")
-            /// Remove first newline
-            .replacingFirstOccurrence(of: "\n", with: "")
-            .split(separator: "\n")
-            .forEach { line in
-                let lineSplit = line.split(separator: ":")
-                dictionary[String(lineSplit[0])] = .string(
-                    String(lineSplit[1].trimmingCharacters(in: .whitespaces)
-                            + (lineSplit.indices.contains(2) ? ":" + lineSplit[2] : ""))
-                )
-            }
-        
-        return dictionary
-    }
-}
-
-/// Not needed for much longer
-extension String {
-    func replacingFirstOccurrence(of target: String, with replacement: String) -> String {
-        guard let range = self.range(of: target) else { return self }
-        return self.replacingCharacters(in: range, with: replacement)
     }
 }
