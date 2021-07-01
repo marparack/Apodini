@@ -8,6 +8,7 @@
 import Foundation
 import NIO
 import Apodini
+import Logging
 @_implementationOnly import NIOHPACK
 @_implementationOnly import ProtobufferCoding
 
@@ -224,5 +225,18 @@ final class FieldNumber {
             newFieldNumber.tag = number
             fieldNumber.currentValue = newFieldNumber
         }
+    }
+}
+
+public extension GRPCMessage {
+    /// Logging Metadata
+    var loggingMetadata: Logger.Metadata {
+        [
+            // Not interesting (no good data available):
+            "data":.string(self.data.description),   // So how often a new input comes for the same handler - important for parameter decoding
+            "compressed":.string(self.compressed.description),
+            "didCollectAllFragments":.string(self.didCollectAllFragments.description),
+            "length":.string(self.length.description)
+        ]
     }
 }

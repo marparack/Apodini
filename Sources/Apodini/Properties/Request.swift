@@ -28,18 +28,13 @@ public protocol Request: CustomStringConvertible, CustomDebugStringConvertible {
 
     func retrieveParameter<Element: Codable>(_ parameter: Parameter<Element>) throws -> Element
     
-    /// Returns metadata from request
-    var loggingMetadata: Logger.Metadata { get set }
+    /// Metadata from request
+    var loggingMetadata: Logger.Metadata { get }
 }
 
 public extension Request {
     var loggingMetadata: Logger.Metadata {
-        get {
-            defaultLoggingMetadata
-        }
-        set {
-            fatalError("You cannot set metadata in the default Request protocol")
-        }
+        defaultLoggingMetadata
     }
     
     private var defaultLoggingMetadata: Logger.Metadata {

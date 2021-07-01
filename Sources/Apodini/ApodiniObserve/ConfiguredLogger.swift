@@ -49,6 +49,9 @@ public struct ConfiguredLogger: DynamicProperty {
                 /// Also able to access connection simply like that, but that wouldn't work anymore if we are in another package since the property is internal
                 // let request = app?.connection.request
                 
+                /// Identifies the current logger instance -> stays consitent for the livetime of the associated handler
+                builtLogger?[metadataKey: "logger-uuid"] = .string(UUID().description)
+                
                 /// Write metadata from request metadata property to built logger
                 loggingMetadata.forEach { key, value in
                     builtLogger?[metadataKey: key] = value

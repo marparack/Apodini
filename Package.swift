@@ -207,7 +207,8 @@ let package = Package(
             dependencies: [
                 .target(name: "Apodini"),
                 .target(name: "ApodiniVaporSupport"),
-                .target(name: "ProtobufferCoding")
+                .target(name: "ProtobufferCoding"),
+                .product(name: "Logging", package: "swift-log")
             ]
         ),
 
@@ -303,7 +304,8 @@ let package = Package(
             dependencies: [
                 .target(name: "Apodini"),
                 //.target(name: "ApodiniObserve"),
-                .target(name: "ApodiniVaporSupport")
+                .target(name: "ApodiniVaporSupport"),
+                .product(name: "Logging", package: "swift-log")
             ]
         ),
 
@@ -334,7 +336,8 @@ let package = Package(
                 .product(name: "Vapor", package: "vapor"),
                 .product(name: "NIOWebSocket", package: "swift-nio"),
                 .product(name: "AssociatedTypeRequirementsKit", package: "AssociatedTypeRequirementsKit"),
-                .product(name: "Runtime", package: "Runtime")
+                .product(name: "Runtime", package: "Runtime"),
+                .product(name: "Logging", package: "swift-log")
             ]
         ),
 

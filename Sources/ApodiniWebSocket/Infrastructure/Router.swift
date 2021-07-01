@@ -8,7 +8,7 @@
 @_implementationOnly import Vapor
 import NIOWebSocket
 @_implementationOnly import OpenCombine
-@_implementationOnly import Logging
+import Logging
 
 /// An error type that receives special treatment by the router. The router sends the
 /// `reason` to the client if it receives a `WSError` on the `output`. Other error

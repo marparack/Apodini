@@ -6,6 +6,7 @@ import Apodini
 import Vapor
 import NIO
 import ApodiniVaporSupport
+import Logging
 
 /// Public Apodini Interface Exporter for REST
 public final class REST: Configuration {
@@ -179,30 +180,5 @@ extension AnyEndpoint {
     /// path-elements on the `Component`-tree as additional path elements at the end of the path.
     var absoluteRESTPath: [EndpointPath] {
         self[EndpointPathComponentsHTTP.self].value
-    }
-}
-
-public extension Vapor.Request {
-    /// Logging Metadata
-    var loggingMetadata: Logger.Metadata {
-        [
-            // Not interesting (no good data available): auth, client, password, parameters (we already have that), fileIO, storage,view,cache,query
-            "RESTRequestDescription":.string(self.description),    // Includes Method, URL, HTTP version, headers and body
-            "HTTPHeaders":.string(self.headers.description),    // This probably overlaps with the new Information type
-            "HTTPBody":.string(self.body.description),
-            "VaporRequestEventLoop":.string(self.eventLoop.description),    // Probably not needed
-            "HTTPContentType":.string(self.content.contentType?.description ?? ""),     // HTTP content type
-            "HTTPCookies":.string(self.cookies.all.description),     // also available in dictionary format ([String: Value]), maybe look into that
-            "HasSession":.string(self.hasSession.description),     // just a boolean
-            "HTTPmethod":.string(self.method.string),
-            "Route":.string(self.route?.description ?? ""),
-            "RequestType":.string(String(describing: self.route?.requestType)),
-            "ResponseType":.string(String(describing: self.route?.responseType)),
-            "HTTPVersion":.string(self.version.description),
-            "SessionData":.string(self.session.data.snapshot.description),     // also available in dictionary format
-            "URL":.string(self.url.description)    // also more detailed parts available
-            // app contains lots of stuff -> look into it more closly
-            //"":.string(self.application.)
-        ]
     }
 }

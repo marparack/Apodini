@@ -50,7 +50,6 @@ public struct LogstashLogHandler: LogHandler {
         }
     }
 
-    // internal for testing only
     internal init(label: String, app: Application, hostname: String, port: Int) {
         self.label = label
         self.app = app

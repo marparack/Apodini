@@ -3,6 +3,7 @@
 //
 
 import NIO
+import Logging
 @_implementationOnly import AssociatedTypeRequirementsVisitor
 
 protocol InterfaceExporterVisitor {
@@ -74,7 +75,9 @@ private struct StandardStaticExporterVisitableVisitor: StaticExporterVisitableVi
 
 // MARK: AssociatedKit workaround
 
-private struct TestRequest: ExporterRequest {}
+private struct TestRequest: ExporterRequest {
+    var loggingMetadata: Logger.Metadata = [:]
+}
 
 private struct TestExporter: InterfaceExporter {
     init() {}

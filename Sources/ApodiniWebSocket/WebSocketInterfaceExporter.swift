@@ -9,6 +9,7 @@ import Apodini
 import ApodiniUtils
 import ApodiniVaporSupport
 import NIOWebSocket
+import Logging
 @_implementationOnly import OpenCombine
 @_implementationOnly import Vapor
 
@@ -348,4 +349,27 @@ private struct ModerateWSError: WSError {
 private struct FatalWSError: WSClosingError {
     var reason: String
     var code: WebSocketErrorCode
+}
+
+public extension WebSocketInput {
+    /// Logging Metadata
+    var loggingMetadata: Logger.Metadata {
+        var inputValidation: String
+        
+        // Somehow the switch-case isn't possible in a .string()? Bug?
+        switch self.input.check() {
+        case .ok:
+            inputValidation = "Parameters valid"
+        case .missing(let missingParameters):
+            inputValidation = "Missing parameters: " + missingParameters.description
+        }
+        
+        return [
+            "requestEventLoop":.string(self.eventLoop.description),    // Probably not needed
+            "requestCount":.string(self.requestCount.description),   // So how often a new input comes for the same handler - important for parameter decoding
+            "inputValidation":.string(
+                inputValidation
+            )
+        ]
+    }
 }

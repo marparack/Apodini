@@ -6,8 +6,8 @@
 //
 
 import Foundation
+import Logging
 @_implementationOnly import Vapor
-@_implementationOnly import Logging
 
 /// A stateless client-implementation to `VaporWSRouter`. It cannot react to responses
 /// from the server but only collect them for the caller.
