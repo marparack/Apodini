@@ -136,27 +136,6 @@ extension WebService {
                 propertyValue.restore(from: propertyStore, keyedBy: propertyKey, to: &command)
             }
             
-//            let mirror = Mirror(reflecting: command)
-//
-//            for child in mirror.children {
-//                print("Property name:", child.label!)
-//                print("Property value:", child.value)
-//                print("Type:", type(of: child.value))
-//
-//                if var property = child.value as? ArgumentParserStoreable {
-//                    guard let label = child.label else {
-//                        fatalError("Label of the to be restored property couldn't be read!")
-//                    }
-//
-//                    /// Restore the values of the wrapped properties from a dictionary
-//                    property.restore(from: propertyStore, keyedBy: label, to: &command)
-//                }
-//
-//                print("Property name:", child.label!)
-//                print("Property value:", child.value)
-//                print("Type:", type(of: child.value))
-//            }
-            
             try command.run()
         } catch {
             exit(withError: error)

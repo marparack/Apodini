@@ -24,18 +24,6 @@ public final class LoggerConfiguration: Configuration {
     public func configure(_ app: Application) {
         app.storage.set(LoggingStorageKey.self, to: LoggingStorageValue(logger: app.logger, configuration: self))
         
-        /// Inject the eventloopgroup and logger of the application to the respective log handlers
-        self.logHandlers.forEach { logHandler in
-            if let eventLoopGroupInjectableLogHandler = logHandler as? EventLoopGroupInjectable {
-                eventLoopGroupInjectableLogHandler.inject(eventLoopGroup: app.eventLoopGroup)
-            }
-            
-            if let eventLoopGroupInjectableLogHandler = logHandler as? BackgroundActivityLoggerInjectable {
-                eventLoopGroupInjectableLogHandler.inject(backgroundActivityLogger: app.logger)
-            }
-        }
-        
-        
         /// Bootstrap the logging system
         /// Alternative would be to just require the developer to specify the types of the loggers, the LoggerConfiguration then switches on these types and creates the respective logging backends
         LoggingSystem.bootstrap { label in
