@@ -81,7 +81,7 @@ extension ValidatingRequest {
             /// Set remote address
             "remoteAddress": .string(remoteAddress?.description ?? ""),
             /// Apodini's event loop
-            "ApodiniEventLoop": .string(eventLoop.description)
+            "apodiniEventLoop": .string(eventLoop.description)
         ]
         .merging(self.exporterLoggingMetadata) { (_, new) in new }
         .merging(self.exporterRequestLoggingMetadata) { (_, new) in new }
@@ -95,7 +95,7 @@ extension ValidatingRequest {
             /// Exporter type, full name would be 'ApodiniREST.RESTInterfaceExporter', we are only interested in the name after the point
             "exporter": .string(String(describing: self.exporter).components(separatedBy: ".")[1]),
             /// Static parameter namespace
-            "exporterParameterNamespace": .string(I.parameterNamespace.map({$0.description}).joined(separator: ", "))
+            "exporterParameterNamespace": .array(I.parameterNamespace.map({.string($0.description)}))
         ]
     }
     
@@ -119,7 +119,8 @@ extension ValidatingRequest {
             /// Absolut path of the request
             "endpointAbsolutePath": .string(self.storedEndpoint.absolutePath.asPathString()),
             /// Parameters of the endpoint, NOT the actual values
-            "endpointParameters": .string(self.storedEndpoint.parameters.description),
+            //"endpointParameters": .string(self.storedEndpoint.parameters.description),
+            "endpointParameters": .array(self.storedEndpoint.parameters.map({ parameter in .string(parameter.description)})),
             /// Handler type
             "handler": .string(String(describing: self.storedEndpoint.handler))
         ]
@@ -148,12 +149,18 @@ extension ValidatingRequest {
                 fatalError("Logging of parameters failed - Tried to log unknown parameter")
             }
             
+            // Check if parameter is too large, limit is 8kb
+            guard MemoryLayout.size(ofValue: validatedParameter) < 8192 else {
+                parameterLoggingMetadata = [parameterName:.string("Parameter data too large")]
+                return
+            }
+            
             guard let encodedParameterString = String(data: try ValidatingRequest<I, H>.jsonEncoder.encode(validatedParameter), encoding: .utf8) else {
                 // Since the name of the parameter is now known, write an error message to the value of the parameter in the logging metadata
                 parameterLoggingMetadata = [parameterName:.string("Error encoding the parameter")]
                 return
             }
-            
+
             // Write the parameter to the logging metadata
             parameterLoggingMetadata = [parameterName:.string(encodedParameterString)]
         } catch {

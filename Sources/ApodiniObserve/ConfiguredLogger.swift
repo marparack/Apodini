@@ -7,6 +7,7 @@
 
 import Foundation
 import Logging
+import Apodini
 import ApodiniUtils
 //import ApodiniWebSocket
 

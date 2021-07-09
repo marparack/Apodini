@@ -1,12 +1,14 @@
 import Foundation
 import ApodiniUtils
+import ArgumentParser
+@_implementationOnly import Runtime
 
 // Be aware that "toplevel" `PathParameter`s can also be defined by just
 // defining a `@Parameter(.http(.path))` in the `Handler`.
 
 /// A `@PathComponent` can be used in `Component`s to indicate that a part of a path is a parameter and can be read out in a `Handler`
 @propertyWrapper
-public struct PathParameter<Element: Codable & LosslessStringConvertible>: Decodable {
+public struct PathParameter<Element: Codable & LosslessStringConvertible>: Decodable, ArgumentParserStoreable {
     var id = UUID()
     var identifyingType: IdentifyingType?
     
@@ -51,5 +53,39 @@ extension PathParameter {
     /// A `Parameter` that can be used to pass the `PathParameter` to a `Handler` that contains a `@Parameter` and not a `@Binding`.
     public var parameter: Parameter<Element> {
         Parameter(from: id, identifying: identifyingType)
+    }
+}
+
+extension PathParameter {
+    public func store(in store: inout [String: ArgumentParserStoreable], keyedBy key: String) {
+        store[key] = self
+    }
+    
+    public func restore(from store: [String: ArgumentParserStoreable], keyedBy key: String, to webService: inout ParsableCommand) {
+        if let storedValues = store[key] as? PathParameter {
+            do {
+                /// Read type information of the to be set variable from the webservice
+                let webServiceTypeInfo = try typeInfo(of: type(of: webService))
+                let propertyPathParameter = try webServiceTypeInfo.property(named: key)
+                
+                /// Read type information from the to be set properties of the `PathParameter`
+                let pathParameterTypeInfo = try typeInfo(of: Self.self)
+                let pathParameterId = try pathParameterTypeInfo.property(named: "id")
+                let pathParameterIdentifyingType = try pathParameterTypeInfo.property(named: "identifyingType")
+                
+                /// Read `PathParameter` from the webservice instance
+                var pathParameter = try propertyPathParameter.get(from: webService)
+                /// Set the stored values to the `PathParameter` from the webservice instance
+                try pathParameterId.set(value: storedValues.id, on: &pathParameter)
+                try pathParameterIdentifyingType.set(value: storedValues.identifyingType, on: &pathParameter)
+                
+                /// Set value again to the webservice
+                try propertyPathParameter.set(value: pathParameter, on: &webService)
+            } catch {
+                fatalError("Stored properties couldn't be injected into the property wrapper")
+            }
+        } else {
+            fatalError("Stored properties couldn't be read")
+        }
     }
 }

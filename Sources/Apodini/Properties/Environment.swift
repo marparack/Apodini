@@ -1,12 +1,13 @@
 import ApodiniUtils
-
+import ArgumentParser
+@_implementationOnly import Runtime
 
 @propertyWrapper
 /// A property wrapper to inject pre-defined values  to a `Component`. If `Value` is an
 /// `ObservableObject`, `Environment` observes its value just as `ObservedObject`.
 /// Use `Delegate.environment(_:, _:)` to inject a value locally, or define a global default
 /// using `EnvironmentValue`.
-public struct Environment<Key: EnvironmentAccessible, Value>: Property {
+public struct Environment<Key: EnvironmentAccessible, Value>: Property, ArgumentParserStoreable {
     private struct Storage {
         var changed: Bool
         weak var ownObservation: Observation?
@@ -15,13 +16,13 @@ public struct Environment<Key: EnvironmentAccessible, Value>: Property {
     }
     
     /// Keypath to access an `EnvironmentValue`.
-    internal var keyPath: KeyPath<Key, Value>
+    internal var keyPath: KeyPath<Key, Value>?
     
     private var app: Application?
     
     // only used if Value is ObservableObject
     private var storage: Box<Storage>?
-    private let observe: Bool
+    private var observe: Bool
     
     @LocalEnvironment private var localEnvironment: Value?
     
@@ -64,7 +65,7 @@ public struct Environment<Key: EnvironmentAccessible, Value>: Property {
         if let key = keyPath as? KeyPath<Application, Value> {
             return app[keyPath: key]
         }
-        if let value = app.storage[keyPath] {
+        if let key = keyPath, let value = app.storage[key] {
             return value
         }
         
@@ -79,6 +80,50 @@ public struct Environment<Key: EnvironmentAccessible, Value>: Property {
     /// Sets the value for the given KeyPath.
     mutating func prepareValue(_ value: Value, for keyPath: WritableKeyPath<Key, Value>) {
         _localEnvironment.prepareValue(value)
+    }
+}
+
+extension Environment: Decodable {
+    public init(from decoder: Decoder) throws {
+        self.keyPath = nil
+        self.observe = false
+        self._localEnvironment = LocalEnvironment()
+    }
+}
+
+extension Environment {
+    public func store(in store: inout [String: ArgumentParserStoreable], keyedBy key: String) {
+        store[key] = self
+    }
+    
+    public func restore(from store: [String: ArgumentParserStoreable], keyedBy key: String, to webService: inout ParsableCommand) {
+        if let storedValues = store[key] as? Environment { 
+            do {
+                /// Read type information of the to be set variable from the webservice
+                let webServiceTypeInfo = try typeInfo(of: type(of: webService))
+                let environmentProperty = try webServiceTypeInfo.property(named: key)
+                
+                /// Read type information from the to be set properties of the `Environment`
+                let environmentTypeInfo = try typeInfo(of: Self.self)
+                let environmentKeyPath = try environmentTypeInfo.property(named: "keyPath")
+                let environmentObserve = try environmentTypeInfo.property(named: "observe")
+                let environmentLocalEnvironment = try environmentTypeInfo.property(named: "_localEnvironment")
+                
+                /// Read `Environment` from the webservice instance
+                var environment = try environmentProperty.get(from: webService)
+                /// Set the stored values to the `Environment` from the webservice instance
+                try environmentKeyPath.set(value: storedValues.keyPath, on: &environment)
+                try environmentObserve.set(value: storedValues.observe, on: &environment)
+                try environmentLocalEnvironment.set(value: storedValues._localEnvironment, on: &environment)
+                
+                /// Set value again to the webservice
+                try environmentProperty.set(value: environment, on: &webService)
+            } catch {
+                fatalError("Stored properties couldn't be injected into the property wrapper")
+            }
+        } else {
+            fatalError("Stored properties couldn't be read")
+        }
     }
 }
 

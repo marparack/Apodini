@@ -60,7 +60,7 @@ let package = Package(
         .library(name: "DeploymentTargetLocalhostRuntime", targets: ["DeploymentTargetLocalhostRuntime"]),
         .library(name: "DeploymentTargetAWSLambdaRuntime", targets: ["DeploymentTargetAWSLambdaRuntime"]),
         //Observe
-        //.library(name: "ApodiniObserve", targets: ["ApodiniObserve"])
+        .library(name: "ApodiniObserve", targets: ["ApodiniObserve"])
         
     ],
     dependencies: [
@@ -111,7 +111,8 @@ let package = Package(
         
         // Observe
         //.package(url: "https://github.com/Apodini/ApodiniAsyncHTTPClient.git", from: "0.1.0"),
-        .package(url: "https://github.com/swift-server/async-http-client.git", from: "1.0.0")
+        .package(url: "https://github.com/swift-server/async-http-client.git", from: "1.0.0"),
+        .package(path: "../swift-log-elk")
     ],
     targets: [
         .target(name: "CApodiniUtils"),
@@ -250,7 +251,7 @@ let package = Package(
                 .process("Resources")
             ]
         ),
-        /*
+        
         .target(
             name: "ApodiniObserve",
             dependencies: [
@@ -269,10 +270,11 @@ let package = Package(
                 /// Does not work since it creates cyclic dependency "Apodini -> ApodiniAsyncHTTPClient -> Apodini"
                 //.product(name: "ApodiniAsyncHTTPClient", package: "ApodiniAsyncHTTPClient")
                 /// Use the "originial" AsyncHTTPClient from https://github.com/swift-server/async-http-client
-                .product(name: "AsyncHTTPClient", package: "async-http-client")
+                .product(name: "AsyncHTTPClient", package: "async-http-client"),
+                .product(name: "LoggingELK", package: "swift-log-elk")
             ]
         ),
-        */
+        
         .target(
             name: "ApodiniOpenAPI",
             dependencies: [
