@@ -60,7 +60,12 @@ class SemanticModelBuilder: InterfaceExporterVisitor {
             // in the case of not allowing lenient namespace definitions we just pass a empty array
             // which will result in the default namespace being used
             endpoint.parameterNameCollisionCheck(in: allowLenientParameterNamespaces ? I.parameterNamespace : .global)
-
+            // In deployment context we might want to disable only some endpoints.
+            // So first check if the endpoint is needed in this context before exporting it
+            guard self.evaluateEndpointExport(endpoint) else {
+                // if false, add it to disabledEndpoints and dont export it
+                continue
+            }
             endpoint.exportEndpoint(on: exporter)
         }
     }

@@ -38,16 +38,6 @@ extension DeploymentGroup {
     }
 }
 
-
-struct DSLSpecifiedDeploymentGroupIdContextKey: OptionalContextKey {
-    typealias Value = DeploymentGroup.ID
-    
-    static func reduce(value: inout Value, nextValue: Value) {
-        fatalError("Component cannot have multiple explicitly specified deployment groups. Conflicting groups are '\(value)' and '\(nextValue)'")
-    }
-}
-
-
 public struct DeploymentGroupModifier<Content: Component>: Modifier {
     public let component: Content
     let groupId: DeploymentGroup.ID
