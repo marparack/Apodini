@@ -116,3 +116,29 @@ extension WebService {
         }
     }
 }
+public let TEST_ENV_DEPLOY: String = "TEST_ENV_DEPLOY"
+public let expected_RESULT: String = "home"
+public func assertEnvironmentVariable(for key: String) -> String {
+    if let value = ProcessInfo.processInfo.environment[key] {
+        return value
+    }
+    fatalError("Key was not set for current process")
+}
+
+public extension Endpoint {
+    func evaluateAccessibility() -> Bool {
+        print(ProcessInfo.processInfo.environment)
+        guard let value = ProcessInfo.processInfo.environment[TEST_ENV_DEPLOY] else {
+            // no value available, ignore call
+            return true
+        }
+        self[Context.self].get(valueFor: DSLSpecifiedDeploymentGroupIdContextKey.self)
+        
+        switch value {
+        case expected_RESULT:
+            return true
+        default:
+            return false
+        }
+    }
+}

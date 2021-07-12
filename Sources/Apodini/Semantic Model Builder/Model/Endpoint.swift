@@ -85,6 +85,7 @@ public struct Endpoint<H: Handler>: _AnyEndpoint {
 
 extension Endpoint {
     func exportEndpoint<I: InterfaceExporter>(on exporter: I) -> I.EndpointExportOutput {
+        self.evaluateAccessibility()
         if let blobEndpoint = self as? BlobEndpoint {
             return blobEndpoint.exportBlobEndpoint(on: exporter)
         } else {

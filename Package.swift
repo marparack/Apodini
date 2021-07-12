@@ -31,7 +31,8 @@ let package = Package(
         .library(name: "DeploymentTargetAWSLambda", targets: ["DeploymentTargetAWSLambda"]),
         .library(name: "DeploymentTargetLocalhostRuntime", targets: ["DeploymentTargetLocalhostRuntime"]),
         .library(name: "DeploymentTargetAWSLambdaRuntime", targets: ["DeploymentTargetAWSLambdaRuntime"]),
-        .library(name: "ApodiniDeploymentCLI", targets: ["ApodiniDeploymentCLI"])
+        .library(name: "ApodiniDeploymentCLI", targets: ["ApodiniDeploymentCLI"]),
+        .library(name: "DeploymentTargetIoT", targets: ["DeploymentTargetIoT"])
     ],
     dependencies: [
         .package(url: "https://github.com/vapor/vapor.git", from: "4.45.0"),
@@ -79,7 +80,8 @@ let package = Package(
         // Deploy
         .package(url: "https://github.com/vapor-community/vapor-aws-lambda-runtime.git", .upToNextMinor(from: "0.6.2")),
         .package(url: "https://github.com/soto-project/soto.git", from: "5.5.0"),
-        .package(url: "https://github.com/soto-project/soto-s3-file-transfer", from: "0.3.0")
+        .package(url: "https://github.com/soto-project/soto-s3-file-transfer", from: "0.3.0"),
+        .package(name: "swift-device-discovery", url: "https://github.com/hendesi/SwiftDeviceDiscovery.git", .branch("master"))
     ],
     targets: [
         .target(name: "CApodiniUtils"),
@@ -498,6 +500,18 @@ let package = Package(
             dependencies: [
                 .product(name: "ArgumentParser", package: "swift-argument-parser")
             ]
-        )
+        ),
+        .target(
+            name: "DeploymentTargetIoT",
+            dependencies: [
+                .product(name: "ArgumentParser", package: "swift-argument-parser"),
+                .product(name: "SwiftDeviceDiscovery", package: "swift-device-discovery"),
+                .target(name: "ApodiniDeploy"),
+                .target(name: "ApodiniDeployBuildSupport"),
+                .target(name: "ApodiniDeployRuntimeSupport"),
+                .target(name: "ApodiniUtils"),
+                .target(name: "Apodini")
+                
+            ])
     ]
 )
