@@ -12,6 +12,7 @@ import ApodiniDeployRuntimeSupport
 import ArgumentParser
 import DeviceDiscovery
 import Apodini
+import ApodiniUtils
 import Logging
 
 public struct IoTDeploymentCLI<Service: Apodini.WebService>: ParsableCommand {
@@ -61,6 +62,9 @@ struct IoTDeploymentProvider: DeploymentProvider {
     private let fileManager = FileManager.default
     private let logger = Logger(label: "DeploymentTargetIoT")
     
+    private let defaultUsername = "pi"
+    private let defaultPassword = "rasp"
+    
     func run() throws {
         
         try fileManager.initialize()
@@ -80,21 +84,91 @@ struct IoTDeploymentProvider: DeploymentProvider {
             .appendingPathComponent(buildMode, isDirectory: true)
             .appendingPathComponent(productName, isDirectory: false)
         
+        /**
+         Step 1: Retrieve web service structure.
+         */
+        logger.info("Retrieving web service structure")
+        let wsStructure = try retrieveWebServiceStructure()
+        let nodes = try computeDefaultDeployedSystemNodes(from: wsStructure)
         
+        /**
+         Step 2: Zip the project directory.
+         */
+        //        logger.info("Zipping the package directory")
+        //        let zipName = "tmp.zip"
+        //        let task = Task(
+        //            executableUrl: _findExecutable("zip"),
+        //            arguments: [
+        //                "-r",
+        //                zipName,
+        //                packageRootDir.path,
+        //                "-x",
+        //                "'*.build*'",
+        //                "-q"
+        //            ],
+        //            workingDirectory: packageRootDir,
+        //            launchInCurrentProcessGroup: true)
+        //        try task.launchSyncAndAssertSuccess()
+        
+        logger.info("Search for devices in the network")
         for type in searchableTypes {
             let discovery = DeviceDiscovery(DeviceIdentifier(type), domain: .local)
-            let result = try discovery.run(2).wait()
-            print(result)
-            
+            let results = try discovery.run(30).wait()
+            logger.info("Found: \(results)")
+            for result in results {
+                //Copy resources to remote
+                let device = result.device
+                let sshClient = DummySSHClient(logger: self.logger)
+                try sshClient.initialize(
+                    host: device.ipv4Address!,
+                    username: defaultUsername,
+                    password: defaultPassword)
+                
+                //                logger.info("Creating remote deployment directory if needed")
+                //                try createRemoteDirIfNeeded(sshClient)
+                if fileManager.directoryExists(atUrl: packageRootDir.appendingPathComponent(".build")) {
+                    try fileManager.removeItem(at: packageRootDir.appendingPathComponent(".build"))
+                }
+                logger.info("Copying sources to remote")
+                logger.notice("This might take a few minutes")
+                try copyResourcesToRemote(result)
+                
+                logger.info("Building package remotely")
+                try buildPackage(sshClient)
+                //                logger.info("Unzipping file remotely")
+                //                try unzipFileOnRemote(sshClient)
+            }
         }
-        let wsStructure = try retrieveWebServiceStructure()
-        print(wsStructure)
-        let nodes = try computeDefaultDeployedSystemNodes(from: wsStructure)
-        print(nodes)
-        
     }
     
+    private func createRemoteDirIfNeeded(_ client: DummySSHClient) throws {
+        try client.createDirectory("tmp_deployment")
+    }
     
+    private func copyResourcesToRemote(_ result: DiscoveryResult) throws {
+        let device = result.device
+        let remoteName = "\(defaultUsername)@\(device.ipv4Address!):/usr/deployment"
+        let task = Task(executableUrl: _findExecutable("rsync"),
+                        arguments: ["-avz",
+                                    "-e",
+                                    "'ssh'",
+                                    packageRootDir.path,
+                                    remoteName],
+                        workingDirectory: packageRootDir,
+                        launchInCurrentProcessGroup: true)
+        try task.launchSyncAndAssertSuccess()
+    }
+    
+    private func unzipFileOnRemote(_ client: DummySSHClient) throws {
+        //        try client.assertSuccessfulExecution("cd /usr/deployment")
+        //        try client.assertSuccessfulExecution("unzip -o -v tmp.zip")
+    }
+    
+    private func buildPackage(_ client: DummySSHClient) throws {
+        let result = try client.execute("cd /usr/deployment/ApodiniDemoWebService; swift build -Xswiftc -Xfrontend -Xswiftc -sil-verify-none -c debug")
+        print(result.0)
+        print(result.1)
+    }
 }
 
 public struct IoTDeploymentOptionsInnerNamespace: InnerNamespace {
@@ -154,11 +228,11 @@ public struct IoTDeploymentProviderLaunchInfo: Codable {
 
 public class IoTRuntime: DeploymentProviderRuntime {
     public static let identifier = iotDeploymentProviderId
-
+    
     public let deployedSystem: DeployedSystem
     public let currentNodeId: DeployedSystem.Node.ID
     private let currentNodeCustomLaunchInfo: IoTDeploymentProviderLaunchInfo
-
+    
     public required init(deployedSystem: DeployedSystem, currentNodeId: DeployedSystem.Node.ID) throws {
         self.deployedSystem = deployedSystem
         self.currentNodeId = currentNodeId
@@ -173,11 +247,11 @@ public class IoTRuntime: DeploymentProviderRuntime {
         }
         self.currentNodeCustomLaunchInfo = launchInfo
     }
-
+    
     public func configure(_ app: Apodini.Application) throws {
         app.http.address = .hostname(currentNodeCustomLaunchInfo.host, port: currentNodeCustomLaunchInfo.port)
     }
-
+    
     public func handleRemoteHandlerInvocation<H: IdentifiableHandler>(
         _ invocation: HandlerInvocation<H>
     ) throws -> RemoteHandlerInvocationRequestResponse<H.Response.Content> {
@@ -191,5 +265,15 @@ public class IoTRuntime: DeploymentProviderRuntime {
             )
         }
         return .invokeDefault(url: url)
+    }
+}
+
+// MARK: - Move to shared package
+private extension IoTDeploymentProvider {
+    private func _findExecutable(_ name: String) -> URL {
+        guard let url = Task.findExecutable(named: name) else {
+            fatalError("Unable to find executable '\(name)'")
+        }
+        return url
     }
 }

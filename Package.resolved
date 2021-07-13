@@ -38,6 +38,15 @@
         }
       },
       {
+        "package": "Socket",
+        "repositoryURL": "https://github.com/IBM-Swift/BlueSocket",
+        "state": {
+          "branch": null,
+          "revision": "c9894fd117457f1d006575fbfb2fdfd6f79eac03",
+          "version": "1.0.200"
+        }
+      },
+      {
         "package": "BSON",
         "repositoryURL": "https://github.com/OpenKitten/BSON.git",
         "state": {
@@ -272,6 +281,15 @@
         }
       },
       {
+        "package": "Shout",
+        "repositoryURL": "https://github.com/jakeheis/Shout",
+        "state": {
+          "branch": "master",
+          "revision": "9612c13375599cfecf892d49e2d53d0143c04bc1",
+          "version": null
+        }
+      },
+      {
         "package": "soto",
         "repositoryURL": "https://github.com/soto-project/soto.git",
         "state": {
@@ -474,7 +492,7 @@
         "repositoryURL": "https://github.com/hendesi/SwiftDeviceDiscovery.git",
         "state": {
           "branch": "master",
-          "revision": "b1ba1562cfc5ca87d0d3f8350429ff2408ecceda",
+          "revision": "e7b575e84d9a36ab5532f1ad4ff3fa70d226fe5c",
           "version": null
         }
       },
