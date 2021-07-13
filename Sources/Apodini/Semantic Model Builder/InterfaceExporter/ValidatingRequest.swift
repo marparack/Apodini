@@ -149,15 +149,16 @@ extension ValidatingRequest {
                 fatalError("Logging of parameters failed - Tried to log unknown parameter")
             }
             
-            // Check if parameter is too large, limit is 8kb
-            guard MemoryLayout.size(ofValue: validatedParameter) < 8192 else {
-                parameterLoggingMetadata = [parameterName:.string("Parameter data too large")]
-                return
-            }
-            
             guard let encodedParameterString = String(data: try ValidatingRequest<I, H>.jsonEncoder.encode(validatedParameter), encoding: .utf8) else {
                 // Since the name of the parameter is now known, write an error message to the value of the parameter in the logging metadata
                 parameterLoggingMetadata = [parameterName:.string("Error encoding the parameter")]
+                return
+            }
+            
+            // Check if parameter is too large, limit is 8kb
+            // TODO: This operates on the encoded string for now, but this will change nontheless soon
+            guard encodedParameterString.count < 8192 else {
+                parameterLoggingMetadata = [parameterName:.string("Parameter data too large")]
                 return
             }
 
@@ -191,5 +192,51 @@ extension Logger.MetadataValue {
             return dictionary
         default: return [:]
         }
+    }
+}
+
+enum JSONIntermediateRepresentation: Decodable {
+    case null
+    case bool(Bool)
+    case int(Int)
+    case float(Float)
+    case double(Double)
+    case string(String)
+    case array([JSONIntermediateRepresentation])
+    case dictionary([String: JSONIntermediateRepresentation])
+    
+    init(from decoder: Decoder) throws {
+        // Without Key: { "test": 1, "bla": "zwei" }
+        let container = try decoder.singleValueContainer()
+        // Array:   [1, 2, 3]
+        let test = try decoder.unkeyedContainer()
+        // With Keys: { "test": 1, "bla": "zwei" }    Difference to without keys?
+        
+        if container.decodeNil() {
+            self = .null
+        } else if let bool = try? container.decode(Bool.self) {
+            self = .bool(bool)
+        } else if let int = try? container.decode(Int.self) {
+            self = .int(int)
+        } else if let float = try? container.decode(Float.self) {
+            self = .float(float)
+        } else if let double = try? container.decode(Double.self) {
+            self = .double(double)
+        } else if let string = try? container.decode(String.self) {
+            self = .string(string)
+//        } else if let array = try? container.decode(Array.self) {
+//            fatalError("TODO: @Philipp")
+//        } else if let dictionary = try? container.decode(String.self) {
+//            fatalError("TODO: @Philipp")
+        } else {
+            fatalError("shit")
+        }
+    }
+    
+    private func transform(_: )
+    
+    var metadata: Logger.Metadata {
+        fatalError("TODO: @Philipp")
+        // Parse the above JSON (self) to metadata
     }
 }

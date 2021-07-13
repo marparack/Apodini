@@ -117,6 +117,7 @@ extension WebService {
         let mirror = Mirror(reflecting: Self())
         var propertyStore: [String: ArgumentParserStoreable] = [:]
         
+        /// Backup of property wrapper values
         for child in mirror.children {
             if let property = child.value as? ArgumentParserStoreable {
                 guard let label = child.label else {
@@ -128,7 +129,9 @@ extension WebService {
             }
         }
         
+        /// Parsing of Command Line Arguments and restoring the values of the property wrappers
         do {
+            /// Parse the CLI arguments
             var command = try parseAsRoot(arguments)
             
             propertyStore.forEach { propertyKey, propertyValue in

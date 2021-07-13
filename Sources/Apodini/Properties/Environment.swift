@@ -119,10 +119,10 @@ extension Environment {
                 /// Set value again to the webservice
                 try environmentProperty.set(value: environment, on: &webService)
             } catch {
-                fatalError("Stored properties couldn't be injected into the property wrapper")
+                fatalError("Stored properties couldn't be injected into the property wrapper. \(error)")
             }
         } else {
-            fatalError("Stored properties couldn't be read")
+            fatalError("Stored properties couldn't be read. Key=\(key)")
         }
     }
 }
