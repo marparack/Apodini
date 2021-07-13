@@ -20,6 +20,15 @@ public class Box<T> {
     }
 }
 
+@propertyWrapper
+public class Boxed<T> {
+    public var wrappedValue: T
+    
+    public init(wrappedValue: T) {
+        self.wrappedValue = wrappedValue
+    }
+}
+
 
 /// A weak reference to an object of class type
 public struct Weak<T: AnyObject> {

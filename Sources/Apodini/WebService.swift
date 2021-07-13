@@ -134,9 +134,18 @@ extension WebService {
             /// Parse the CLI arguments
             var command = try parseAsRoot(arguments)
             
-            propertyStore.forEach { propertyKey, propertyValue in
-                /// Restore the values of the wrapped properties from a dictionary
-                propertyValue.restore(from: propertyStore, keyedBy: propertyKey, to: &command)
+            let mirror = Mirror(reflecting: command)
+            
+            /// Backup of property wrapper values
+            for child in mirror.children {
+                if let property = child.value as? ArgumentParserStoreable {
+                    guard let label = child.label else {
+                        fatalError("Label of the to be stored property couldn't be read!")
+                    }
+                    
+                    /// Store the values of the wrapped properties in a dictionary
+                    property.restore(from: propertyStore, keyedBy: label)
+                }
             }
             
             try command.run()
@@ -158,6 +167,5 @@ public protocol ArgumentParserStoreable {
     /// - Parameters:
     ///    - store: Used to restore the values of the wrapped values of the property wrappers
     ///    - key: The name of the wrapped value of the property wrapper, used as a key to store the values in a dictionary
-    ///    - webService: The `WebService` instance (created by the developer) to restore the values of the wrapped properties to
-    func restore(from store: [String: ArgumentParserStoreable], keyedBy key: String, to webService: inout ParsableCommand)
+    func restore(from store: [String: ArgumentParserStoreable], keyedBy key: String)
 }

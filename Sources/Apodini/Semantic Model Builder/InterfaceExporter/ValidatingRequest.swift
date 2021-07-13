@@ -209,7 +209,9 @@ enum JSONIntermediateRepresentation: Decodable {
         // Without Key: { "test": 1, "bla": "zwei" }
         let container = try decoder.singleValueContainer()
         // Array:   [1, 2, 3]
-        let test = try decoder.unkeyedContainer()
+        var test = try decoder.unkeyedContainer()
+        let testme = try! container.decode([JSONIntermediateRepresentation].self)
+        let testmeB = try! container.decode([String: JSONIntermediateRepresentation].self)
         // With Keys: { "test": 1, "bla": "zwei" }    Difference to without keys?
         
         if container.decodeNil() {
@@ -233,7 +235,8 @@ enum JSONIntermediateRepresentation: Decodable {
         }
     }
     
-    private func transform(_: )
+    // Probably need to let all relevant containers conform to a top protocol DecoderContainer or smt. like that
+    //private func transform(_: )
     
     var metadata: Logger.Metadata {
         fatalError("TODO: @Philipp")
