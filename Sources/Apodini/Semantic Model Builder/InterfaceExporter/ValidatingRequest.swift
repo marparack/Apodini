@@ -164,6 +164,7 @@ extension Logger.MetadataValue {
     }
 }
 
+/// An intermediate representation to encode every `Codable` object as a `Logger.Metadata` object
 private enum JSONIntermediateRepresentation: Decodable, Encodable {
     case null
     case bool(Bool)
@@ -195,6 +196,7 @@ private enum JSONIntermediateRepresentation: Decodable, Encodable {
         }
     }
     
+    /// Computed property that returns the actual `Logger.MetadataValue`
     var metadata: Logger.MetadataValue {
         switch self {
         case .null:
