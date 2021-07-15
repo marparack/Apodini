@@ -39,18 +39,14 @@ public struct ConfiguredLogger: DynamicProperty {
     public var wrappedValue: Logger {
         get {
             if builtLogger == nil {
+                // Maybe add handler name to label of logger?
                 builtLogger = .init(label: "org.apodini.observe")
-                
-                // setup basic logger (and parse parameters!)
                 
                 /// Get request and parameters
                 let request = connection.request
                 let loggingMetadata = request.loggingMetadata
                 
-                /// Also able to access connection simply like that, but that wouldn't work anymore if we are in another package since the property is internal
-                // let request = app?.connection.request
-                
-                /// Identifies the current logger instance -> stays consitent for the livetime of the associated handler
+                /// Identifies the current logger instance -> stays consitent for the lifetime of the associated handler
                 builtLogger?[metadataKey: "logger-uuid"] = .string(UUID().description)
                 
                 /// Write metadata from request metadata property to built logger
@@ -98,14 +94,16 @@ public struct ConfiguredLogger: DynamicProperty {
             } else {
                 /*
                 /// If Websocket -> Need to check if new parameters are passed -> Parse them again if the count doesn't match
-                if let webSocketInput = connection.request.raw as? WebSocketInput {
-                    if lastRequest != webSocketInput.requestCount {
-                        lastRequest = webSocketInput.requestCount
-                        
-                        // parse parameters again
-                    }
-                }
                  */
+                
+                /// Get request and parameters
+                let request = connection.request
+                let loggingMetadata = request.loggingMetadata
+                
+                // Not very pretty
+                if (loggingMetadata["exporter"] ?? "") == "WebSocketInterfaceExporter" {
+                    builtLogger?[metadataKey: "parameters"] = loggingMetadata["parameters"]
+                }
             }
             
             return builtLogger!

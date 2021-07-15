@@ -47,7 +47,7 @@ public extension Request {
          "endpointAbsolutePath": .string("\(self.endpoint.absolutePath.asPathString())"),
          /// If size of the value a parameter is too big -> discard it and insert error message?
          // "@Parameter var name: String = World"
-         "parameters": .array(
+         "endpointParameters": .array(
             self.endpoint.parameters.map { parameter in
                 .string(parameter.description)
             }),
