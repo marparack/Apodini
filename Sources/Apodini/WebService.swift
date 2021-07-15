@@ -29,6 +29,51 @@ public extension WebService {
 }
 
 extension WebService {
+    /// Overrides  the `main()` method of `ParsableCommand` that stores the values of property wrappers (eg. `@Environment`) in the `WebService` before parsing the CLI arguments and then restores the saved values after the parsing is finished
+    public static func main(_ arguments: [String]? = nil) {
+        let mirror = Mirror(reflecting: Self())
+        var propertyStore: [String: ArgumentParserStoreable] = [:]
+        
+        /// Backup of property wrapper values
+        for child in mirror.children {
+            if let property = child.value as? ArgumentParserStoreable {
+                guard let label = child.label else {
+                    fatalError("Label of the to be stored property couldn't be read!")
+                }
+                
+                /// Store the values of the wrapped properties in a dictionary
+                property.store(in: &propertyStore, keyedBy: label)
+            }
+        }
+        
+        /// Parsing of Command Line Arguments and restoring the values of the property wrappers
+        do {
+            /// Parse the CLI arguments
+            var command = try parseAsRoot(arguments)
+            
+            let mirror = Mirror(reflecting: command)
+            
+            /// Backup of property wrapper values
+            for child in mirror.children {
+                if let property = child.value as? ArgumentParserStoreable {
+                    guard let label = child.label else {
+                        fatalError("Label of the to be stored property couldn't be read!")
+                    }
+                    
+                    /// Store the values of the wrapped properties in a dictionary
+                    property.restore(from: propertyStore, keyedBy: label)
+                }
+            }
+            
+            /// Start the webservice
+            try command.run()
+        } catch {
+            exit(withError: error)
+        }
+    }
+}
+
+extension WebService {
     /// This function is executed to start up an Apodini `WebService`, called by Swift ArgumentParser on instanciated `WebService` containing CLI arguments
     public mutating func run() throws {
         try Self.start(webService: self)
@@ -46,6 +91,7 @@ extension WebService {
         //LoggingSystem.bootstrap(StreamLogHandler.standardError)
         
         var webServiceCopy = webService
+        /// Inject the `Application` instance to allow access to `@Environment` in the property wrapper
         Apodini.inject(app: app, to: &webServiceCopy)
         Apodini.activate(&webServiceCopy)
 
@@ -90,7 +136,6 @@ extension WebService {
     }
 }
 
-
 extension WebService {
     func register(_ modelBuilder: SemanticModelBuilder) {
         let visitor = SyntaxTreeVisitor(modelBuilder: modelBuilder)
@@ -110,62 +155,4 @@ extension WebService {
             }.accept(visitor)
         }
     }
-}
-
-extension WebService {
-    public static func main(_ arguments: [String]? = nil) {
-        let mirror = Mirror(reflecting: Self())
-        var propertyStore: [String: ArgumentParserStoreable] = [:]
-        
-        /// Backup of property wrapper values
-        for child in mirror.children {
-            if let property = child.value as? ArgumentParserStoreable {
-                guard let label = child.label else {
-                    fatalError("Label of the to be stored property couldn't be read!")
-                }
-                
-                /// Store the values of the wrapped properties in a dictionary
-                property.store(in: &propertyStore, keyedBy: label)
-            }
-        }
-        
-        /// Parsing of Command Line Arguments and restoring the values of the property wrappers
-        do {
-            /// Parse the CLI arguments
-            var command = try parseAsRoot(arguments)
-            
-            let mirror = Mirror(reflecting: command)
-            
-            /// Backup of property wrapper values
-            for child in mirror.children {
-                if let property = child.value as? ArgumentParserStoreable {
-                    guard let label = child.label else {
-                        fatalError("Label of the to be stored property couldn't be read!")
-                    }
-                    
-                    /// Store the values of the wrapped properties in a dictionary
-                    property.restore(from: propertyStore, keyedBy: label)
-                }
-            }
-            
-            try command.run()
-        } catch {
-            exit(withError: error)
-        }
-    }
-}
-
-/// Protocol to store and restore the values of property wrappers like `@Environment` or `@PathParameter` in the `WebService`
-public protocol ArgumentParserStoreable {
-    /// Stores the values of the property wrappers in a passed dictionary keyed by the name of the wrapped value
-    /// - Parameters:
-    ///    - store: Used to store the values of the wrapped values of the property wrappers
-    ///    - key: The name of the wrapped value of the property wrapper, used as a key to store the values in a dictionary
-    func store(in store: inout [String: ArgumentParserStoreable], keyedBy key: String)
-    
-    /// Restores the values of the property wrappers from a passed dictionary keyed by the name of the wrapped value
-    /// - Parameters:
-    ///    - store: Used to restore the values of the wrapped values of the property wrappers
-    ///    - key: The name of the wrapped value of the property wrapper, used as a key to store the values in a dictionary
-    func restore(from store: [String: ArgumentParserStoreable], keyedBy key: String)
 }

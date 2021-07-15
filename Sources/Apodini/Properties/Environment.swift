@@ -16,18 +16,15 @@ public struct Environment<Key: EnvironmentAccessible, Value>: Property, Argument
     }
     
     /// Keypath to access an `EnvironmentValue`.
-    @Boxed
-    internal var keyPath: KeyPath<Key, Value>?
+    @Boxed internal var keyPath: KeyPath<Key, Value>?
     
     private var app: Application?
     
     // only used if Value is ObservableObject
     private var storage: Box<Storage>?
-    @Boxed
-    private var observe: Bool = false
+    @Boxed private var observe: Bool = false
     
-    @LocalEnvironment
-    private var localEnvironment: Value?
+    @LocalEnvironment private var localEnvironment: Value?
     
     /// Initializer of `Environment` specifically for `Application` for less verbose syntax.
     public init(_ keyPath: KeyPath<Key, Value>) where Key == Application {
@@ -104,31 +101,6 @@ extension Environment {
             self.keyPath = storedValues.keyPath
             self.observe = storedValues.observe
             // No need to reinstanciate the local environment since it's already instenciated by the Decodable initializer
-            
-            //self._localEnvironment = LocalEnvironment()
-//            do {
-//                /// Read type information of the to be set variable from the webservice
-//                let webServiceTypeInfo = try typeInfo(of: type(of: webService))
-//                let environmentProperty = try webServiceTypeInfo.property(named: key)
-//
-//                /// Read type information from the to be set properties of the `Environment`
-//                let environmentTypeInfo = try typeInfo(of: Self.self)
-//                let environmentKeyPath = try environmentTypeInfo.property(named: "keyPath")
-//                let environmentObserve = try environmentTypeInfo.property(named: "observe")
-//                let environmentLocalEnvironment = try environmentTypeInfo.property(named: "_localEnvironment")
-//
-//                /// Read `Environment` from the webservice instance
-//                var environment = try environmentProperty.get(from: webService)
-//                /// Set the stored values to the `Environment` from the webservice instance
-//                try environmentKeyPath.set(value: storedValues.keyPath, on: &environment)
-//                try environmentObserve.set(value: storedValues.observe, on: &environment)
-//                try environmentLocalEnvironment.set(value: storedValues._localEnvironment, on: &environment)
-//
-//                /// Set value again to the webservice
-//                try environmentProperty.set(value: environment, on: &webService)
-//            } catch {
-//                fatalError("Stored properties couldn't be injected into the property wrapper. \(error)")
-//            }
         } else {
             fatalError("Stored properties couldn't be read. Key=\(key)")
         }

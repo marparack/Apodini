@@ -9,10 +9,8 @@ import ArgumentParser
 /// A `@PathComponent` can be used in `Component`s to indicate that a part of a path is a parameter and can be read out in a `Handler`
 @propertyWrapper
 public struct PathParameter<Element: Codable & LosslessStringConvertible>: Decodable, ArgumentParserStoreable {
-    @Boxed
-    var id = UUID()
-    @Boxed
-    var identifyingType: IdentifyingType?
+    @Boxed var id = UUID()
+    @Boxed var identifyingType: IdentifyingType?
     
     /// You can never access the wrapped value of a @PathParameter.
     /// Please use a `@Parameter` wrapped property within a `Handler` to access the path property.
@@ -67,28 +65,6 @@ extension PathParameter {
         if let storedValues = store[key] as? PathParameter {
             self.id = storedValues.id
             self.identifyingType = storedValues.identifyingType
-            
-//            do {
-//                /// Read type information of the to be set variable from the webservice
-//                let webServiceTypeInfo = try typeInfo(of: type(of: webService))
-//                let propertyPathParameter = try webServiceTypeInfo.property(named: key)
-//
-//                /// Read type information from the to be set properties of the `PathParameter`
-//                let pathParameterTypeInfo = try typeInfo(of: Self.self)
-//                let pathParameterId = try pathParameterTypeInfo.property(named: "id")
-//                let pathParameterIdentifyingType = try pathParameterTypeInfo.property(named: "identifyingType")
-//
-//                /// Read `PathParameter` from the webservice instance
-//                var pathParameter = try propertyPathParameter.get(from: webService)
-//                /// Set the stored values to the `PathParameter` from the webservice instance
-//                try pathParameterId.set(value: storedValues.id, on: &pathParameter)
-//                try pathParameterIdentifyingType.set(value: storedValues.identifyingType, on: &pathParameter)
-//
-//                /// Set value again to the webservice
-//                try propertyPathParameter.set(value: pathParameter, on: &webService)
-//            } catch {
-//                fatalError("Stored properties couldn't be injected into the property wrapper. \(error)")
-//            }
         } else {
             fatalError("Stored properties couldn't be read. Key=\(key)")
         }
