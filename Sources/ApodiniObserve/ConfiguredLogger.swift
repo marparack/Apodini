@@ -28,9 +28,6 @@ public struct ConfiguredLogger: DynamicProperty {
     @State
     private var builtLogger: Logger?
     
-    @State
-    private var lastRequest: Int = 1
-    
     private var app: Application?
     
     private let id: UUID

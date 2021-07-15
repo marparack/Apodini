@@ -39,8 +39,6 @@ public extension Request {
     
     private var defaultLoggingMetadata: Logger.Metadata {
         [
-         /// Identifies the current logger instance
-         "logger-uuid" : .string("\(UUID())"),
          /// Name of the endpoint (so the name of the handler class)
          "endpoint": .string("\(self.endpoint.description)"),
          /// Absolut path of the request
@@ -55,7 +53,6 @@ public extension Request {
          "request-desciption": .string(self.description),
          /// Set remote address
          "remoteAddress": .string("\(self.remoteAddress?.description ?? "")")
-        
         ]
     }
 }
