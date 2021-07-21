@@ -34,13 +34,16 @@ public struct IoTDeploymentCLI<Service: Apodini.WebService>: ParsableCommand {
     var inputPackageDir: String = "/Users/felice/Documents/ApodiniDemoWebService"
     
     @Option(help: "Name of the web service's SPM target/product")
-    var productName: String = "TestWebService"
+    var productName: String = "ApodiniDemoWebService"
+    
+    @Option(help: "Remote directory of deployment")
+    var deploymentDir: String = "/usr/deployment"
     
     public mutating func run() throws {
         let service = Service()
         service.runSyntaxTreeVisitor()
         
-        let provider = IoTDeploymentProvider(searchableTypes: types, productName: productName, packageRootDir: URL(fileURLWithPath: inputPackageDir).absoluteURL)
+        let provider = IoTDeploymentProvider(searchableTypes: types, productName: productName, packageRootDir: URL(fileURLWithPath: inputPackageDir).absoluteURL, deploymentDir: URL(string: deploymentDir)!)
         try provider.run()
     }
     
@@ -54,6 +57,7 @@ struct IoTDeploymentProvider: DeploymentProvider {
     let searchableTypes: [String]
     let productName: String
     let packageRootDir: URL
+    let deploymentDir: URL
     
     var target: DeploymentProviderTarget {
         .spmTarget(packageUrl: packageRootDir, targetName: productName)
@@ -89,85 +93,67 @@ struct IoTDeploymentProvider: DeploymentProvider {
          */
         logger.info("Retrieving web service structure")
         let wsStructure = try retrieveWebServiceStructure()
+        
         let nodes = try computeDefaultDeployedSystemNodes(from: wsStructure)
-        
-        /**
-         Step 2: Zip the project directory.
-         */
-        //        logger.info("Zipping the package directory")
-        //        let zipName = "tmp.zip"
-        //        let task = Task(
-        //            executableUrl: _findExecutable("zip"),
-        //            arguments: [
-        //                "-r",
-        //                zipName,
-        //                packageRootDir.path,
-        //                "-x",
-        //                "'*.build*'",
-        //                "-q"
-        //            ],
-        //            workingDirectory: packageRootDir,
-        //            launchInCurrentProcessGroup: true)
-        //        try task.launchSyncAndAssertSuccess()
-        
+
         logger.info("Search for devices in the network")
         for type in searchableTypes {
             let discovery = DeviceDiscovery(DeviceIdentifier(type), domain: .local)
-            let results = try discovery.run(30).wait()
+            discovery.actions = [CreateDeploymentDirectoryAction.self, LIFXDeviceDiscoveryAction.self]
+            discovery.configuration = [
+                .username: "pi",
+                .password: "rasp",
+                .runPostActions: true,
+                IoTUtils.resourceDirectory: self.resourceURL,
+                IoTUtils.deploymentDirectory: self.deploymentDir,
+                IoTUtils.logger: self.logger
+            ]
+            
+            let results = try discovery.run(2).wait()
             logger.info("Found: \(results)")
             for result in results {
                 //Copy resources to remote
                 let device = result.device
-                let sshClient = DummySSHClient(logger: self.logger)
-                try sshClient.initialize(
-                    host: device.ipv4Address!,
-                    username: defaultUsername,
-                    password: defaultPassword)
+                let sshClient = try getSSHClient(for: device, configuration: discovery.configuration)
+                setRemoteWorkingDir(sshClient)
                 
-                //                logger.info("Creating remote deployment directory if needed")
-                //                try createRemoteDirIfNeeded(sshClient)
-                if fileManager.directoryExists(atUrl: packageRootDir.appendingPathComponent(".build")) {
-                    try fileManager.removeItem(at: packageRootDir.appendingPathComponent(".build"))
-                }
                 logger.info("Copying sources to remote")
-                logger.notice("This might take a few minutes")
                 try copyResourcesToRemote(result)
                 
                 logger.info("Building package remotely")
-                try buildPackage(sshClient)
-                //                logger.info("Unzipping file remotely")
-                //                try unzipFileOnRemote(sshClient)
+                buildPackage(sshClient)
+                
             }
         }
     }
     
-    private func createRemoteDirIfNeeded(_ client: DummySSHClient) throws {
-        try client.createDirectory("tmp_deployment")
+    private func getSSHClient(for device: Device, configuration: ConfigurationStorage) throws -> SSHClient? {
+        guard let username = configuration.typedValue(for: .username, to: String.self),
+              let password = configuration.typedValue(for: .password, to: String.self),
+              let ipAddress = device.ipv4Address else {
+            return nil
+        }
+
+        return try SSHClient(username: username, password: password, ipAdress: ipAddress)
     }
-    
+
     private func copyResourcesToRemote(_ result: DiscoveryResult) throws {
-        let device = result.device
-        let remoteName = "\(defaultUsername)@\(device.ipv4Address!):/usr/deployment"
-        let task = Task(executableUrl: _findExecutable("rsync"),
-                        arguments: ["-avz",
-                                    "-e",
-                                    "'ssh'",
-                                    packageRootDir.path,
-                                    remoteName],
-                        workingDirectory: packageRootDir,
-                        launchInCurrentProcessGroup: true)
-        try task.launchSyncAndAssertSuccess()
+        // we dont need any existing build files because we moving to a different aarch
+        if fileManager.directoryExists(atUrl: packageRootDir.appendingPathComponent(".build")) {
+            try fileManager.removeItem(at: packageRootDir.appendingPathComponent(".build"))
+        }
+        try IoTUtils.copyResourcesToRemote(
+            result.device,
+            origin: packageRootDir.path,
+            destination: IoTUtils.rsyncHostname(result.device, username: defaultUsername, path: self.deploymentDir.path))
+    }
+
+    private func buildPackage(_ client:SSHClient?) {
+        client?.assertSuccessfulExecution(cmd: "swift build -Xswiftc -Xfrontend -Xswiftc -sil-verify-none -c debug")
     }
     
-    private func unzipFileOnRemote(_ client: DummySSHClient) throws {
-        //        try client.assertSuccessfulExecution("cd /usr/deployment")
-        //        try client.assertSuccessfulExecution("unzip -o -v tmp.zip")
-    }
-    
-    private func buildPackage(_ client: DummySSHClient) throws {
-        let result = try client.execute("cd /usr/deployment/ApodiniDemoWebService; swift build -Xswiftc -Xfrontend -Xswiftc -sil-verify-none -c debug")
-        print(result.0)
-        print(result.1)
+    private func setRemoteWorkingDir(_ client: SSHClient?) {
+        client?.assertSuccessfulExecution(cmd: "cd  \(deploymentDir.appendingPathComponent(productName).path)")
     }
 }
 
@@ -177,7 +163,6 @@ public struct IoTDeploymentOptionsInnerNamespace: InnerNamespace {
 }
 
 public struct DeploymentDevice: OptionValue, RawRepresentable {
-    /// memory size, in MB
     public let rawValue: String
     
     public init(rawValue: String) {
@@ -269,11 +254,29 @@ public class IoTRuntime: DeploymentProviderRuntime {
 }
 
 // MARK: - Move to shared package
-private extension IoTDeploymentProvider {
-    private func _findExecutable(_ name: String) -> URL {
+extension IoTDeploymentProvider {
+    static func _findExecutable(_ name: String) -> URL {
         guard let url = Task.findExecutable(named: name) else {
             fatalError("Unable to find executable '\(name)'")
         }
         return url
+    }
+}
+
+// MARK: - IoT extensions
+public enum IoTDeploymentError: Swift.Error {
+    case postDiscoveryActionFailed(ActionIdentifier)
+    case generic(String)
+}
+
+struct IoTDeploymentProperties {
+    static let resourceDirectory = ConfigurationProperty("key_resourceDir")
+    static let deploymentDirectory = ConfigurationProperty("key_deployDir")
+}
+
+extension IoTDeploymentProvider {
+    var resourceURL: URL {
+        URL(fileURLWithPath: #filePath).deletingLastPathComponent()
+            .appendingPathComponent("Resources", isDirectory: true)
     }
 }

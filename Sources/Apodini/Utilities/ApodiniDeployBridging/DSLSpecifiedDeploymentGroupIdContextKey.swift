@@ -5,10 +5,10 @@
 //  Created by Felix Desiderato on 12/07/2021.
 //
 import Foundation
+import Runtime
 
 //TODO: Remove in later commit
-public let TEST_ENV_DEPLOY: String = "TEST_ENV_DEPLOY"
-public let expected_RESULT: String = "home"
+public let EXPORT_HANDLER_IDS: String = "EXPORT_HANDLER_IDS"
 
 public struct DSLSpecifiedDeploymentGroupIdContextKey: OptionalContextKey {
     public typealias Value = DeploymentGroup.ID
@@ -23,14 +23,15 @@ extension SemanticModelBuilder {
     /// If that's the case, only endpoints are exported that are in the deployment group specified by `TODO`.
     /// If no env variable `TODO` has been set, this function does nothing.
     func evaluateEndpointExport(_ endpoint: AnyEndpoint) -> Bool {
-        guard let value = ProcessInfo.processInfo.environment[TEST_ENV_DEPLOY] else {
+        print(endpoint[AnyHandlerIdentifier.self])
+        guard let value = ProcessInfo.processInfo.environment[EXPORT_HANDLER_IDS] else {
             // no value available, ignore call
             return true
         }
-        guard let groupId = endpoint[Context.self].get(valueFor: DSLSpecifiedDeploymentGroupIdContextKey.self) else {
-            // TODO: If an endpoint doesnt belong to a deployment group, we export it for now?
-            return true
+        guard let handlerId = endpoint[AnyHandlerIdentifier.self] else {
+            // Should not happen
+            return false
         }
-        return value == groupId
+        return value.contains(handlerId.rawValue)
     }
 }
