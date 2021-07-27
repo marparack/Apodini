@@ -65,7 +65,7 @@ public final class Application {
     private static var latestApplicationLogger: Logger?
     /// A global logger that can be used when no  `Application` instance is available.
     ///
-    /// - Note: In `Handler`s you shpuld rely on the `Logger` injected in the `@Environment`.
+    /// - Note: In `Handler`s you should rely on the `Logger` injected in the `@Environment`.
     public static var logger: Logger {
         latestApplicationLogger ?? {
             var newLogger = Logger(label: "Pre-startup")

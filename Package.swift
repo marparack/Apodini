@@ -257,21 +257,12 @@ let package = Package(
             dependencies: [
                 .target(name: "Apodini"),
                 .target(name: "ApodiniUtils"),
-                //.target(name: "ApodiniDatabase"),
-                //.target(name: "ApodiniREST"),
-                //.target(name: "ApodiniGRPC"),
-                //.target(name: "ApodiniOpenAPI"),
-                .target(name: "ApodiniWebSocket"),
-                //.target(name: "ApodiniProtobuffer"),
                 .product(name: "NIO", package: "swift-nio"),
-                .product(name: "NIOHTTP2", package: "swift-nio-http2"),
-                .product(name: "NIOSSL", package: "swift-nio-ssl"),
-                .product(name: "Logging", package: "swift-log"),
-                /// Does not work since it creates cyclic dependency "Apodini -> ApodiniAsyncHTTPClient -> Apodini"
-                //.product(name: "ApodiniAsyncHTTPClient", package: "ApodiniAsyncHTTPClient")
+                .product(name: "Logging", package: "swift-log")
                 /// Use the "originial" AsyncHTTPClient from https://github.com/swift-server/async-http-client
-                .product(name: "AsyncHTTPClient", package: "async-http-client"),
-                .product(name: "LoggingELK", package: "swift-log-elk")
+                //.product(name: "AsyncHTTPClient", package: "async-http-client")
+                /// Not needed anymore, since no injectables
+                //.product(name: "LoggingELK", package: "swift-log-elk")
             ]
         ),
         

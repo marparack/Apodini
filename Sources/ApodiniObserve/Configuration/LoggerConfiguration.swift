@@ -6,7 +6,6 @@
 //
 import Foundation
 import Logging
-import LoggingELK
 import Apodini
 
 /// A `Configuration` for the `Logger`.
@@ -24,8 +23,7 @@ public final class LoggerConfiguration: Configuration {
     public func configure(_ app: Application) {
         app.storage.set(LoggingStorageKey.self, to: LoggingStorageValue(logger: app.logger, configuration: self))
         
-        /// Bootstrap the logging system
-        /// Alternative would be to just require the developer to specify the types of the loggers, the LoggerConfiguration then switches on these types and creates the respective logging backends
+        // Bootstrap the logging system
         LoggingSystem.bootstrap { label in
             MultiplexLogHandler(
                 self.logHandlers

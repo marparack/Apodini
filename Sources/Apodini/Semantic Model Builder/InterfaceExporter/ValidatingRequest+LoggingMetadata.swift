@@ -21,25 +21,22 @@ extension ValidatingRequest {
     internal func logParameterMetadata<Element: Codable>(validatedParameter: Element, parameterID: UUID) {
         do {
             guard let parameterName = endpoint.parameters.filter({ $0.id == parameterID }).first?.name else {
-                /// This shouldn't be able to happen at all, therefore fail
+                // This shouldn't be able to happen at all, therefore fail
                 fatalError("Logging of parameters failed - Tried to log unknown parameter")
             }
             
-            /// Encode parameter to a `Logger.Metadata` representation
-            //let encodedParameter = try validatedParameter.encodeToJSON(outputFormatting: [.withoutEscapingSlashes])
+            // Encode parameter to a `Logger.Metadata` representation
             let encodedParameter = try Self.jsonEncoder.encode(validatedParameter)
             let jsonIntermediateRepresentation = try JSONDecoder().decode(JSONIntermediateRepresentation.self, from: encodedParameter)
             let parameterMetadata = jsonIntermediateRepresentation.metadata
             
-            /// Check if parameter is too large, limit is fixed 8kb
+            // Check if parameter is too large, limit is fixed 8kb
             guard encodedParameter.count < 8192 else {
-                // TODO: Not very pretty, but tricky to get a clean solution
                 parameterLoggingMetadata["parameters"] = .dictionary(parameterLoggingMetadata["parameters"]!.metadataDictionary.merging([parameterName: .string("Parameter data too large")]) { (_, new) in new })
                 return
             }
             
-            /// Set the encoded parameter to the metadata dictionary
-            // TODO: Not very pretty, but tricky to get a clean solution
+            // Set the encoded parameter to the metadata dictionary
             parameterLoggingMetadata["parameters"] = .dictionary(parameterLoggingMetadata["parameters"]!.metadataDictionary.merging([parameterName: parameterMetadata]) { (_, new) in new })
         } catch {
             fatalError("Logging of parameters failed - Encoding failed")
@@ -49,7 +46,7 @@ extension ValidatingRequest {
     internal var defaultLoggingMetadata: Logger.Metadata {
         [
             /// A textual description of the request, most detailed for the RESTExporter
-            "request-desciption": .string(description.replacingOccurrences(of: "\n", with: " ").trimmingCharacters(in: .whitespacesAndNewlines)),
+            "requestDescription": .string(description.replacingOccurrences(of: "\n", with: " ").trimmingCharacters(in: .whitespacesAndNewlines)),
             /// Set remote address
             "remoteAddress": .string(remoteAddress?.description ?? ""),
             /// Apodini's event loop
@@ -77,6 +74,7 @@ extension ValidatingRequest {
     
     private var informationLoggingMetadata: Logger.Metadata {
         [
+            /// The Apodini Information type, representing HTTP headers (so eg. Cookies)
             "information":  .dictionary(self.information.reduce(into: [:]) { res, info in
                                 res[info.key] = .string(info.rawValue)
                             })
@@ -98,6 +96,7 @@ extension ValidatingRequest {
     }
 }
 
+/// Extension that allows easy access to the `.dictionary`case of the `Logger.Metadata` enum
 extension Logger.MetadataValue {
     var metadataDictionary: Logger.Metadata {
         switch self {
@@ -140,7 +139,7 @@ private enum JSONIntermediateRepresentation: Decodable, Encodable {
         }
     }
     
-    /// Computed property that returns the actual `Logger.MetadataValue`
+    /// The actual metadata
     var metadata: Logger.MetadataValue {
         switch self {
         case .null:
