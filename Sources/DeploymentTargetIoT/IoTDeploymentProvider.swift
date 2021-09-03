@@ -111,55 +111,15 @@ public class IoTDeploymentProvider: DeploymentProvider {
             results = try discovery.run(2).wait()
             IoTContext.logger.info("Found: \(results)")
             
-            for result in results {
-                IoTContext.logger.debug("Cleaning up any leftover actions data in deployment directory")
-                try cleanup(on: result.device)
-                
-                guard
-                    // do nothing if there were no post actions
-                    !result.foundEndDevices.isEmpty,
-                    // do nothing if all post actions returned 0
-                    result.foundEndDevices.values.contains(where: { $0 != 0 })
-                else {
-                    IoTContext.logger.warning("No end devices were found for device \(String(describing: result.device.hostname)) or no deployment node were found")
-                        continue
-                    }
-                IoTContext.logger.info("Starting deployment to device \(String(describing: result.device.hostname))")
-                
-                let device = result.device
-                
-                IoTContext.logger.info("Copying sources to remote")
-                try copyResourcesToRemote(result)
-//                try copyModelFileToRemote(result.device, localmodelFileUrl: modelFileUrl)
-                
-                IoTContext.logger.info("Fetching the newest dependencies")
-                try fetchDependencies(on: device)
-                
-                IoTContext.logger.info("Building package on remote")
-                try buildPackage(on: device)
-                
-                IoTContext.logger.info("Retrieving the system structure")
-                let (modelFileUrl, deployedSystem) = try retrieveDeployedSystem(result: result, postActions: discovery.actions)
-                IoTContext.logger.notice("System structure written to '\(modelFileUrl)'")
-                
-                // Check if we have a suitable deployment node.
-                // If theres none for this device, there's no point to continue
-                guard let deploymentNode = try self.deploymentNode(for: result, deployedSystem: deployedSystem)
-                    else {
-                        IoTContext.logger.warning("Couldn't find a deployment node for \(String(describing: result.device.hostname))")
-                        continue
-                    }
-
-                // Run web service on deployed node
-                IoTContext.logger.info("Starting web service on remote node!")
-                try run(on: deploymentNode, device: device, modelFileUrl: modelFileUrl)
-                
-                IoTContext.logger.notice("Finished deployment for \(String(describing: result.device.hostname)) containing \(deploymentNode.id)")
-                
-                //maybe some clean up?
+            try results.forEach {
+                try deploy($0, discovery: discovery)
             }
             IoTContext.logger.notice("Completed deployment for all devices of type \(type)")
+            discovery.stop()
         }
+        
+        try listenForChanges()
+        
         isRunning = false
     }
     
@@ -182,6 +142,53 @@ public class IoTDeploymentProvider: DeploymentProvider {
         }
     }
     
+    internal func deploy(_ result: DiscoveryResult, discovery: DeviceDiscovery) throws {
+        IoTContext.logger.debug("Cleaning up any leftover actions data in deployment directory")
+        try cleanup(on: result.device)
+        
+        guard
+            // do nothing if there were no post actions
+            !result.foundEndDevices.isEmpty,
+            // do nothing if all post actions returned 0
+            result.foundEndDevices.values.contains(where: { $0 != 0 })
+        else {
+            IoTContext.logger.warning("No end devices were found for device \(String(describing: result.device.hostname))")
+                return
+            }
+        
+        IoTContext.logger.info("Starting deployment to device \(String(describing: result.device.hostname))")
+        
+        let device = result.device
+        
+        IoTContext.logger.info("Copying sources to remote")
+        try copyResourcesToRemote(result)
+//                try copyModelFileToRemote(result.device, localmodelFileUrl: modelFileUrl)
+        
+        IoTContext.logger.info("Fetching the newest dependencies")
+        try fetchDependencies(on: device)
+        
+        IoTContext.logger.info("Building package on remote")
+        try buildPackage(on: device)
+        
+        IoTContext.logger.info("Retrieving the system structure")
+        let (modelFileUrl, deployedSystem) = try retrieveDeployedSystem(result: result, postActions: discovery.actions)
+        IoTContext.logger.notice("System structure written to '\(modelFileUrl)'")
+        
+        // Check if we have a suitable deployment node.
+        // If theres none for this device, there's no point to continue
+        guard let deploymentNode = try self.deploymentNode(for: result, deployedSystem: deployedSystem)
+            else {
+                IoTContext.logger.warning("Couldn't find a deployment node for \(String(describing: result.device.hostname))")
+                return
+            }
+
+        // Run web service on deployed node
+        IoTContext.logger.info("Starting web service on remote node!")
+        try run(on: deploymentNode, device: device, modelFileUrl: modelFileUrl)
+        
+        IoTContext.logger.notice("Finished deployment for \(String(describing: result.device.hostname)) containing \(deploymentNode.id)")
+    }
+ 
     internal func setup(for type: String) -> DeviceDiscovery {
         let (username, password): (String, String)
         if dryRun {
@@ -205,7 +212,7 @@ public class IoTDeploymentProvider: DeploymentProvider {
         return discovery
     }
     
-    private func run(on node: DeployedSystemNode, device: Device, modelFileUrl: URL) throws {
+    internal func run(on node: DeployedSystemNode, device: Device, modelFileUrl: URL) throws {
         let handlerIds: String = node.exportedEndpoints.compactMap { $0.handlerId.rawValue }.joined(separator: ",")
         let buildUrl = remotePackageRootDir
             .appendingPathComponent(".build")
@@ -261,7 +268,7 @@ public class IoTDeploymentProvider: DeploymentProvider {
     
     // Since we dont want to compile the package locally just to retrieve the structure, we retrieve the structure remotely on every device the service is deployed on. On the devices, we compile the package anyway, so just use this.
     // We could do it just once and copy the file around, but for now this should be fine
-    private func retrieveDeployedSystem(result: DiscoveryResult, postActions: [PostDiscoveryAction.Type]) throws -> (URL, DeployedSystem) {
+    internal func retrieveDeployedSystem(result: DiscoveryResult, postActions: [PostDiscoveryAction.Type]) throws -> (URL, DeployedSystem) {
         let modelFileName = "AM_\(UUID().uuidString).json"
         let remoteFilePath = deploymentDir.appendingPathComponent(modelFileName, isDirectory: false)
         let device = result.device
@@ -336,7 +343,7 @@ public class IoTDeploymentProvider: DeploymentProvider {
         )
     }
     
-    private func deploymentNode(for result: DiscoveryResult, deployedSystem: DeployedSystem) throws -> DeployedSystemNode? {
+    internal func deploymentNode(for result: DiscoveryResult, deployedSystem: DeployedSystem) throws -> DeployedSystemNode? {
         let ipAddress = try IoTContext.ipAddress(for: result.device)
         let nodes = deployedSystem.nodes.filter { $0.id == ipAddress }
         // Since the node's id is the ip address, there should only be one deploymentnode per device.
