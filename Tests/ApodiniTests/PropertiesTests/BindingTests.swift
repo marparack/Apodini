@@ -126,42 +126,42 @@ final class BindingTests: ApodiniTests, EnvironmentAccessible {
         EnvironmentValue(self.featured, \BindingTests.featured).configure(self.app)
 
         let selectedCountry = "Germany"
-        try app.vapor.app.testable(method: .inMemory).test(.GET, "country/\(selectedCountry)") { response in
+        try app.vapor.app.testable(method: .running).test(.GET, "country/\(selectedCountry)") { response in
             XCTAssertEqual(response.status, .ok)
             XCTAssertTrue(response.body.string.contains(selectedCountry))
         }
-        try app.vapor.app.testable(method: .inMemory).test(.GET, "country/\(selectedCountry)/optional") { response in
+        try app.vapor.app.testable(method: .running).test(.GET, "country/\(selectedCountry)/optional") { response in
             XCTAssertEqual(response.status, .ok)
             XCTAssertTrue(response.body.string.contains(selectedCountry))
         }
 
-        try app.vapor.app.testable(method: .inMemory).test(.GET, "/") { response in
+        try app.vapor.app.testable(method: .running).test(.GET, "/") { response in
             XCTAssertEqual(response.status, .ok)
             XCTAssertTrue(response.body.string.contains("World"))
         }
 
-        try app.vapor.app.testable(method: .inMemory).test(.GET, "/default") { response in
+        try app.vapor.app.testable(method: .running).test(.GET, "/default") { response in
             XCTAssertEqual(response.status, .ok)
             XCTAssertTrue(response.body.string.contains("USA"))
         }
 
-        try app.vapor.app.testable(method: .inMemory).test(.GET, "/featured") { response in
+        try app.vapor.app.testable(method: .running).test(.GET, "/featured") { response in
             XCTAssertEqual(response.status, .ok)
             // swiftlint:disable force_unwrapping
             XCTAssertTrue(response.body.string.contains(featured!))
         }
 
-        try app.vapor.app.testable(method: .inMemory).test(.GET, "/optional") { response in
+        try app.vapor.app.testable(method: .running).test(.GET, "/optional") { response in
             XCTAssertEqual(response.status, .ok)
             XCTAssertTrue(response.body.string.contains("World"))
         }
         
-        try app.vapor.app.testable(method: .inMemory).test(.GET, "/optional?country=Greece") { response in
+        try app.vapor.app.testable(method: .running).test(.GET, "/optional?country=Greece") { response in
             XCTAssertEqual(response.status, .ok)
             XCTAssertTrue(response.body.string.contains("Greece"))
         }
 
-        try app.vapor.app.testable(method: .inMemory).test(.GET, "/localized?language=DE") { response in
+        try app.vapor.app.testable(method: .running).test(.GET, "/localized?language=DE") { response in
             XCTAssertEqual(response.status, .ok)
             XCTAssertTrue(response.body.string.contains("Welt"))
         }

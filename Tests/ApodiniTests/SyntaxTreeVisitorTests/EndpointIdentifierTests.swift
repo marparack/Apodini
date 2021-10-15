@@ -153,7 +153,7 @@ final class HandlerIdentifierTests: ApodiniTests {
         TestWebService().start(app: app)
         
         
-        try app.vapor.app.test(.GET, "/v1/") { res in
+        try app.vapor.app.testable(method: .running).test(.GET, "/v1/") { res in
             XCTAssertEqual(res.status, .ok)
             
             struct Content: Decodable {

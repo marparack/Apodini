@@ -20,7 +20,7 @@ final class GRPCServiceTests: ApodiniTests {
         S().start(app: app)
         defer { app.shutdown() } // This might in fact not be necessary
         
-        try app.vapor.app.test(.POST, path, headers: ["content-type": GRPCService.grpcproto.description]) { res in
+        try app.vapor.app.testable(method: .running).test(.POST, path, headers: ["content-type": GRPCService.grpcproto.description]) { res in
             XCTAssertGreaterThanOrEqual(res.status.code, 200)
             XCTAssertLessThan(res.status.code, 300)
         }

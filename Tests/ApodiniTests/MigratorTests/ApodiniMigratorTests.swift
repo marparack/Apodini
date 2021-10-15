@@ -136,7 +136,7 @@ final class ApodiniMigratorTests: ApodiniTests {
         
         start()
         
-        try app.vapor.app.test(.GET, path) { response in
+        try app.vapor.app.testable(method: .running).test(.GET, path) { response in
             XCTAssertEqual(response.status, .ok)
             XCTAssertNoThrow(try response.content.decode(Document.self, using: JSONDecoder()))
         }
@@ -186,7 +186,7 @@ final class ApodiniMigratorTests: ApodiniTests {
         start()
         
         let storedMigrationGuide = try XCTUnwrap(app.storage.get(MigrationGuideStorageKey.self))
-        try app.vapor.app.test(.GET, "guide") { response in
+        try app.vapor.app.testable(method: .running).test(.GET, "guide") { response in
             XCTAssertEqual(response.status, .ok)
             let migrationGuide = try response.content.decode(MigrationGuide.self, using: JSONDecoder())
             XCTAssertEqual(storedMigrationGuide, migrationGuide)
@@ -200,7 +200,7 @@ final class ApodiniMigratorTests: ApodiniTests {
         
         start()
         
-        try app.vapor.app.test(.GET, endpointPath) { response in
+        try app.vapor.app.testable(method: .running).test(.GET, endpointPath) { response in
             XCTAssertEqual(response.status, .ok)
             let migrationGuide = try response.content.decode(MigrationGuide.self, using: JSONDecoder())
             XCTAssert(migrationGuide.changes.isEmpty)
@@ -219,7 +219,7 @@ final class ApodiniMigratorTests: ApodiniTests {
         
         XCTAssert(app.storage.get(MigrationGuideStorageKey.self) == nil)
         
-        try app.vapor.app.test(.GET, "not-found") { response in
+        try app.vapor.app.testable(method: .running).test(.GET, "not-found") { response in
             XCTAssertEqual(response.status, .notFound)
         }
         
@@ -308,7 +308,7 @@ final class ApodiniMigratorTests: ApodiniTests {
         
         TestWebService().start(app: app)
         
-        try app.vapor.app.test(.GET, "api-spec") { response in
+        try app.vapor.app.testable(method: .running).test(.GET, "api-spec") { response in
             XCTAssertEqual(response.status, .ok)
             let document = try response.content.decode(Document.self, using: JSONDecoder())
             XCTAssertEqual(document.metaData.versionedServerPath, "http://1.2.3.4:56/789")

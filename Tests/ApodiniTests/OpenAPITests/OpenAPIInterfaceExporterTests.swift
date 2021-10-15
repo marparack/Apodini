@@ -37,14 +37,14 @@ final class OpenAPIInterfaceExporterTests: ApodiniTests {
 
         TestWebService().start(app: app)
 
-        try app.vapor.app.test(.GET, "\(OpenAPI.ConfigurationDefaults.outputEndpoint)") { res in
+        try app.vapor.app.testable(method: .running).test(.GET, "\(OpenAPI.ConfigurationDefaults.outputEndpoint)") { res in
             XCTAssertEqual(res.status, .ok)
             XCTAssertNoThrow(try res.content.decode(OpenAPI.Document.self, using: JSONDecoder()))
         }
 
         let headers: HTTPHeaders = ["Content-Type": HTTPMediaType.html.serialize()]
 
-        try app.vapor.app.test(.GET, "/\(OpenAPI.ConfigurationDefaults.swaggerUiEndpoint)", headers: headers) { res in
+        try app.vapor.app.testable(method: .running).test(.GET, "/\(OpenAPI.ConfigurationDefaults.swaggerUiEndpoint)", headers: headers) { res in
             XCTAssertEqual(res.status, .ok)
 
             guard let htmlFile = Bundle.apodiniOpenAPIResources.path(forResource: "swagger-ui", ofType: "html"),
@@ -79,14 +79,14 @@ final class OpenAPIInterfaceExporterTests: ApodiniTests {
 
         TestWebService().start(app: app)
 
-        try app.vapor.app.test(.GET, configuredOutputEndpoint) { res in
+        try app.vapor.app.testable(method: .running).test(.GET, configuredOutputEndpoint) { res in
             XCTAssertEqual(res.status, .ok)
             XCTAssertThrowsError(try res.content.decode(OpenAPI.Document.self, using: JSONDecoder()))
         }
 
         let headers: HTTPHeaders = ["Content-Type": HTTPMediaType.html.serialize()]
 
-        try app.vapor.app.test(.GET, configuredSwaggerUiEndpoint, headers: headers) { res in
+        try app.vapor.app.testable(method: .running).test(.GET, configuredSwaggerUiEndpoint, headers: headers) { res in
             XCTAssertEqual(res.status, .ok)
 
             guard let htmlFile = Bundle.apodiniOpenAPIResources.path(forResource: "swagger-ui", ofType: "html"),

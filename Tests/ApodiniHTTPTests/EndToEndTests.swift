@@ -158,19 +158,19 @@ class EndToEndTests: XCTApodiniTest {
     }
 
     func testRequestResponsePattern() throws {
-        try app.vapor.app.testable(method: .inMemory).test(.GET, "/rr/Paul", body: nil) { response in
+        try app.vapor.app.testable(method: .running).test(.GET, "/rr/Paul", body: nil) { response in
             XCTAssertEqual(response.status, .ok)
             XCTAssertEqual(try response.content.decode(String.self, using: JSONDecoder()), "Hello, Paul!")
         }
         
-        try app.vapor.app.testable(method: .inMemory).test(.GET, "/rr/Andi?greeting=Wuzzup", body: nil) { response in
+        try app.vapor.app.testable(method: .running).test(.GET, "/rr/Andi?greeting=Wuzzup", body: nil) { response in
             XCTAssertEqual(response.status, .ok)
             XCTAssertEqual(try response.content.decode(String.self, using: JSONDecoder()), "Wuzzup, Andi!")
         }
     }
     
     func testServiceSideStreamingPattern() throws {
-        try app.vapor.app.testable(method: .inMemory).test(.GET, "/ss?start=10", body: nil) { response in
+        try app.vapor.app.testable(method: .running).test(.GET, "/ss?start=10", body: nil) { response in
             XCTAssertEqual(response.status, .ok)
             XCTAssertEqual(try response.content.decode([String].self, using: JSONDecoder()), [
                 "10...",
@@ -203,7 +203,7 @@ class EndToEndTests: XCTApodiniTest {
             [String: [String: String]]()
         ]
         
-        try app.vapor.app.testable(method: .inMemory)
+        try app.vapor.app.testable(method: .running)
             .test(.GET, "/cs", body: JSONEncoder().encodeAsByteBuffer(body, allocator: .init())) { response in
                 XCTAssertEqual(response.status, .ok)
                 XCTAssertEqual(try response.content.decode(String.self, using: JSONDecoder()), "Hello, Germany, Taiwan and the World!")
@@ -225,7 +225,7 @@ class EndToEndTests: XCTApodiniTest {
             [String: [String: String]]()
         ]
         
-        try app.vapor.app.testable(method: .inMemory)
+        try app.vapor.app.testable(method: .running)
             .test(.GET, "/bs", body: JSONEncoder().encodeAsByteBuffer(body, allocator: .init())) { response in
                 XCTAssertEqual(response.status, .ok)
                 XCTAssertEqual(try response.content.decode([String].self, using: JSONDecoder()), [
@@ -237,14 +237,14 @@ class EndToEndTests: XCTApodiniTest {
     }
     
     func testBlob() throws {
-        try app.vapor.app.testable(method: .inMemory).test(.GET, "/blob/Paul", body: nil) { response in
+        try app.vapor.app.testable(method: .running).test(.GET, "/blob/Paul", body: nil) { response in
             XCTAssertEqual(response.status, .ok)
             XCTAssertEqual(response.body.string, "Hello, Paul!")
             XCTAssertEqual(response.headers["Content-Type"].first, "text/plain")
             XCTAssertEqual(response.headers["Test"].first, "Test")
         }
         
-        try app.vapor.app.testable(method: .inMemory).test(.GET, "/blob/Andi?greeting=Wuzzup", body: nil) { response in
+        try app.vapor.app.testable(method: .running).test(.GET, "/blob/Andi?greeting=Wuzzup", body: nil) { response in
             XCTAssertEqual(response.status, .ok)
             XCTAssertEqual(response.body.string, "Wuzzup, Andi!")
             XCTAssertEqual(response.headers["Content-Type"].first, "text/plain")

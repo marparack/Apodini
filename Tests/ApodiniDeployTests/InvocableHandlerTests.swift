@@ -200,7 +200,7 @@ private struct TestWebService: Apodini.WebService {
 class InvocableHandlerTests: XCTApodiniTest {
     func testSimpleRemoteHandlerInvocation() throws {
         TestWebService().start(app: app)
-        try app.vapor.app.test(.GET, "/v1/f") { res in
+        try app.vapor.app.testable(method: .running).test(.GET, "/v1/f") { res in
             XCTAssertEqual(res.status, .ok)
             try XCTAssertEqual(res.content.decodeRESTResponseData(String.self), "F")
         }
@@ -208,7 +208,7 @@ class InvocableHandlerTests: XCTApodiniTest {
     
     func testArrayBasedParameterPassing() throws {
         TestWebService().start(app: app)
-        try app.vapor.app.test(
+        try app.vapor.app.testable(method: .running).test(
             .GET,
             "/v1/greet?name=lukas&transformation=\(TestWebService.TextTransformer.Transformation.makeUppercase.rawValue)"
         ) { res in
@@ -219,7 +219,7 @@ class InvocableHandlerTests: XCTApodiniTest {
     
     func testArrayBasedParameterPassingDefaultParameterValueHandling() throws {
         TestWebService().start(app: app)
-        try app.vapor.app.test(.GET, "/v1/greet?name=LuKAs") { res in // default value for the TextTransformer.transformation parameter is .identity
+        try app.vapor.app.testable(method: .running).test(.GET, "/v1/greet?name=LuKAs") { res in // default value for the TextTransformer.transformation parameter is .identity
             XCTAssertEqual(res.status, .ok)
             try XCTAssertEqual(res.content.decodeRESTResponseData(String.self), "Hello LuKAs!")
         }
@@ -227,7 +227,7 @@ class InvocableHandlerTests: XCTApodiniTest {
     
     func testParametersStorageObjectBasedParameterPassing() throws {
         TestWebService().start(app: app)
-        try app.vapor.app.test(.GET, "/v1/calc?operation=add&lhs=5&rhs=7") { res in
+        try app.vapor.app.testable(method: .running).test(.GET, "/v1/calc?operation=add&lhs=5&rhs=7") { res in
             XCTAssertEqual(res.status, .ok)
             try XCTAssertEqual(res.content.decodeRESTResponseData(Int.self), 12)
         }

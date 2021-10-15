@@ -165,7 +165,7 @@ class RESTExporterConfigurationTests: ApodiniTests {
 
         let userId = "1234"
         let name = "Rudi"
-        try app.vapor.app.testable(method: .inMemory).test(.GET, "user/\(userId)?name=\(name)") { response in
+        try app.vapor.app.testable(method: .running).test(.GET, "user/\(userId)?name=\(name)") { response in
             XCTAssertEqual(response.status, .ok)
             let container = try response.content.decode(ResponseContainer<User>.self)
             XCTAssertEqual(container.data.id, userId)
@@ -189,7 +189,7 @@ class RESTExporterConfigurationTests: ApodiniTests {
 
         let userId = "1234"
         let name = "Rudi"
-        try app.vapor.app.testable(method: .inMemory).test(.GET, "user/\(userId)?name=\(name)") { response in
+        try app.vapor.app.testable(method: .running).test(.GET, "user/\(userId)?name=\(name)") { response in
             XCTAssertEqual(response.status, .ok)
             let container = try response.content.decode(ResponseContainer<User>.self)
             XCTAssertEqual(container.data.id, userId)
@@ -213,7 +213,7 @@ class RESTExporterConfigurationTests: ApodiniTests {
 
         let userId = "1234"
         let name = "Rudi"
-        try app.vapor.app.testable(method: .inMemory).test(.GET, "user/\(userId)?name=\(name)") { res in
+        try app.vapor.app.testable(method: .running).test(.GET, "user/\(userId)?name=\(name)") { res in
             XCTAssertEqual(res.status, .ok)
             let container = try res.content.decode(ResponseContainer<User>.self, using: XMLDecoder())
             XCTAssertEqual(container.data.id, userId)
@@ -252,7 +252,7 @@ class RESTExporterConfigurationTests: ApodiniTests {
         let userId = "1234"
         let name = "Rudi"
         
-        try app.vapor.app.testable(method: .inMemory).test(.GET,
+        try app.vapor.app.testable(method: .running).test(.GET,
                                                            "/user",
                                                            headers: .init(),
                                                            body: ByteBuffer(data: XMLEncoder().encode(User(id: userId, name: name)))) { res in
@@ -280,7 +280,7 @@ class RESTExporterConfigurationTests: ApodiniTests {
         let userId = "1234"
         let name = "Rudi"
         
-        try app.vapor.app.testable(method: .inMemory).test(.GET,
+        try app.vapor.app.testable(method: .running).test(.GET,
                                                            "/user",
                                                            headers: .init(),
                                                            body: ByteBuffer(data: XMLEncoder().encode(User(id: userId, name: name)))) { res in
@@ -308,7 +308,7 @@ class RESTExporterConfigurationTests: ApodiniTests {
         let userId = "1234"
         let name = "Rudi"
         
-        try app.vapor.app.testable(method: .inMemory).test(.GET,
+        try app.vapor.app.testable(method: .running).test(.GET,
                                                            "/user",
                                                            headers: .init(),
                                                            body: ByteBuffer(data: JSONEncoder().encode(User(id: userId, name: name)))) { res in

@@ -68,27 +68,27 @@ final class OperationModifierTests: ApodiniTests {
             XCTAssert(content.data == data)
         }
         
-        try app.vapor.app.test(.GET, "/version3/default") { res in
+        try app.vapor.app.testable(method: .running).test(.GET, "/version3/default") { res in
             try expect("Read", in: res)
         }
 
-        try app.vapor.app.test(.DELETE, "/version3/default") { res in
+        try app.vapor.app.testable(method: .running).test(.DELETE, "/version3/default") { res in
             try expect("Hello World", in: res)
         }
         
-        try app.vapor.app.test(.POST, "/version3/") { res in
+        try app.vapor.app.testable(method: .running).test(.POST, "/version3/") { res in
             try expect("Create", in: res)
         }
         
-        try app.vapor.app.test(.PUT, "/version3/") { res in
+        try app.vapor.app.testable(method: .running).test(.PUT, "/version3/") { res in
             try expect("Update", in: res)
         }
         
-        try app.vapor.app.test(.DELETE, "/version3/") { res in
+        try app.vapor.app.testable(method: .running).test(.DELETE, "/version3/") { res in
             try expect("Delete", in: res)
         }
         
-        try app.vapor.app.test(.GET, "/version3/") { res in
+        try app.vapor.app.testable(method: .running).test(.GET, "/version3/") { res in
             try expect("Read", in: res)
         }
     }

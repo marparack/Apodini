@@ -18,7 +18,7 @@ final class ProtobufferBuilderTests: XCTestCase {
         S().start(app: app)
         defer { app.shutdown() } // This might in fact not be necessary
         
-        try app.vapor.app.test(.GET, "apodini/proto") { res in
+        try app.vapor.app.testable(method: .running).test(.GET, "apodini/proto") { res in
             XCTAssertEqual(res.body.string, expectation)
         }
     }

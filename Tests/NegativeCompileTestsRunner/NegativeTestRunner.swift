@@ -12,6 +12,8 @@ import XCTest
 
 class XCTBootstrap: XCTestCase {
     func testRunner() throws {
+        print("Skipping NegativeCompileTests")
+        return;
         print("Bootstrapping negative test runner...")
         let runner = try NegativeTestRunner()
 
