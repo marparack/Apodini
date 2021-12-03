@@ -1,0 +1,2903 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Application/Application+HTTP.swift",
+      "line": 21,
+      "symbol": "HTTPVersionMajor.one",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Application/Application+HTTP.swift",
+      "line": 22,
+      "symbol": "HTTPVersionMajor.two",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Application/Application+HTTP.swift",
+      "line": 28,
+      "symbol": "BindAddress.interface(_:port:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Application/Application+HTTP.swift",
+      "line": 29,
+      "symbol": "BindAddress.unixDomainSocket(path:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Application/Application+HTTP.swift",
+      "line": 31,
+      "symbol": "BindAddress.address(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/Component/AnyComponent.swift",
+      "line": 9,
+      "symbol": "AnyComponent",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/Component/AnyComponent.swift",
+      "line": 24,
+      "symbol": "AnyHandler",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/Component/AnyComponent.swift",
+      "line": 67,
+      "symbol": "SomeHandler",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/Component/AnyComponent.swift",
+      "line": 68,
+      "symbol": "SomeHandler.Response",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/Component/AnyComponent.swift",
+      "line": 73,
+      "symbol": "SomeHandler.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/Component/BaseComponents/EmptyComponent.swift",
+      "line": 24,
+      "symbol": "EmptyHandler",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/Component/BaseComponents/Group.swift",
+      "line": 8,
+      "symbol": "PathComponentContextKey",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/Component/BaseComponents/Group.swift",
+      "line": 14,
+      "symbol": "Group",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/Component/BaseComponents/Group.swift",
+      "line": 18,
+      "symbol": "Group.init(_:content:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/Component/BaseComponents/Group.swift",
+      "line": 23,
+      "symbol": "Group.init(path:content:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/Component/Component.swift",
+      "line": 20,
+      "symbol": "Component.Metadata",
+      "symbol_kind": "source.lang.swift.decl.associatedtype",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/Component/Component.swift",
+      "line": 27,
+      "symbol": "Component.metadata",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/Component/TupleComponent.swift",
+      "line": 11,
+      "symbol": "TupleComponent",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 13,
+      "symbol": "ComponentBuilder",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 14,
+      "symbol": "ComponentBuilder.buildIf(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 18,
+      "symbol": "ComponentBuilder.buildBlock(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 22,
+      "symbol": "ComponentBuilder.buildEither(first:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 26,
+      "symbol": "ComponentBuilder.buildEither(second:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 30,
+      "symbol": "ComponentBuilder.buildIf(first:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 34,
+      "symbol": "ComponentBuilder.buildBlock(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 38,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 42,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 46,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 50,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 54,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 58,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 62,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 66,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 70,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 74,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 78,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 82,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 86,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 90,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 94,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 98,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 102,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 106,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 110,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 114,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 118,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 122,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 126,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 130,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 134,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 138,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 142,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 146,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 150,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 154,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 158,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 162,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 166,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 170,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 174,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 178,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 182,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 186,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 190,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 194,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 198,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 202,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 206,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 210,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 214,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 218,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 222,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 226,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 230,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 234,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 238,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 242,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 246,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 250,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 254,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 258,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 262,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 266,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 270,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 274,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 278,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 282,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 286,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 290,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 294,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 298,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 302,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 306,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 310,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 314,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 318,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 322,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 326,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 330,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 334,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 338,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 342,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 346,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 350,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 354,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 358,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 362,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 366,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 370,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 374,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 378,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 382,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 386,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 390,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 394,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 398,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 402,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 406,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 410,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 414,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 418,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/ComponentBuilder.swift",
+      "line": 422,
+      "symbol": "ComponentBuilder.buildBlock(_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/Handler/BaseHandler/Text.swift",
+      "line": 8,
+      "symbol": "Text",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/Handler/BaseHandler/Text.swift",
+      "line": 11,
+      "symbol": "Text.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/Handler/Handler.swift",
+      "line": 16,
+      "symbol": "Handler.Metadata",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/Handler/HandlerIdentifier.swift",
+      "line": 72,
+      "symbol": "AnyHandlerIdentifier.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/Handler/HandlerIdentifier.swift",
+      "line": 76,
+      "symbol": "AnyHandlerIdentifier.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/Handler/HandlerIdentifier.swift",
+      "line": 108,
+      "symbol": "ScopedHandlerIdentifier.init(rawValue:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/Handler/HandlerIdentifier.swift",
+      "line": 117,
+      "symbol": "ScopedHandlerIdentifier.init(from:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/Handler/HandlerIdentifier.swift",
+      "line": 121,
+      "symbol": "ScopedHandlerIdentifier.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/Handler/IdentifiableHandler.swift",
+      "line": 25,
+      "symbol": "ExplicitlyIdentifiedHandlerModifier",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/Path/HideLinkModifier.swift",
+      "line": 13,
+      "symbol": "HideLinkModifier",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Components/Path/RelationshipNameModifier.swift",
+      "line": 13,
+      "symbol": "RelationshipNameModifier",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Configurations/Configuration.swift",
+      "line": 57,
+      "symbol": "EmptyConfiguration",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Configurations/Configuration.swift",
+      "line": 60,
+      "symbol": "EmptyConfiguration.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Configurations/Configuration.swift",
+      "line": 63,
+      "symbol": "EmptyCommand",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Configurations/HTTPConfiguration.swift",
+      "line": 23,
+      "symbol": "HTTPConfiguration.Defaults.address",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Configurations/HTTPConfiguration.swift",
+      "line": 24,
+      "symbol": "HTTPConfiguration.Defaults.httpPort",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Configurations/HTTPConfiguration.swift",
+      "line": 25,
+      "symbol": "HTTPConfiguration.Defaults.httpsPort",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Configurations/HTTPConfiguration.swift",
+      "line": 26,
+      "symbol": "HTTPConfiguration.Defaults.bindAddress",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Configurations/HTTPConfiguration.swift",
+      "line": 34,
+      "symbol": "HTTPConfiguration.supportVersions",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Configurations/HTTPConfiguration.swift",
+      "line": 39,
+      "symbol": "HTTPConfiguration.uriPrefix",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Information/InformationInstantiatable.swift",
+      "line": 19,
+      "symbol": "InformationInstantiatable.Value",
+      "symbol_kind": "source.lang.swift.decl.associatedtype",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Information/StringKeyedCodableInformationClass.swift",
+      "line": 11,
+      "symbol": "StringKeyedEncodableInformationClass.entry",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Information/StringKeyedStringInformationClass.swift",
+      "line": 11,
+      "symbol": "StringKeyedStringInformationClass.entry",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/BuiltinContextKeys/OptionBasedMetadataContextKey.swift",
+      "line": 9,
+      "symbol": "OptionBasedMetadataContextKey",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/BuiltinMetadata/CommunicationalPatternMetadata.swift",
+      "line": 27,
+      "symbol": "CommunicationalPatternContextKey",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/BuiltinMetadata/DescriptionMetadata.swift",
+      "line": 9,
+      "symbol": "WebServiceDescriptionContextKey",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/BuiltinMetadata/DescriptionMetadata.swift",
+      "line": 13,
+      "symbol": "DescriptionContextKey",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/BuiltinMetadata/DescriptionMetadata.swift",
+      "line": 44,
+      "symbol": "WebServiceDescriptionMetadata.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/BuiltinMetadata/EmptyMetadata.swift",
+      "line": 43,
+      "symbol": "EmptyHandlerMetadata.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/BuiltinMetadata/EmptyMetadata.swift",
+      "line": 57,
+      "symbol": "EmptyComponentOnlyMetadata.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/BuiltinMetadata/EmptyMetadata.swift",
+      "line": 71,
+      "symbol": "EmptyWebServiceMetadata.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/BuiltinMetadata/EmptyMetadata.swift",
+      "line": 84,
+      "symbol": "EmptyComponentMetadata.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/BuiltinMetadata/OperationMetadata.swift",
+      "line": 25,
+      "symbol": "OperationContextKey",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/BuiltinMetadata/WebServiceVersionMetadata.swift",
+      "line": 9,
+      "symbol": "APIVersionContextKey",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/BuiltinMetadata/WebServiceVersionMetadata.swift",
+      "line": 35,
+      "symbol": "WebServiceVersionMetadata.init(prefix:major:minor:patch:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/MetadataBlock+Apodini.swift",
+      "line": 11,
+      "symbol": "AnyHandlerMetadataBlock",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/MetadataBlock+Apodini.swift",
+      "line": 13,
+      "symbol": "AnyComponentOnlyMetadataBlock",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/MetadataBlock+Apodini.swift",
+      "line": 16,
+      "symbol": "AnyWebServiceMetadataBlock",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/MetadataBlock+Apodini.swift",
+      "line": 18,
+      "symbol": "AnyComponentMetadataBlock",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/MetadataBlock+Apodini.swift",
+      "line": 43,
+      "symbol": "HandlerMetadataBlock.Metadata",
+      "symbol_kind": "source.lang.swift.decl.associatedtype",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/MetadataBlock+Apodini.swift",
+      "line": 46,
+      "symbol": "HandlerMetadataBlock.metadata",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/MetadataBlock+Apodini.swift",
+      "line": 76,
+      "symbol": "ComponentOnlyMetadataBlock.Metadata",
+      "symbol_kind": "source.lang.swift.decl.associatedtype",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/MetadataBlock+Apodini.swift",
+      "line": 79,
+      "symbol": "ComponentOnlyMetadataBlock.metadata",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/MetadataBlock+Apodini.swift",
+      "line": 111,
+      "symbol": "WebServiceMetadataBlock.Metadata",
+      "symbol_kind": "source.lang.swift.decl.associatedtype",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/MetadataBlock+Apodini.swift",
+      "line": 114,
+      "symbol": "WebServiceMetadataBlock.metadata",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/MetadataBlock+Apodini.swift",
+      "line": 146,
+      "symbol": "ComponentMetadataBlock.Metadata",
+      "symbol_kind": "source.lang.swift.decl.associatedtype",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/MetadataBlock+Apodini.swift",
+      "line": 149,
+      "symbol": "ComponentMetadataBlock.metadata",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/MetadataBlock+Apodini.swift",
+      "line": 196,
+      "symbol": "StandardHandlerMetadataBlock.metadata",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/MetadataBlock+Apodini.swift",
+      "line": 198,
+      "symbol": "StandardHandlerMetadataBlock.init(metadata:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/MetadataBlock+Apodini.swift",
+      "line": 220,
+      "symbol": "StandardComponentOnlyMetadataBlock.metadata",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/MetadataBlock+Apodini.swift",
+      "line": 222,
+      "symbol": "StandardComponentOnlyMetadataBlock.init(metadata:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/MetadataBlock+Apodini.swift",
+      "line": 243,
+      "symbol": "StandardWebServiceMetadataBlock.metadata",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/MetadataBlock+Apodini.swift",
+      "line": 245,
+      "symbol": "StandardWebServiceMetadataBlock.init(metadata:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/MetadataBlock+Apodini.swift",
+      "line": 267,
+      "symbol": "StandardComponentMetadataBlock.metadata",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/MetadataBlock+Apodini.swift",
+      "line": 269,
+      "symbol": "StandardComponentMetadataBlock.init(metadata:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/MetadataWithDelegatingHandler.swift",
+      "line": 36,
+      "symbol": "DefinitionWithDelegatingHandlerKey.Key",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/Modifier/ComponentMetadataModifier.swift",
+      "line": 33,
+      "symbol": "ComponentMetadataModifier.init(modifies:with:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/RestrictedMetadataBlock+Apodini.swift",
+      "line": 24,
+      "symbol": "RestrictedHandlerMetadataBlock.RestrictedContent",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/RestrictedMetadataBlock+Apodini.swift",
+      "line": 26,
+      "symbol": "RestrictedHandlerMetadataBlock.metadata",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/RestrictedMetadataBlock+Apodini.swift",
+      "line": 28,
+      "symbol": "RestrictedHandlerMetadataBlock.init(metadata:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/RestrictedMetadataBlock+Apodini.swift",
+      "line": 47,
+      "symbol": "RestrictedComponentOnlyMetadataBlock.RestrictedContent",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/RestrictedMetadataBlock+Apodini.swift",
+      "line": 49,
+      "symbol": "RestrictedComponentOnlyMetadataBlock.metadata",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/RestrictedMetadataBlock+Apodini.swift",
+      "line": 51,
+      "symbol": "RestrictedComponentOnlyMetadataBlock.init(metadata:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/RestrictedMetadataBlock+Apodini.swift",
+      "line": 68,
+      "symbol": "RestrictedWebServiceMetadataBlock.RestrictedContent",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/RestrictedMetadataBlock+Apodini.swift",
+      "line": 70,
+      "symbol": "RestrictedWebServiceMetadataBlock.metadata",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/RestrictedMetadataBlock+Apodini.swift",
+      "line": 72,
+      "symbol": "RestrictedWebServiceMetadataBlock.init(metadata:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/RestrictedMetadataBlock+Apodini.swift",
+      "line": 89,
+      "symbol": "RestrictedComponentMetadataBlock.RestrictedContent",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/RestrictedMetadataBlock+Apodini.swift",
+      "line": 91,
+      "symbol": "RestrictedComponentMetadataBlock.metadata",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/RestrictedMetadataBlock+Apodini.swift",
+      "line": 93,
+      "symbol": "RestrictedComponentMetadataBlock.init(metadata:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/ComponentMetadataBuilder.swift",
+      "line": 13,
+      "symbol": "ComponentMetadataBuilder",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/ComponentMetadataBuilder.swift",
+      "line": 15,
+      "symbol": "ComponentMetadataBuilder",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/ComponentMetadataBuilder.swift",
+      "line": 16,
+      "symbol": "ComponentMetadataBuilder.buildExpression(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/ComponentMetadataBuilder.swift",
+      "line": 20,
+      "symbol": "ComponentMetadataBuilder.buildExpression(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/ComponentMetadataBuilder.swift",
+      "line": 24,
+      "symbol": "ComponentMetadataBuilder.buildOptional(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/ComponentMetadataBuilder.swift",
+      "line": 28,
+      "symbol": "ComponentMetadataBuilder.buildEither(first:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/ComponentMetadataBuilder.swift",
+      "line": 32,
+      "symbol": "ComponentMetadataBuilder.buildEither(second:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/ComponentMetadataBuilder.swift",
+      "line": 36,
+      "symbol": "ComponentMetadataBuilder.buildArray(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/ComponentMetadataBuilder.swift",
+      "line": 40,
+      "symbol": "ComponentMetadataBuilder.buildBlock(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/MetadataBuilder.swift",
+      "line": 13,
+      "symbol": "MetadataBuilder",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/MetadataBuilder.swift",
+      "line": 16,
+      "symbol": "MetadataBuilder",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/MetadataBuilder.swift",
+      "line": 17,
+      "symbol": "MetadataBuilder.buildExpression(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/MetadataBuilder.swift",
+      "line": 21,
+      "symbol": "MetadataBuilder.buildExpression(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/MetadataBuilder.swift",
+      "line": 25,
+      "symbol": "MetadataBuilder.buildExpression(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/MetadataBuilder.swift",
+      "line": 29,
+      "symbol": "MetadataBuilder.buildOptional(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/MetadataBuilder.swift",
+      "line": 33,
+      "symbol": "MetadataBuilder.buildEither(first:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/MetadataBuilder.swift",
+      "line": 37,
+      "symbol": "MetadataBuilder.buildEither(second:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/MetadataBuilder.swift",
+      "line": 41,
+      "symbol": "MetadataBuilder.buildArray(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/MetadataBuilder.swift",
+      "line": 45,
+      "symbol": "MetadataBuilder.buildBlock(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/MetadataBuilder.swift",
+      "line": 51,
+      "symbol": "MetadataBuilder",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/MetadataBuilder.swift",
+      "line": 52,
+      "symbol": "MetadataBuilder.buildExpression(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/MetadataBuilder.swift",
+      "line": 56,
+      "symbol": "MetadataBuilder.buildExpression(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/MetadataBuilder.swift",
+      "line": 60,
+      "symbol": "MetadataBuilder.buildExpression(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/MetadataBuilder.swift",
+      "line": 64,
+      "symbol": "MetadataBuilder.buildOptional(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/MetadataBuilder.swift",
+      "line": 68,
+      "symbol": "MetadataBuilder.buildEither(first:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/MetadataBuilder.swift",
+      "line": 72,
+      "symbol": "MetadataBuilder.buildEither(second:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/MetadataBuilder.swift",
+      "line": 76,
+      "symbol": "MetadataBuilder.buildArray(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/MetadataBuilder.swift",
+      "line": 80,
+      "symbol": "MetadataBuilder.buildBlock(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/MetadataBuilder.swift",
+      "line": 86,
+      "symbol": "MetadataBuilder",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/MetadataBuilder.swift",
+      "line": 87,
+      "symbol": "MetadataBuilder.buildExpression(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/MetadataBuilder.swift",
+      "line": 91,
+      "symbol": "MetadataBuilder.buildExpression(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/MetadataBuilder.swift",
+      "line": 95,
+      "symbol": "MetadataBuilder.buildExpression(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/MetadataBuilder.swift",
+      "line": 99,
+      "symbol": "MetadataBuilder.buildOptional(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/MetadataBuilder.swift",
+      "line": 103,
+      "symbol": "MetadataBuilder.buildEither(first:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/MetadataBuilder.swift",
+      "line": 107,
+      "symbol": "MetadataBuilder.buildEither(second:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/MetadataBuilder.swift",
+      "line": 111,
+      "symbol": "MetadataBuilder.buildArray(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/MetadataBuilder.swift",
+      "line": 115,
+      "symbol": "MetadataBuilder.buildBlock(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/RestrictedMetadataBlockBuilder.swift",
+      "line": 13,
+      "symbol": "RestrictedMetadataBlockBuilder",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/RestrictedMetadataBlockBuilder.swift",
+      "line": 16,
+      "symbol": "RestrictedMetadataBlockBuilder",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/RestrictedMetadataBlockBuilder.swift",
+      "line": 17,
+      "symbol": "RestrictedMetadataBlockBuilder.buildExpression(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/RestrictedMetadataBlockBuilder.swift",
+      "line": 21,
+      "symbol": "RestrictedMetadataBlockBuilder.buildExpression(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/RestrictedMetadataBlockBuilder.swift",
+      "line": 25,
+      "symbol": "RestrictedMetadataBlockBuilder.buildOptional(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/RestrictedMetadataBlockBuilder.swift",
+      "line": 29,
+      "symbol": "RestrictedMetadataBlockBuilder.buildEither(first:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/RestrictedMetadataBlockBuilder.swift",
+      "line": 33,
+      "symbol": "RestrictedMetadataBlockBuilder.buildEither(second:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/RestrictedMetadataBlockBuilder.swift",
+      "line": 37,
+      "symbol": "RestrictedMetadataBlockBuilder.buildArray(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/RestrictedMetadataBlockBuilder.swift",
+      "line": 41,
+      "symbol": "RestrictedMetadataBlockBuilder.buildBlock(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/RestrictedMetadataBlockBuilder.swift",
+      "line": 47,
+      "symbol": "RestrictedMetadataBlockBuilder",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/RestrictedMetadataBlockBuilder.swift",
+      "line": 48,
+      "symbol": "RestrictedMetadataBlockBuilder.buildExpression(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/RestrictedMetadataBlockBuilder.swift",
+      "line": 52,
+      "symbol": "RestrictedMetadataBlockBuilder.buildExpression(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/RestrictedMetadataBlockBuilder.swift",
+      "line": 56,
+      "symbol": "RestrictedMetadataBlockBuilder.buildOptional(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/RestrictedMetadataBlockBuilder.swift",
+      "line": 60,
+      "symbol": "RestrictedMetadataBlockBuilder.buildEither(first:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/RestrictedMetadataBlockBuilder.swift",
+      "line": 64,
+      "symbol": "RestrictedMetadataBlockBuilder.buildEither(second:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/RestrictedMetadataBlockBuilder.swift",
+      "line": 68,
+      "symbol": "RestrictedMetadataBlockBuilder.buildArray(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/RestrictedMetadataBlockBuilder.swift",
+      "line": 72,
+      "symbol": "RestrictedMetadataBlockBuilder.buildBlock(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/RestrictedMetadataBlockBuilder.swift",
+      "line": 78,
+      "symbol": "RestrictedMetadataBlockBuilder",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/RestrictedMetadataBlockBuilder.swift",
+      "line": 79,
+      "symbol": "RestrictedMetadataBlockBuilder.buildExpression(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/RestrictedMetadataBlockBuilder.swift",
+      "line": 83,
+      "symbol": "RestrictedMetadataBlockBuilder.buildExpression(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/RestrictedMetadataBlockBuilder.swift",
+      "line": 87,
+      "symbol": "RestrictedMetadataBlockBuilder.buildOptional(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/RestrictedMetadataBlockBuilder.swift",
+      "line": 91,
+      "symbol": "RestrictedMetadataBlockBuilder.buildEither(first:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/RestrictedMetadataBlockBuilder.swift",
+      "line": 95,
+      "symbol": "RestrictedMetadataBlockBuilder.buildEither(second:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/RestrictedMetadataBlockBuilder.swift",
+      "line": 99,
+      "symbol": "RestrictedMetadataBlockBuilder.buildArray(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/RestrictedMetadataBlockBuilder.swift",
+      "line": 103,
+      "symbol": "RestrictedMetadataBlockBuilder.buildBlock(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/RestrictedMetadataBlockBuilder.swift",
+      "line": 109,
+      "symbol": "RestrictedMetadataBlockBuilder",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/RestrictedMetadataBlockBuilder.swift",
+      "line": 110,
+      "symbol": "RestrictedMetadataBlockBuilder.buildExpression(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/RestrictedMetadataBlockBuilder.swift",
+      "line": 114,
+      "symbol": "RestrictedMetadataBlockBuilder.buildExpression(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/RestrictedMetadataBlockBuilder.swift",
+      "line": 118,
+      "symbol": "RestrictedMetadataBlockBuilder.buildOptional(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/RestrictedMetadataBlockBuilder.swift",
+      "line": 122,
+      "symbol": "RestrictedMetadataBlockBuilder.buildEither(first:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/RestrictedMetadataBlockBuilder.swift",
+      "line": 126,
+      "symbol": "RestrictedMetadataBlockBuilder.buildEither(second:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/RestrictedMetadataBlockBuilder.swift",
+      "line": 130,
+      "symbol": "RestrictedMetadataBlockBuilder.buildArray(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Metadata/ResultBuilder/RestrictedMetadataBlockBuilder.swift",
+      "line": 134,
+      "symbol": "RestrictedMetadataBlockBuilder.buildBlock(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Modifier/DelegationFilterModifier.swift",
+      "line": 26,
+      "symbol": "DelegationFilterModifier",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Modifier/DelegationFilterModifier.swift",
+      "line": 27,
+      "symbol": "DelegationFilterModifier.ModifiedComponent",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Modifier/DelegationFilterModifier.swift",
+      "line": 46,
+      "symbol": "DelegationFilterModifier",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Modifier/DelegationModifier.swift",
+      "line": 41,
+      "symbol": "DelegationModifier",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Modifier/DelegationModifier.swift",
+      "line": 42,
+      "symbol": "DelegationModifier.ModifiedComponent",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Modifier/DelegationModifier.swift",
+      "line": 61,
+      "symbol": "DelegationModifier",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Modifier/Guard.swift",
+      "line": 50,
+      "symbol": "GuardingHandlerInitializer",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Modifier/Modifier.swift",
+      "line": 11,
+      "symbol": "Modifier.ModifiedComponent",
+      "symbol_kind": "source.lang.swift.decl.associatedtype",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Modifier/Modifier.swift",
+      "line": 12,
+      "symbol": "Modifier.Content",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Modifier/Modifier.swift",
+      "line": 29,
+      "symbol": "HandlerModifierProto.Response",
+      "symbol_kind": "source.lang.swift.decl.associatedtype",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Modifier/Modifier.swift",
+      "line": 30,
+      "symbol": "HandlerModifierProto.component",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Modifier/ResponseTransformer.swift",
+      "line": 46,
+      "symbol": "ResponseTransformingHandlerInitializer",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Properties/Binding.swift",
+      "line": 42,
+      "symbol": "Binding.wrappedValue",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Properties/Binding.swift",
+      "line": 51,
+      "symbol": "Binding.projectedValue",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Properties/Environment.swift",
+      "line": 209,
+      "symbol": "Environment.changed",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Properties/EnvironmentObject.swift",
+      "line": 90,
+      "symbol": "EnvironmentObject.changed",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Properties/ObservedObject.swift",
+      "line": 30,
+      "symbol": "ObservedObject.wrappedValue",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Properties/ObservedObject.swift",
+      "line": 58,
+      "symbol": "ObservedObject.projectedValue",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Properties/Options/PropertyOption.swift",
+      "line": 74,
+      "symbol": "PropertyOptionWithDefault.defaultValue",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Properties/Properties.swift",
+      "line": 62,
+      "symbol": "Properties.defaultNamingStrategy",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Properties/State.swift",
+      "line": 26,
+      "symbol": "State.wrappedValue",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Properties/TypedProperties.swift",
+      "line": 25,
+      "symbol": "TypedProperties.subscript(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.subscript",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Relationships/Metadata/RelationshipInheritance.swift",
+      "line": 17,
+      "symbol": "RelationshipInheritance.value",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Relationships/Metadata/RelationshipReference.swift",
+      "line": 18,
+      "symbol": "RelationshipReference.value",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Relationships/Metadata/RelationshipSource.swift",
+      "line": 20,
+      "symbol": "RelationshipSource.value",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Relationships/Modifier/DefaultRelationshipModifier.swift",
+      "line": 15,
+      "symbol": "DefaultRelationshipModifier",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Relationships/Modifier/RelationshipDestinationModifier.swift",
+      "line": 9,
+      "symbol": "RelationshipDestinationContextKey",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Relationships/Modifier/RelationshipDestinationModifier.swift",
+      "line": 14,
+      "symbol": "RelationshipDestinationModifier",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Relationships/Modifier/RelationshipSourceModifier.swift",
+      "line": 9,
+      "symbol": "RelationshipSourceContextKey",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Relationships/Modifier/RelationshipSourceModifier.swift",
+      "line": 14,
+      "symbol": "RelationshipSourceModifier",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Relationships/Modifier/TypedRelationshipDestinationModifier.swift",
+      "line": 9,
+      "symbol": "TypedRelationshipDestinationModifier",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Relationships/RelationshipIdentificationBuilder.swift",
+      "line": 12,
+      "symbol": "RelationshipIdentificationBuilder",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Relationships/RelationshipSourceCandidateContextKey.swift",
+      "line": 9,
+      "symbol": "RelationshipSourceCandidateContextKey",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Response/ApodiniError.swift",
+      "line": 37,
+      "symbol": "ApodiniError.information",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Response/ApodiniError.swift",
+      "line": 109,
+      "symbol": "ApodiniError.detailed(by:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Response/ApodiniError.swift",
+      "line": 113,
+      "symbol": "ApodiniError.detailed(by:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Response/ApodiniError.swift",
+      "line": 132,
+      "symbol": "_Internal.initializeApodiniError(type:reason:description:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Response/ApodiniError.swift",
+      "line": 140,
+      "symbol": "ApodiniErrorCompliantOption",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Response/ApodiniError.swift",
+      "line": 141,
+      "symbol": "ApodiniErrorCompliantOption.default(for:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Response/ApodiniError.swift",
+      "line": 145,
+      "symbol": "ApodiniError.option(for:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Response/ApodiniError.swift",
+      "line": 149,
+      "symbol": "ApodiniError.option(for:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Response/ApodiniError.swift",
+      "line": 153,
+      "symbol": "ApodiniError.message(with:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Response/ApodiniError.swift",
+      "line": 183,
+      "symbol": "Error.apodiniError",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Response/ApodiniError.swift",
+      "line": 195,
+      "symbol": "ApodiniError.callAsFunction(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Response/ApodiniError.swift",
+      "line": 220,
+      "symbol": "ErrorType.default(for:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Response/ApodiniError.swift",
+      "line": 226,
+      "symbol": "PropertyOptionKey.errorType",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Response/Empty.swift",
+      "line": 9,
+      "symbol": "Empty",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Response/Response.swift",
+      "line": 13,
+      "symbol": "Response",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Response/Response.swift",
+      "line": 14,
+      "symbol": "Response.nothing",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Response/Response.swift",
+      "line": 18,
+      "symbol": "Response.end",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Response/Response.swift",
+      "line": 22,
+      "symbol": "Response.end(status:information:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Response/Response.swift",
+      "line": 26,
+      "symbol": "Response.end(status:information:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Response/Response.swift",
+      "line": 31,
+      "symbol": "Response.send(_:status:information:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Response/Response.swift",
+      "line": 36,
+      "symbol": "Response.send(_:status:information:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Response/Response.swift",
+      "line": 42,
+      "symbol": "Response.send(_:information:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Response/Response.swift",
+      "line": 46,
+      "symbol": "Response.send(_:information:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Response/Response.swift",
+      "line": 51,
+      "symbol": "Response.final(_:status:information:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Response/Response.swift",
+      "line": 56,
+      "symbol": "Response.final(_:status:information:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Response/Response.swift",
+      "line": 62,
+      "symbol": "Response.final(_:information:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Response/Response.swift",
+      "line": 66,
+      "symbol": "Response.final(_:information:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Response/Response.swift",
+      "line": 71,
+      "symbol": "Response.status",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Response/Response.swift",
+      "line": 72,
+      "symbol": "Response.content",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Response/Response.swift",
+      "line": 73,
+      "symbol": "Response.information",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Response/Response.swift",
+      "line": 74,
+      "symbol": "Response.connectionEffect",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Response/Response.swift",
+      "line": 94,
+      "symbol": "Response",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Response/Response.swift",
+      "line": 104,
+      "symbol": "Response",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/InterfaceExporter/InterfaceExporter.swift",
+      "line": 78,
+      "symbol": "ExporterTypeObserveMetadata",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/InterfaceExporter/InterfaceExporter.swift",
+      "line": 79,
+      "symbol": "ExporterTypeObserveMetadata.ExporterTypeObserveMetadata",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/InterfaceExporter/InterfaceExporter.swift",
+      "line": 80,
+      "symbol": "ExporterTypeObserveMetadata.ExporterTypeObserveMetadata.exporterType",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/InterfaceExporter/InterfaceExporter.swift",
+      "line": 81,
+      "symbol": "ExporterTypeObserveMetadata.ExporterTypeObserveMetadata.parameterNamespace",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/InterfaceExporter/InterfaceExporter.swift",
+      "line": 83,
+      "symbol": "ExporterTypeObserveMetadata.ExporterTypeObserveMetadata.init(exporterType:parameterNamespace:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/InterfaceExporter/InterfaceExporter.swift",
+      "line": 89,
+      "symbol": "ExporterTypeObserveMetadata.value",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/KnowledgeSource.swift",
+      "line": 40,
+      "symbol": "KnowledgeError",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/KnowledgeSource.swift",
+      "line": 102,
+      "symbol": "EndpointSource.handler",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/KnowledgeSource.swift",
+      "line": 103,
+      "symbol": "EndpointSource.context",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/KnowledgeSource.swift",
+      "line": 118,
+      "symbol": "AnyEndpointSource.handler",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/KnowledgeSource.swift",
+      "line": 119,
+      "symbol": "AnyEndpointSource.handlerType",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/KnowledgeSource.swift",
+      "line": 120,
+      "symbol": "AnyEndpointSource.context",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/KnowledgeSource.swift",
+      "line": 170,
+      "symbol": "Blackboards.subscript(for:)",
+      "symbol_kind": "source.lang.swift.decl.function.subscript",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/KnowledgeSources/All.swift",
+      "line": 27,
+      "symbol": "All.init(from:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/KnowledgeSources/ContextKeyKnowledgeSource.swift",
+      "line": 12,
+      "symbol": "OptionalContextKeyKnowledgeSource",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/KnowledgeSources/ContextKeyKnowledgeSource.swift",
+      "line": 20,
+      "symbol": "OptionalContextKeyKnowledgeSource",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/KnowledgeSources/ContextKeyKnowledgeSource.swift",
+      "line": 27,
+      "symbol": "ContextKeyKnowledgeSource",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/KnowledgeSources/ContextKeyKnowledgeSource.swift",
+      "line": 33,
+      "symbol": "ContextKeyKnowledgeSource",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/KnowledgeSources/DelegateFactory.swift",
+      "line": 11,
+      "symbol": "DelegateFactoryBasis",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/KnowledgeSources/DelegateFactory.swift",
+      "line": 12,
+      "symbol": "DelegateFactoryBasis.delegate",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/KnowledgeSources/HandlerKnowledge.swift",
+      "line": 16,
+      "symbol": "HandlerDescription.init(from:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/KnowledgeSources/HandlerKnowledge.swift",
+      "line": 21,
+      "symbol": "HandleReturnType",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/KnowledgeSources/HandlerKnowledge.swift",
+      "line": 22,
+      "symbol": "HandleReturnType.type",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/KnowledgeSources/HandlerKnowledge.swift",
+      "line": 24,
+      "symbol": "HandleReturnType.init(from:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/KnowledgeSources/HandlerKnowledge.swift",
+      "line": 30,
+      "symbol": "HandleReturnTypeRootContext",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/KnowledgeSources/HandlerKnowledge.swift",
+      "line": 33,
+      "symbol": "HandleReturnTypeRootContext.context",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/KnowledgeSources/HandlerKnowledge.swift",
+      "line": 48,
+      "symbol": "RootContextOfReturnTypeContextKey",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/KnowledgeSources/HandlerKnowledge.swift",
+      "line": 65,
+      "symbol": "EndpointParameters.init(from:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/KnowledgeSources/HandlerKnowledgeSource.swift",
+      "line": 13,
+      "symbol": "HandlerKnowledgeSource.init(from:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/KnowledgeSources/PathKnowledge.swift",
+      "line": 12,
+      "symbol": "PathComponents",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/KnowledgeSources/PathKnowledge.swift",
+      "line": 15,
+      "symbol": "PathComponents.value",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/KnowledgeSources/PathKnowledge.swift",
+      "line": 50,
+      "symbol": "UnscopedEndpointPathComponents",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/KnowledgeSources/PathKnowledge.swift",
+      "line": 51,
+      "symbol": "UnscopedEndpointPathComponents.value",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/KnowledgeSources/PathKnowledge.swift",
+      "line": 60,
+      "symbol": "EndpointPathComponentProvider",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/KnowledgeSources/PathKnowledge.swift",
+      "line": 61,
+      "symbol": "EndpointPathComponentProvider.value",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/KnowledgeSources/PathKnowledge.swift",
+      "line": 64,
+      "symbol": "ScopedEndpointPathComponents",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/KnowledgeSources/PathKnowledge.swift",
+      "line": 65,
+      "symbol": "ScopedEndpointPathComponents.value",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/KnowledgeSources/PathKnowledge.swift",
+      "line": 79,
+      "symbol": "UnscopedEndpointPathComponentsHTTP",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/KnowledgeSources/PathKnowledge.swift",
+      "line": 80,
+      "symbol": "UnscopedEndpointPathComponentsHTTP.value",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/KnowledgeSources/RelationshipKnowledge.swift",
+      "line": 45,
+      "symbol": "AnyRelationshipEndpointInstance",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/KnowledgeSources/RelationshipKnowledge.swift",
+      "line": 46,
+      "symbol": "AnyRelationshipEndpointInstance.instance",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/KnowledgeSources/RelationshipKnowledge.swift",
+      "line": 56,
+      "symbol": "RelationshipModelKnowledgeSource",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/KnowledgeSources/RelationshipKnowledge.swift",
+      "line": 59,
+      "symbol": "RelationshipModelKnowledgeSource.model",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/KnowledgeSources/ResponseTypeKnowledge.swift",
+      "line": 11,
+      "symbol": "ResponseType",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/KnowledgeSources/ResponseTypeKnowledge.swift",
+      "line": 12,
+      "symbol": "ResponseType.type",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/KnowledgeSources/WebServiceComponent.swift",
+      "line": 16,
+      "symbol": "WebServiceRoot.node",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/KnowledgeSources/WebServiceComponent.swift",
+      "line": 30,
+      "symbol": "WebServiceComponent.parent",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/KnowledgeSources/WebServiceComponent.swift",
+      "line": 31,
+      "symbol": "WebServiceComponent.identifier",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/KnowledgeSources/WebServiceComponent.swift",
+      "line": 33,
+      "symbol": "WebServiceComponent.endpoints",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/KnowledgeSources/WebServiceComponent.swift",
+      "line": 34,
+      "symbol": "WebServiceComponent.children",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/KnowledgeSources/WebServiceComponent.swift",
+      "line": 36,
+      "symbol": "WebServiceComponent.globalPath",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/Model/EndpointParameter.swift",
+      "line": 34,
+      "symbol": "AnyEndpointParameter.pathId",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/Model/EndpointParameter.swift",
+      "line": 119,
+      "symbol": "EndpointParameter.pathId",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/Model/EndpointParameter.swift",
+      "line": 132,
+      "symbol": "EndpointParameter.defaultValue",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/Model/EndpointPath.swift",
+      "line": 11,
+      "symbol": "EndpointPath",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/Model/EndpointPath.swift",
+      "line": 12,
+      "symbol": "EndpointPath.root",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/Model/EndpointPath.swift",
+      "line": 13,
+      "symbol": "EndpointPath.string(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/Model/EndpointPath.swift",
+      "line": 14,
+      "symbol": "EndpointPath.parameter(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/Model/EndpointPath.swift",
+      "line": 34,
+      "symbol": "EndpointPath.isString()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/Model/EndpointPath.swift",
+      "line": 41,
+      "symbol": "EndpointPath.isParameter()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/Model/EndpointPath.swift",
+      "line": 69,
+      "symbol": "EndpointPath",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/Model/EndpointPath.swift",
+      "line": 84,
+      "symbol": "EndpointPath",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/Model/EndpointPath.swift",
+      "line": 311,
+      "symbol": "PathBuilderWithResult",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/Model/EndpointPath.swift",
+      "line": 312,
+      "symbol": "PathBuilderWithResult.Result",
+      "symbol_kind": "source.lang.swift.decl.associatedtype",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/Model/EndpointPath.swift",
+      "line": 314,
+      "symbol": "PathBuilderWithResult.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/Model/EndpointPath.swift",
+      "line": 316,
+      "symbol": "PathBuilderWithResult.result()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/Model/ParameterNamespace.swift",
+      "line": 11,
+      "symbol": "ParameterNamespace",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/Model/ParameterNamespace.swift",
+      "line": 18,
+      "symbol": "ParameterNamespace.lightweight",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/Model/ParameterNamespace.swift",
+      "line": 19,
+      "symbol": "ParameterNamespace.content",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/Model/ParameterNamespace.swift",
+      "line": 20,
+      "symbol": "ParameterNamespace.path",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/Model/ParameterNamespace.swift",
+      "line": 25,
+      "symbol": "ParameterNamespace",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/Model/WebServiceModel.swift",
+      "line": 11,
+      "symbol": "WebServiceModel",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/Model/WebServiceModel.swift",
+      "line": 24,
+      "symbol": "WebServiceModel",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/Relationship/EndpointRelationship.swift",
+      "line": 151,
+      "symbol": "RelationshipDestination.operation",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/Relationship/RelationshipEndpoint.swift",
+      "line": 12,
+      "symbol": "AnyRelationshipEndpoint",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/Relationship/RelationshipEndpoint.swift",
+      "line": 13,
+      "symbol": "AnyRelationshipEndpoint.absolutePath",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/Relationship/RelationshipEndpoint.swift",
+      "line": 15,
+      "symbol": "AnyRelationshipEndpoint.inheritsRelationship",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/Relationship/RelationshipEndpoint.swift",
+      "line": 74,
+      "symbol": "RelationshipEndpoint.handler",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/Relationship/RelationshipEndpoint.swift",
+      "line": 76,
+      "symbol": "RelationshipEndpoint.absolutePath",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/Relationship/RelationshipEndpoint.swift",
+      "line": 92,
+      "symbol": "RelationshipEndpoint.inheritsRelationship",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/Relationship/RelationshipEndpoint.swift",
+      "line": 176,
+      "symbol": "AnyRelationshipEndpoint",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Semantic Model Builder/Relationship/RelationshipWebServiceModel.swift",
+      "line": 29,
+      "symbol": "RelationshipWebServiceModel.globalBlackboard",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Utilities/Tree.swift",
+      "line": 18,
+      "symbol": "Tree.isEmpty",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Utilities/Tree.swift",
+      "line": 28,
+      "symbol": "Node.value",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Utilities/Tree.swift",
+      "line": 29,
+      "symbol": "Node.children",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/Utilities/Tree.swift",
+      "line": 31,
+      "symbol": "Node.init(value:children:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/Apodini/Apodini/Sources/Apodini/WebService.swift",
+      "line": 16,
+      "symbol": "WebService.Metadata",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/runner/work/Apodini/Apodini"
+}
