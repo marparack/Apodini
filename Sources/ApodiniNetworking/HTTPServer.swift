@@ -403,6 +403,7 @@ extension HTTPServer: HTTPRoutesBuilder {
 
 extension HTTPServer: HTTPResponder {
     public func respond(to request: HTTPRequest) -> HTTPResponseConvertible {
+        let start = Date().timeIntervalSince1970
         if let route = router.getRoute(for: request) {
             return route.responder
                 .respond(to: request)
@@ -410,6 +411,9 @@ extension HTTPServer: HTTPResponder {
         } else {
             return HTTPResponse(version: request.version, status: .notFound, headers: [:])
         }
+        let end = Date().timeIntervalSince1970
+        logger.notice("Took \(end - start) seconds.")
+        print("Took \(end - start) seconds.")
     }
 }
 
